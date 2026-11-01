@@ -19,94 +19,64 @@
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=world-geography</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=easy-riddles</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=countries-capitals</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=hard-riddles</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=world-food</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=brain-teasers</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=funny-questions</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=general-knowledge</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=kids-quiz</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=math-puzzles</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=logical-questions</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=science</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=history</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=bangladesh</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=animals-nature</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=space-astronomy</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=sports</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=technology</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=famous-places</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=mathematics</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=human-body</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=islamic-knowledge</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=fun-entertainment</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://quiz-zone-bd.vercel.app/?page=history</loc>

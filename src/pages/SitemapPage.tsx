@@ -20,7 +20,7 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
 
   const mainPages = [
     { title: 'Quiz Zone BD হোমপেজ', path: '/?page=home', description: 'মূল ল্যান্ডিং পেজ যেখানে রয়েছে দৈনিক কুইজ, ক্যাটাগরি ও সার্চ সুবিধা।' },
-    { title: 'সকল কুইজ ক্যাটাগরি', path: '/?page=categories', description: '১৬টি ভিন্ন কুইজ বিষয় ও লেভেলের সম্পূর্ণ ক্যাটালগ।' },
+    { title: 'সকল কুইজ ক্যাটাগরি', path: '/?page=categories', description: '১০টি ভিন্ন বাংলা ধাঁধা ও কুইজ ক্যাটাগরির সম্পূর্ণ ক্যাটালগ।' },
     { title: 'দৈনিক কুইজ চ্যালেঞ্জ', path: '/?page=daily', description: 'প্রতিদিনের নতুন ৭টি প্রশ্নের বিশেষ চ্যালেঞ্জ ও স্ট্রিক ট্র্যাকার।' },
     { title: 'ব্যক্তিগত অগ্রগতি ও স্কোর', path: '/?page=history', description: 'ব্যবহারকারীর অতীতের কুইজের ইতিহাস ও সঠিকতার পরিসংখ্যান।' },
     { title: 'সাইটম্যাপ ও ইনডেক্স', path: '/?page=sitemap', description: 'Quiz Zone BD-এর সমস্ত সক্রিয় ইউআরএল ও পেজের নির্দেশিকা।' }

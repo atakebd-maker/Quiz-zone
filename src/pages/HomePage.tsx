@@ -129,15 +129,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
                 <Layers className="w-3.5 h-3.5 text-blue-600" />
                 <span>ক্যাটাগরি</span>
               </div>
-              <div className="text-xl font-bold text-slate-900">১৬টি বিভাগ</div>
+              <div className="text-xl font-bold text-slate-900">১০টি বিভাগ</div>
             </div>
 
             <div className="bg-white/80 p-3 rounded-lg border border-slate-100">
               <div className="flex items-center gap-2 text-xs text-slate-500 mb-0.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>যাচাইকৃত প্রশ্ন</span>
+                <span>যাচাইকৃত ধাঁধা ও প্রশ্ন</span>
               </div>
-              <div className="text-xl font-bold text-slate-900">১০০+ প্রশ্ন</div>
+              <div className="text-xl font-bold text-slate-900">৮০+ প্রশ্ন</div>
             </div>
 
             <div className="bg-white/80 p-3 rounded-lg border border-slate-100">
@@ -280,7 +280,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
             onClick={() => onNavigate('categories')}
             className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 cursor-pointer"
           >
-            <span>সবগুলো দেখুন (১৬টি)</span>
+            <span>সবগুলো দেখুন (১০টি)</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
