@@ -60,7 +60,7 @@ export const AllCategoriesPage: React.FC<AllCategoriesPageProps> = ({
       {/* Header */}
       <header className="space-y-3">
         <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
-          Quiz Zone কুইজ ভান্ডার
+          Quiz Zone BD কুইজ ভান্ডার
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
           সকল ১৬টি কুইজ ক্যাটাগরি অন্বেষণ করুন

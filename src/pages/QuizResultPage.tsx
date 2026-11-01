@@ -31,7 +31,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
   const isCelebratory = result.percentage >= 80;
 
   const handleShare = () => {
-    const text = `আমি Quiz Zone-এ ${result.categoryTitle}-এ ${result.scoreRatio} (${result.percentage}%) স্কোর করেছি! আপনি কত স্কোর করতে পারেন?`;
+    const text = `আমি Quiz Zone BD-তে ${result.categoryTitle}-এ ${result.scoreRatio} (${result.percentage}%) স্কোর করেছি! আপনি কত স্কোর করতে পারেন?`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
       setCopiedShare(true);

@@ -47,21 +47,21 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-blue-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Brand Logo - Quiz Zone */}
+          {/* Brand Logo - Quiz Zone BD */}
           <button
             onClick={() => onNavigate('home')}
             className="flex items-center gap-2.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-1"
-            aria-label="Quiz Zone হোমপেজ"
+            aria-label="Quiz Zone BD হোমপেজ"
           >
             <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-xs">
               <HelpCircle className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
               <span className="text-xl font-extrabold tracking-tight text-slate-900">
-                Quiz <span className="text-blue-600">Zone</span>
+                Quiz <span className="text-blue-600">Zone</span> <span className="text-emerald-600 font-black">BD</span>
               </span>
               <span className="hidden sm:inline-block text-[11px] text-blue-700 font-bold ml-1.5 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
-                কুইজ জোন
+                কুইজ জোন বিডি
               </span>
             </div>
           </button>

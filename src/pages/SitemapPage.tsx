@@ -19,11 +19,11 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
   const [showRawXml, setShowRawXml] = useState(false);
 
   const mainPages = [
-    { title: 'Quiz Zone হোমপেজ', path: '/?page=home', description: 'মূল ল্যান্ডিং পেজ যেখানে রয়েছে দৈনিক কুইজ, ক্যাটাগরি ও সার্চ সুবিধা।' },
+    { title: 'Quiz Zone BD হোমপেজ', path: '/?page=home', description: 'মূল ল্যান্ডিং পেজ যেখানে রয়েছে দৈনিক কুইজ, ক্যাটাগরি ও সার্চ সুবিধা।' },
     { title: 'সকল কুইজ ক্যাটাগরি', path: '/?page=categories', description: '১৬টি ভিন্ন কুইজ বিষয় ও লেভেলের সম্পূর্ণ ক্যাটালগ।' },
     { title: 'দৈনিক কুইজ চ্যালেঞ্জ', path: '/?page=daily', description: 'প্রতিদিনের নতুন ৭টি প্রশ্নের বিশেষ চ্যালেঞ্জ ও স্ট্রিক ট্র্যাকার।' },
     { title: 'ব্যক্তিগত অগ্রগতি ও স্কোর', path: '/?page=history', description: 'ব্যবহারকারীর অতীতের কুইজের ইতিহাস ও সঠিকতার পরিসংখ্যান।' },
-    { title: 'সাইটম্যাপ ও ইনডেক্স', path: '/?page=sitemap', description: 'Quiz Zone-এর সমস্ত সক্রিয় ইউআরএল ও পেজের নির্দেশিকা।' }
+    { title: 'সাইটম্যাপ ও ইনডেক্স', path: '/?page=sitemap', description: 'Quiz Zone BD-এর সমস্ত সক্রিয় ইউআরএল ও পেজের নির্দেশিকা।' }
   ];
 
   const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
@@ -89,10 +89,10 @@ ${QUIZ_CATEGORIES.map(
           SEO ইনডেক্স ও ইউআরএল ম্যানিফেস্ট
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Quiz Zone ওয়েবসাইট সাইটম্যাপ
+          Quiz Zone BD ওয়েবসাইট সাইটম্যাপ
         </h1>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-          Quiz Zone-এ শুধুমাত্র সক্রিয় ও কার্যকরী লিংক ও পেজসমূহ অন্তর্ভুক্ত রয়েছে। সরাসরি যেকোনো কুইজ ক্যাটাগরিতে যেতে বা এসইও এক্সএমএল কোড দেখতে নিচের বিকল্পগুলো ব্যবহার করুন।
+          Quiz Zone BD-এ শুধুমাত্র সক্রিয় ও কার্যকরী লিংক ও পেজসমূহ অন্তর্ভুক্ত রয়েছে। সরাসরি যেকোনো কুইজ ক্যাটাগরিতে যেতে বা এসইও এক্সএমএল কোড দেখতে নিচের বিকল্পগুলো ব্যবহার করুন।
         </p>
       </header>
 

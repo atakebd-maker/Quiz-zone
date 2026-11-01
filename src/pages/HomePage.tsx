@@ -87,7 +87,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
           </h1>
 
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed mb-8">
-            Quiz Zone-এ নিজেকে চ্যালেঞ্জ করুন তাৎক্ষণিক উত্তর, ব্যাখ্যা ও রোমাঞ্চকর অজানা তথ্যের সাথে। বিজ্ঞান, ভূগোল, ইতিহাস, মহাকাশ ও প্রযুক্তি জানুন আনন্দের সাথে।
+            Quiz Zone BD-এ নিজেকে চ্যালেঞ্জ করুন তাৎক্ষণিক উত্তর, ব্যাখ্যা ও রোমাঞ্চকর অজানা তথ্যের সাথে। বিজ্ঞান, ভূগোল, ইতিহাস, মহাকাশ ও প্রযুক্তি জানুন আনন্দের সাথে।
           </p>
 
           {/* Search bar & quick action */}
@@ -356,7 +356,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
                 ১. সর্বদা উৎসাহব্যঞ্জক অভিজ্ঞতা
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                ভুল বা সঠিক যাই হোক, Quiz Zone আপনাকে ইতিবাচক ও অনুপ্রেরণামূলক বার্তার মাধ্যমে আনন্দের সাথে শেখায়।
+                ভুল বা সঠিক যাই হোক, Quiz Zone BD আপনাকে ইতিবাচক ও অনুপ্রেরণামূলক বার্তার মাধ্যমে আনন্দের সাথে শেখায়।
               </p>
             </div>
 

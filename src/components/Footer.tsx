@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <HelpCircle className="w-4 h-4 stroke-[2.5]" />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
-                Quiz <span className="text-blue-400">Zone</span>
+                Quiz <span className="text-blue-400">Zone</span> <span className="text-emerald-400 font-extrabold">BD</span>
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
@@ -114,7 +114,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom copyright */}
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>© {new Date().getFullYear()} Quiz Zone (কুইজ জোন)। জ্ঞানপিপাসু ও শিক্ষার্থীদের জন্য নিবেদিত।</p>
+          <p>© {new Date().getFullYear()} Quiz Zone BD (কুইজ জোন বিডি)। জ্ঞানপিপাসু ও শিক্ষার্থীদের জন্য নিবেদিত।</p>
           <div className="flex items-center gap-1 text-slate-400">
             <span>ভালোবাসার সাথে প্রস্তুত</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />

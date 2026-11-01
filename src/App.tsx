@@ -89,16 +89,16 @@ export default function App() {
     if (currentRoute === 'home') {
       updateSEO({
         title: 'হোম – জ্ঞান যাচাই করুন ও কুইজ খেলুন',
-        description: 'Quiz Zone (কুইজ জোন) - ১৬টি বিভাগে ১০০+ আকর্ষণীয় কুইজ, দৈনিক চ্যালেঞ্জ ও তাৎক্ষণিক ব্যাখ্যা।',
+        description: 'Quiz Zone BD (কুইজ জোন বিডি) - ১৬টি বিভাগে ১০০+ আকর্ষণীয় কুইজ, দৈনিক চ্যালেঞ্জ ও তাৎক্ষণিক ব্যাখ্যা।',
         canonicalPath: '/?page=home',
         jsonLd: {
           '@context': 'https://schema.org',
           '@type': 'WebApplication',
-          name: 'Quiz Zone',
+          name: 'Quiz Zone BD',
           inLanguage: 'bn',
           applicationCategory: 'EducationalApplication',
           operatingSystem: 'All',
-          description: 'অনলাইন বাংলা কুইজ প্ল্যাটফর্ম - Quiz Zone.',
+          description: 'অনলাইন বাংলা কুইজ প্ল্যাটফর্ম - Quiz Zone BD.',
           offers: { '@type': 'Offer', price: '0', priceCurrency: 'BDT' }
         }
       });
@@ -107,7 +107,7 @@ export default function App() {
       if (cat) {
         updateSEO({
           title: `${cat.title} – সাধারণ জ্ঞান কুইজ ও উত্তর`,
-          description: `${cat.title} খেলুন Quiz Zone-এ। ${cat.description}`,
+          description: `${cat.title} খেলুন Quiz Zone BD-এ। ${cat.description}`,
           canonicalPath: `/?page=category&id=${cat.id}`,
           jsonLd: {
             '@context': 'https://schema.org',
@@ -145,7 +145,7 @@ export default function App() {
     } else if (currentRoute === 'sitemap') {
       updateSEO({
         title: 'সাইটম্যাপ ও সক্রিয় পেজ ইনডেক্স',
-        description: 'Quiz Zone-এর সমস্ত কার্যকরী ইউআরএল ও বিষয়ের সম্পূর্ণ তালিকা।',
+        description: 'Quiz Zone BD-এর সমস্ত কার্যকরী ইউআরএল ও বিষয়ের সম্পূর্ণ তালিকা।',
         canonicalPath: '/?page=sitemap'
       });
     }

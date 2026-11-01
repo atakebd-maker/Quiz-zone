@@ -6,8 +6,8 @@ export interface SEOConfig {
 }
 
 export function updateSEO({ title, description, canonicalPath, jsonLd }: SEOConfig) {
-  // Update document title with Quiz Zone
-  document.title = `${title} | Quiz Zone`;
+  // Update document title with Quiz Zone BD
+  document.title = `${title} | Quiz Zone BD`;
 
   // Update meta description
   let metaDesc = document.querySelector('meta[name="description"]');
@@ -20,7 +20,7 @@ export function updateSEO({ title, description, canonicalPath, jsonLd }: SEOConf
 
   // Update og:title
   let ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', `${title} | Quiz Zone`);
+  if (ogTitle) ogTitle.setAttribute('content', `${title} | Quiz Zone BD`);
 
   // Update og:description
   let ogDesc = document.querySelector('meta[property="og:description"]');
@@ -28,7 +28,7 @@ export function updateSEO({ title, description, canonicalPath, jsonLd }: SEOConf
 
   // Update twitter:title and twitter:description
   let twitterTitle = document.querySelector('meta[name="twitter:title"]');
-  if (twitterTitle) twitterTitle.setAttribute('content', `${title} | Quiz Zone`);
+  if (twitterTitle) twitterTitle.setAttribute('content', `${title} | Quiz Zone BD`);
 
   let twitterDesc = document.querySelector('meta[name="twitter:description"]');
   if (twitterDesc) twitterDesc.setAttribute('content', description);
