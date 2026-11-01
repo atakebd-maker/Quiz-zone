@@ -77,7 +77,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-700 bg-blue-100/60 border border-blue-200/80 px-3 py-1 rounded-full mb-6">
             <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            <span>১৬টি চমৎকার ক্যাটাগরি · ১০০+ তথ্যবহুল কুইজ প্রশ্ন</span>
+            <span>⏱️ প্রতি প্রশ্নে ১ মিনিট টাইমার · 🧠 আনুমানিক আইকিউ (IQ) মেধা বিশ্লেষণ</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.25] mb-5">

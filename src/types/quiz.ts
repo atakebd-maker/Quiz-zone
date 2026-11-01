@@ -33,6 +33,10 @@ export interface QuizResult {
   percentage: number;
   performanceMessage: string;
   completedAt: string;
+  estimatedIQ: number;
+  iqClassification: string;
+  iqDescription: string;
+  totalTimeSeconds: number;
   answers: {
     questionId: string;
     questionText: string;
@@ -42,6 +46,7 @@ export interface QuizResult {
     isCorrect: boolean;
     explanation: string;
     interestingFact: string;
+    timeTakenSeconds?: number;
   }[];
 }
 

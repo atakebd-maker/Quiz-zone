@@ -227,8 +227,8 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   {q.question}
                 </p>
                 <div className="flex items-center gap-2 text-[11px] text-slate-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-slate-400" /> ~৩০ সেকেন্ড
+                  <span className="flex items-center gap-1 text-blue-600 font-semibold">
+                    <Clock className="w-3 h-3 text-blue-500" /> ১ মিনিট সময়
                   </span>
                   <span>·</span>
                   <span>৪টি বিকল্প উত্তর (ক-ঘ)</span>

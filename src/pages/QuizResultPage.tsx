@@ -9,7 +9,11 @@ import {
   Sparkles,
   ChevronDown,
   ChevronUp,
-  Lightbulb
+  Lightbulb,
+  Brain,
+  Clock,
+  Zap,
+  Target
 } from 'lucide-react';
 import { QuizResult } from '../types/quiz';
 import { Confetti } from '../components/Confetti';
@@ -30,9 +34,13 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const isCelebratory = result.percentage >= 80;
+  const avgTimePerQuestion =
+    result.totalQuestions > 0 && result.totalTimeSeconds
+      ? Math.round(result.totalTimeSeconds / result.totalQuestions)
+      : 25;
 
   const handleShare = () => {
-    const text = `আমি Quiz Zone BD-তে ${result.categoryTitle}-এ ${result.scoreRatio} (${result.percentage}%) স্কোর করেছি! আপনি কত স্কোর করতে পারেন?`;
+    const text = `আমি Quiz Zone BD-তে ${result.categoryTitle} কুইজে ${result.scoreRatio} (${result.percentage}%) পেয়েছি এবং আমার আনুমানিক আইকিউ (IQ) হলো ${result.estimatedIQ || 115} (${result.iqClassification || 'উন্নত মেধা'})! আপনি কত স্কোর করতে পারবেন?`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
       setCopiedShare(true);
@@ -43,6 +51,24 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
   const toggleExpand = (idx: number) => {
     setExpandedIndex(expandedIndex === idx ? null : idx);
   };
+
+  // Determine IQ ring colors
+  const iq = result.estimatedIQ || 110;
+  let iqColor = 'from-blue-600 to-indigo-600';
+  let iqBadgeColor = 'bg-blue-50 text-blue-700 border-blue-200';
+  if (iq >= 135) {
+    iqColor = 'from-purple-600 to-pink-600';
+    iqBadgeColor = 'bg-purple-50 text-purple-700 border-purple-200';
+  } else if (iq >= 120) {
+    iqColor = 'from-emerald-600 to-teal-600';
+    iqBadgeColor = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+  } else if (iq >= 110) {
+    iqColor = 'from-blue-600 to-cyan-600';
+    iqBadgeColor = 'bg-blue-50 text-blue-700 border-blue-200';
+  } else if (iq >= 90) {
+    iqColor = 'from-amber-500 to-orange-500';
+    iqBadgeColor = 'bg-amber-50 text-amber-700 border-amber-200';
+  }
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
@@ -98,6 +124,69 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
           </div>
         </div>
 
+        {/* Feature: Dedicated Estimated IQ Analysis Card */}
+        <div className="my-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white text-left relative overflow-hidden shadow-md">
+          {/* Subtle Glow */}
+          <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
+
+          <div className="relative z-10 space-y-5">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+              <div className="flex items-center gap-2">
+                <Brain className="w-5 h-5 text-blue-400" />
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-300">
+                  আইকিউ (IQ) ও মেধা মূল্যায়ন
+                </span>
+              </div>
+              <span className={`text-xs font-extrabold px-3 py-1 rounded-full border ${iqBadgeColor}`}>
+                {result.iqClassification || 'উন্নত মেধা'}
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="space-y-1">
+                <span className="text-xs text-slate-400 block font-medium">
+                  আপনার পারফরম্যান্স ও গতির ভিত্তিতে আনুমানিক আইকিউ
+                </span>
+                <div className="flex items-baseline gap-3">
+                  <span className={`text-5xl sm:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${iqColor}`}>
+                    {result.estimatedIQ || 115}
+                  </span>
+                  <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">
+                    IQ Score
+                  </span>
+                </div>
+              </div>
+
+              {/* Quick Metrics */}
+              <div className="grid grid-cols-2 gap-3 w-full sm:w-auto">
+                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-0.5">
+                    <Target className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>সঠিকতার হার</span>
+                  </div>
+                  <div className="text-base font-bold text-white">{result.percentage}%</div>
+                </div>
+
+                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-0.5">
+                    <Clock className="w-3.5 h-3.5 text-blue-400" />
+                    <span>গড় সময়/প্রশ্ন</span>
+                  </div>
+                  <div className="text-base font-bold text-white">~{avgTimePerQuestion} সে.</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cognitive explanation */}
+            <div className="pt-2 border-t border-slate-800/80">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed flex items-start gap-2">
+                <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <span>{result.iqDescription || 'আপনার কুইজের গতি ও সঠিকতার অনুপাত অনুসারে নিয়মিত অনুশীলনে মেধা আরও বৃদ্ধি পাবে।'}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Action Buttons: Play Again & Back to Categories */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 border-t border-slate-100">
           <button
@@ -119,10 +208,10 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
           <button
             onClick={handleShare}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs text-blue-600 hover:bg-blue-50 border border-blue-200 transition-colors cursor-pointer"
-            title="স্কোর কপি করুন"
+            title="স্কোর ও আইকিউ কপি করুন"
           >
             <Share2 className="w-4 h-4" />
-            <span>{copiedShare ? 'কপিকৃত হয়েছে!' : 'ফলাফল শেয়ার করুন'}</span>
+            <span>{copiedShare ? 'আইকিউ ও স্কোর কপিকৃত!' : 'আইকিউ স্কোর শেয়ার করুন'}</span>
           </button>
         </div>
       </section>
@@ -147,7 +236,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
         </div>
 
         <p className="text-xs text-slate-500">
-          প্রতিটি প্রশ্নের সঠিক সমাধান, আপনার উত্তর এবং শিক্ষণীয় ব্যাখ্যা জানতে নিচে ক্লিক করুন।
+          প্রতিটি প্রশ্নের সঠিক সমাধান, আপনার উত্তর, সময় ব্যয় এবং শিক্ষণীয় ব্যাখ্যা জানতে নিচে ক্লিক করুন।
         </p>
 
         <div className="space-y-3 pt-2">
@@ -178,8 +267,16 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
                       )}
                     </span>
                     <div>
-                      <div className="text-xs font-semibold text-slate-400 mb-0.5">
-                        প্রশ্ন নম্বর {idx + 1}
+                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-0.5">
+                        <span>প্রশ্ন নম্বর {idx + 1}</span>
+                        {item.timeTakenSeconds !== undefined && (
+                          <>
+                            <span>·</span>
+                            <span className="inline-flex items-center gap-1 text-[11px] text-slate-500">
+                              <Clock className="w-3 h-3" /> {item.timeTakenSeconds} সেকেন্ড
+                            </span>
+                          </>
+                        )}
                       </div>
                       <p className="text-sm font-semibold text-slate-900 line-clamp-2">
                         {item.questionText}
@@ -207,7 +304,9 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
                             item.isCorrect ? 'text-emerald-700' : 'text-rose-600'
                           }`}
                         >
-                          বিকল্প {letters[item.selectedIndex]}: {item.options[item.selectedIndex]}
+                          {item.selectedIndex >= 0
+                            ? `বিকল্প ${letters[item.selectedIndex]}: ${item.options[item.selectedIndex]}`
+                            : 'সময় শেষ হয়েছিল (উত্তর দেওয়া হয়নি)'}
                         </span>
                       </div>
 

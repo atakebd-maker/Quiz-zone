@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   CheckCircle2,
   XCircle,
@@ -7,10 +7,13 @@ import {
   Lightbulb,
   AlertCircle,
   HelpCircle,
-  ArrowLeft
+  ArrowLeft,
+  Clock,
+  Hourglass
 } from 'lucide-react';
 import { QuizCategory, QuizQuestion, QuizResult } from '../types/quiz';
 import { AdBanner } from '../components/AdBanner';
+import { calculateIQ } from '../utils/iqCalculator';
 
 interface QuizPlayerPageProps {
   category: QuizCategory;
@@ -19,6 +22,8 @@ interface QuizPlayerPageProps {
   onFinishQuiz: (result: QuizResult) => void;
   onExit: () => void;
 }
+
+const QUESTION_TIME_LIMIT = 60; // 60 seconds (1 minute per question)
 
 const ENCOURAGING_CORRECT_MESSAGES = [
   'অসাধারণ!',
@@ -45,18 +50,46 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState<boolean>(false);
-  const [sessionAnswers, setSessionAnswers] = useState<
-    QuizResult['answers']
-  >([]);
+  const [sessionAnswers, setSessionAnswers] = useState<QuizResult['answers']>([]);
+
+  // 1-minute timer state
+  const [timeLeft, setTimeLeft] = useState<number>(QUESTION_TIME_LIMIT);
+  const [isTimeUp, setIsTimeUp] = useState<boolean>(false);
+  const [totalTimeSpent, setTotalTimeSpent] = useState<number>(0);
 
   const currentQ = questions[currentIndex];
   const totalQuestions = questions.length;
   const progressPercent = Math.round(((currentIndex) / totalQuestions) * 100);
-
   const isLastQuestion = currentIndex === totalQuestions - 1;
 
   // Options letter tags in Bengali: ক, খ, গ, ঘ
   const optionLetters = ['ক', 'খ', 'গ', 'ঘ'];
+
+  // Countdown timer effect
+  useEffect(() => {
+    if (isAnswerSubmitted) return;
+
+    if (timeLeft <= 0) {
+      setIsTimeUp(true);
+      setIsAnswerSubmitted(true);
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          setIsTimeUp(true);
+          setIsAnswerSubmitted(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+      setTotalTimeSpent((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft, isAnswerSubmitted]);
 
   const handleSelectOption = (index: number) => {
     if (isAnswerSubmitted) return;
@@ -69,19 +102,21 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   };
 
   const handleNextQuestion = () => {
-    if (selectedOptionIndex === null) return;
-
-    const isCorrect = selectedOptionIndex === currentQ.correctIndex;
+    // If time ran out and user didn't pick, selectedOptionIndex remains -1 or null
+    const chosenIdx = selectedOptionIndex !== null ? selectedOptionIndex : -1;
+    const isCorrect = chosenIdx === currentQ.correctIndex;
+    const timeSpentOnQuestion = QUESTION_TIME_LIMIT - timeLeft;
 
     const answerRecord = {
       questionId: currentQ.id,
       questionText: currentQ.question,
       options: currentQ.options,
-      selectedIndex: selectedOptionIndex,
+      selectedIndex: chosenIdx,
       correctIndex: currentQ.correctIndex,
       isCorrect,
       explanation: currentQ.explanation,
-      interestingFact: currentQ.interestingFact
+      interestingFact: currentQ.interestingFact,
+      timeTakenSeconds: timeSpentOnQuestion
     };
 
     const updatedAnswers = [...sessionAnswers, answerRecord];
@@ -103,6 +138,9 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         performanceMessage = 'হাল ছাড়বেন না! প্রতিটি চেষ্টাই আপনাকে আরও অভিজ্ঞ করে তুলছে।';
       }
 
+      // Calculate estimated IQ analysis
+      const iqAnalysis = calculateIQ(correctCount, totalQuestions, totalTimeSpent);
+
       const result: QuizResult = {
         categoryId: category.id,
         categoryTitle: isDaily ? 'দৈনিক কুইজ' : category.title,
@@ -114,6 +152,10 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         percentage,
         performanceMessage,
         completedAt: new Date().toISOString(),
+        estimatedIQ: iqAnalysis.iqScore,
+        iqClassification: iqAnalysis.classification,
+        iqDescription: iqAnalysis.description,
+        totalTimeSeconds: totalTimeSpent,
         answers: updatedAnswers
       };
 
@@ -122,22 +164,41 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
       setCurrentIndex((prev) => prev + 1);
       setSelectedOptionIndex(null);
       setIsAnswerSubmitted(false);
+      setTimeLeft(QUESTION_TIME_LIMIT);
+      setIsTimeUp(false);
     }
   };
 
   const isCurrentCorrect =
     isAnswerSubmitted && selectedOptionIndex === currentQ.correctIndex;
   const isCurrentIncorrect =
-    isAnswerSubmitted && selectedOptionIndex !== currentQ.correctIndex;
+    isAnswerSubmitted && selectedOptionIndex !== null && selectedOptionIndex !== currentQ.correctIndex;
+  const isCurrentTimedOut =
+    isAnswerSubmitted && isTimeUp && selectedOptionIndex === null;
 
   const cheerMessage =
     ENCOURAGING_CORRECT_MESSAGES[currentIndex % ENCOURAGING_CORRECT_MESSAGES.length];
   const gentleMessage =
     GENTLE_INCORRECT_MESSAGES[currentIndex % GENTLE_INCORRECT_MESSAGES.length];
 
+  // Timer colors and formatting
+  const formattedMinutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+  const formattedSeconds = String(timeLeft % 60).padStart(2, '0');
+  const timerPercent = (timeLeft / QUESTION_TIME_LIMIT) * 100;
+
+  let timerColorClass = 'text-blue-600 bg-blue-50 border-blue-200';
+  let timerBarColor = 'bg-blue-600';
+  if (timeLeft <= 10) {
+    timerColorClass = 'text-rose-600 bg-rose-50 border-rose-200 animate-pulse';
+    timerBarColor = 'bg-rose-500';
+  } else if (timeLeft <= 20) {
+    timerColorClass = 'text-amber-600 bg-amber-50 border-amber-200';
+    timerBarColor = 'bg-amber-500';
+  }
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
-      {/* Quiz Top bar: Header & Progress */}
+      {/* Quiz Top bar: Header, Progress & 1-Minute Timer */}
       <div className="bg-white rounded-2xl border border-blue-100 p-4 sm:p-6 shadow-xs space-y-4">
         <div className="flex items-center justify-between">
           <button
@@ -148,27 +209,54 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
             <span>কুইজ থেকে বের হন</span>
           </button>
 
-          <div className="text-right">
-            <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">
+          <div className="flex items-center gap-3">
+            {/* 1-Minute Live Countdown Timer */}
+            <div
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold border transition-colors shadow-2xs ${timerColorClass}`}
+              title="প্রতি প্রশ্নে ১ মিনিট (৬০ সেকেন্ড) সময়"
+            >
+              <Clock className="w-3.5 h-3.5" />
+              <span className="font-mono text-sm tracking-wider">
+                {formattedMinutes}:{formattedSeconds}
+              </span>
+              {timeLeft <= 10 && !isAnswerSubmitted && (
+                <span className="hidden sm:inline text-[11px] font-bold">সময় শেষ প্রায়!</span>
+              )}
+            </div>
+
+            <span className="text-xs font-bold text-blue-700 uppercase tracking-wider hidden sm:inline">
               {isDaily ? 'দৈনিক কুইজ' : category.title}
             </span>
           </div>
         </div>
 
-        {/* Progress Bar & Counter */}
+        {/* Progress Bar & Question Counter */}
         <div>
           <div className="flex items-center justify-between text-xs font-semibold text-slate-600 mb-1.5">
             <span>
               প্রশ্ন <strong className="text-blue-600 font-bold">{currentIndex + 1}</strong> / {totalQuestions}
             </span>
-            <span>{progressPercent}% সম্পন্ন</span>
+            <span className="flex items-center gap-1 text-slate-500 font-medium">
+              <Hourglass className="w-3 h-3 text-slate-400" />
+              <span>বাকি সময়: {timeLeft} সেকেন্ড</span>
+            </span>
           </div>
 
-          <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-blue-600 rounded-full transition-all duration-300 ease-out"
-              style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
-            />
+          {/* Dual bar: Quiz completion + Active Question Timer */}
+          <div className="space-y-1.5">
+            <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-blue-600 rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
+              />
+            </div>
+            {/* Countdown visual bar */}
+            <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+              <div
+                className={`h-full transition-all duration-1000 ease-linear ${timerBarColor}`}
+                style={{ width: `${timerPercent}%` }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -177,9 +265,15 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
       <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 shadow-xs space-y-6">
         {/* Question Header */}
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
-            <HelpCircle className="w-4 h-4" />
-            <span>প্রশ্ন নম্বর {currentIndex + 1}</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
+              <HelpCircle className="w-4 h-4" />
+              <span>প্রশ্ন নম্বর {currentIndex + 1}</span>
+            </div>
+
+            <div className="text-[11px] font-semibold text-slate-400">
+              সময়সীমা: ১ মিনিট (৬০ সেকেন্ড)
+            </div>
           </div>
 
           <h2 className="text-lg sm:text-2xl font-bold text-slate-900 leading-snug">
@@ -258,7 +352,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         {selectedOptionIndex === null && !isAnswerSubmitted && (
           <p className="text-xs text-slate-600 flex items-center gap-1.5 italic">
             <AlertCircle className="w-3.5 h-3.5 text-blue-500" />
-            অনুগ্রহ করে এগিয়ে যেতে একটি উত্তর নির্বাচন করুন।
+            ১ মিনিটের মধ্যে একটি উত্তর নির্বাচন করে উত্তর যাচাই করুন।
           </p>
         )}
 
@@ -310,6 +404,21 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                 </div>
               )}
 
+              {isCurrentTimedOut && (
+                <div className="p-4 sm:p-5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 space-y-2 animate-fadeIn">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-amber-600 shrink-0" />
+                    <span className="font-extrabold text-base text-amber-900">
+                      সময় শেষ হয়ে গেছে! (১ মিনিট উত্তীর্ণ)
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-amber-800 pl-7">
+                    এই প্রশ্নের সঠিক উত্তরটি ছিল বিকল্প {optionLetters[currentQ.correctIndex]}:{' '}
+                    <strong className="text-amber-950 font-bold">{currentQ.options[currentQ.correctIndex]}</strong>
+                  </p>
+                </div>
+              )}
+
               {/* Explanation & Learning Fact */}
               <div className="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-3">
                 <div className="space-y-1">
@@ -342,7 +451,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                 onClick={handleNextQuestion}
                 className="w-full py-3.5 px-6 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-md transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>{isLastQuestion ? 'কুইজ সম্পন্ন করুন ও ফলাফল দেখুন' : 'পরবর্তী প্রশ্ন'}</span>
+                <span>{isLastQuestion ? 'কুইজ সম্পন্ন করুন ও আইকিউ (IQ) দেখুন' : 'পরবর্তী প্রশ্ন'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

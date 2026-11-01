@@ -161,6 +161,14 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                       >
                         {record.percentage}% সঠিকতা
                       </span>
+                      {record.estimatedIQ && (
+                        <>
+                          <span>·</span>
+                          <span className="text-[11px] font-extrabold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-200">
+                            IQ: {record.estimatedIQ}
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
 
