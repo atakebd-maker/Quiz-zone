@@ -11,6 +11,7 @@ import {
 import { getDailyQuizForDate, getCategoryById } from '../data/quizData';
 import { getTodayDateString, getUserStats, hasCompletedDailyToday } from '../utils/quizStorage';
 import { QuizCategory, QuizQuestion } from '../types/quiz';
+import { AdBanner } from '../components/AdBanner';
 
 interface DailyQuizPageProps {
   onNavigate: (route: string) => void;
@@ -122,6 +123,11 @@ export const DailyQuizPage: React.FC<DailyQuizPageProps> = ({
           </div>
         </div>
       </header>
+
+      {/* Ad Banner on Daily Quiz Page */}
+      <div className="flex justify-center my-2">
+        <AdBanner refreshKey="daily-quiz-page" />
+      </div>
 
       {/* Today's Question Preview & Curriculum */}
       <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 space-y-4">

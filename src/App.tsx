@@ -18,6 +18,7 @@ import { QUIZ_CATEGORIES, getCategoryById } from './data/quizData';
 import { QuizCategory, QuizQuestion, QuizResult } from './types/quiz';
 import { getUserStats, saveQuizResult, hasCompletedDailyToday } from './utils/quizStorage';
 import { updateSEO } from './utils/seo';
+import { AdBanner } from './components/AdBanner';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<string>('home');
@@ -309,6 +310,11 @@ export default function App() {
       <main className="flex-1 w-full" id="main-content">
         {renderContent()}
       </main>
+
+      {/* Global Ad Placement Above Footer */}
+      <div className="w-full flex justify-center py-4 bg-white/60 border-t border-slate-100">
+        <AdBanner refreshKey={`global-${currentRoute}`} />
+      </div>
 
       <Footer onNavigate={navigate} />
     </div>

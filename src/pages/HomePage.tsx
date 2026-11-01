@@ -16,6 +16,7 @@ import { QUIZ_CATEGORIES, getRandomQuiz } from '../data/quizData';
 import { QuizCategory } from '../types/quiz';
 import { QuizCard } from '../components/QuizCard';
 import { getCategoryHighScore, getUserStats, hasCompletedDailyToday } from '../utils/quizStorage';
+import { AdBanner } from '../components/AdBanner';
 
 interface HomePageProps {
   onNavigate: (route: string, params?: Record<string, string>) => void;
@@ -160,6 +161,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
         </div>
       </section>
 
+      {/* Ad Banner Below Hero */}
+      <div className="max-w-7xl mx-auto px-4 flex justify-center">
+        <AdBanner refreshKey="home-hero" />
+      </div>
+
       {/* Search results banner if searching */}
       {searchQuery && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -290,6 +296,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz }) =
           ))}
         </div>
       </section>
+
+      {/* Mid-Page Ad Banner */}
+      <div className="max-w-7xl mx-auto px-4 flex justify-center">
+        <AdBanner refreshKey="home-mid" />
+      </div>
 
       {/* Section: Most Popular Quizzes */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

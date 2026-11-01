@@ -10,6 +10,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { QuizCategory, QuizQuestion, QuizResult } from '../types/quiz';
+import { AdBanner } from '../components/AdBanner';
 
 interface QuizPlayerPageProps {
   category: QuizCategory;
@@ -186,6 +187,9 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
           </h2>
         </div>
 
+        {/* Ad Banner Above Options */}
+        <AdBanner refreshKey={`q-top-${currentIndex}`} className="my-2" />
+
         {/* 4 Answer Options (ক, খ, গ, ঘ) */}
         <div className="space-y-3" role="radiogroup" aria-label="উত্তরের বিকল্পসমূহ">
           {currentQ.options.map((optionText, index) => {
@@ -246,6 +250,9 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
             );
           })}
         </div>
+
+        {/* Ad Banner Below Options */}
+        <AdBanner refreshKey={`q-bot-${currentIndex}`} className="my-2" />
 
         {/* Validation reminder if user hasn't selected */}
         {selectedOptionIndex === null && !isAnswerSubmitted && (
@@ -325,6 +332,9 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                   </p>
                 </div>
               </div>
+
+              {/* Ad Banner After Explanation */}
+              <AdBanner refreshKey={`q-exp-${currentIndex}`} className="my-2" />
 
               {/* Next Question / Finish Button */}
               <button

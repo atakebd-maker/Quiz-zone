@@ -4,6 +4,7 @@ import { QUIZ_CATEGORIES } from '../data/quizData';
 import { QuizCategory } from '../types/quiz';
 import { QuizCard } from '../components/QuizCard';
 import { getCategoryHighScore } from '../utils/quizStorage';
+import { AdBanner } from '../components/AdBanner';
 
 interface AllCategoriesPageProps {
   onNavigate: (route: string, params?: Record<string, string>) => void;
@@ -99,6 +100,11 @@ export const AllCategoriesPage: React.FC<AllCategoriesPageProps> = ({
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Ad Banner on All Categories Page */}
+      <div className="flex justify-center my-3">
+        <AdBanner refreshKey={`all-cats-${difficultyFilter}`} />
       </div>
 
       {/* Categories Grid */}

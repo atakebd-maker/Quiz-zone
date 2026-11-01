@@ -13,6 +13,7 @@ import { CategoryIcon } from '../components/CategoryIcon';
 import { QUIZ_CATEGORIES } from '../data/quizData';
 import { QuizCard } from '../components/QuizCard';
 import { getCategoryHighScore } from '../utils/quizStorage';
+import { AdBanner } from '../components/AdBanner';
 
 interface CategoryPageProps {
   category: QuizCategory;
@@ -192,6 +193,11 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
           </div>
         </div>
       </header>
+
+      {/* Ad Banner on Category Page */}
+      <div className="flex justify-center my-2">
+        <AdBanner refreshKey={`cat-${category.id}`} />
+      </div>
 
       {/* Curriculum / What You'll Learn in this Quiz */}
       <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 space-y-4">

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { QuizResult } from '../types/quiz';
 import { Confetti } from '../components/Confetti';
+import { AdBanner } from '../components/AdBanner';
 
 interface QuizResultPageProps {
   result: QuizResult;
@@ -125,6 +126,11 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
           </button>
         </div>
       </section>
+
+      {/* Ad Banner on Results Page */}
+      <div className="flex justify-center my-4">
+        <AdBanner refreshKey="result-top" />
+      </div>
 
       {/* Review Breakdown Section */}
       <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 space-y-4">
