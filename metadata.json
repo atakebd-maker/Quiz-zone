@@ -1,0 +1,6 @@
+{
+  "name": "QuizPulse - Interactive Online Knowledge & Trivia Platform",
+  "description": "Engaging, SEO-friendly online quiz platform featuring 16+ categories, daily challenges, instant answer feedback, and detailed performance results.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
