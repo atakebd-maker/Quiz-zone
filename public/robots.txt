@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quiz-zone-bd.vercel.app/sitemap.xml
+Sitemap: /sitemap.xml

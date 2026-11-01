@@ -26,39 +26,52 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
     { title: 'সাইটম্যাপ ও ইনডেক্স', path: '/?page=sitemap', description: 'Quiz Zone BD-এর সমস্ত সক্রিয় ইউআরএল ও পেজের নির্দেশিকা।' }
   ];
 
+  const currentBase = typeof window !== 'undefined' ? window.location.origin : 'https://quiz-zone-bd.vercel.app';
   const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://quizpulse.app/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>${currentBase}/</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://quizpulse.app/?page=categories</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>${currentBase}/?page=categories</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quizpulse.app/?page=daily</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>${currentBase}/?page=daily</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 ${QUIZ_CATEGORIES.map(
   (c) => `  <url>
-    <loc>https://quizpulse.app/?page=category&amp;id=${c.id}</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>${currentBase}/?page=category&amp;id=${c.id}</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>`
 ).join('\n')}
   <url>
-    <loc>https://quizpulse.app/?page=sitemap</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>${currentBase}/?page=history</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>${currentBase}/?page=sitemap</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>${currentBase}/quiz-zone.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>`;
 
