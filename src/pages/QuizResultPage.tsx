@@ -31,7 +31,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
   const isCelebratory = result.percentage >= 80;
 
   const handleShare = () => {
-    const text = `I just scored ${result.scoreRatio} (${result.percentage}%) on the ${result.categoryTitle} on QuizPulse! Can you beat my score?`;
+    const text = `আমি Quiz Zone-এ ${result.categoryTitle}-এ ${result.scoreRatio} (${result.percentage}%) স্কোর করেছি! আপনি কত স্কোর করতে পারেন?`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
       setCopiedShare(true);
@@ -58,10 +58,10 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
 
         <div className="space-y-1 mb-6">
           <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
-            {result.categoryTitle} Results
+            {result.categoryTitle} ফলাফল
           </div>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Quiz Completed!
+            কুইজ সম্পন্ন হয়েছে!
           </h1>
           <p className="text-base sm:text-lg font-semibold text-blue-700 max-w-lg mx-auto pt-1">
             &ldquo;{result.performanceMessage}&rdquo;
@@ -71,26 +71,26 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
         {/* Detailed Score Statistics Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto text-left mb-8">
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-            <span className="block text-xs font-medium text-slate-500">Total Questions</span>
-            <span className="text-xl sm:text-2xl font-bold text-slate-900">{result.totalQuestions}</span>
+            <span className="block text-xs font-medium text-slate-500">মোট প্রশ্ন</span>
+            <span className="text-xl sm:text-2xl font-bold text-slate-900">{result.totalQuestions}টি</span>
           </div>
 
           <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100">
-            <span className="block text-xs font-medium text-emerald-800">Correct Answers</span>
+            <span className="block text-xs font-medium text-emerald-800">সঠিক উত্তর</span>
             <span className="text-xl sm:text-2xl font-bold text-emerald-700">
-              {result.correctAnswers}
+              {result.correctAnswers}টি
             </span>
           </div>
 
           <div className="p-4 rounded-xl bg-rose-50/70 border border-rose-100">
-            <span className="block text-xs font-medium text-rose-800">Incorrect Answers</span>
+            <span className="block text-xs font-medium text-rose-800">ভুল উত্তর</span>
             <span className="text-xl sm:text-2xl font-bold text-rose-600">
-              {result.incorrectAnswers}
+              {result.incorrectAnswers}টি
             </span>
           </div>
 
           <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-100">
-            <span className="block text-xs font-medium text-blue-800">Final Score / Accuracy</span>
+            <span className="block text-xs font-medium text-blue-800">চূড়ান্ত স্কোর ও সঠিকতা</span>
             <span className="text-xl sm:text-2xl font-bold text-blue-700">
               {result.scoreRatio} ({result.percentage}%)
             </span>
@@ -104,7 +104,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-xs transition-colors cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Play Again</span>
+            <span>আবার খেলুন</span>
           </button>
 
           <button
@@ -112,16 +112,16 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
           >
             <Grid className="w-4 h-4 text-slate-500" />
-            <span>Back to Categories</span>
+            <span>সকল ক্যাটাগরি</span>
           </button>
 
           <button
             onClick={handleShare}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs text-blue-600 hover:bg-blue-50 border border-blue-200 transition-colors cursor-pointer"
-            title="Copy score to clipboard"
+            title="স্কোর কপি করুন"
           >
             <Share2 className="w-4 h-4" />
-            <span>{copiedShare ? 'Copied to Clipboard!' : 'Share Score'}</span>
+            <span>{copiedShare ? 'কপিকৃত হয়েছে!' : 'ফলাফল শেয়ার করুন'}</span>
           </button>
         </div>
       </section>
@@ -132,22 +132,22 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-blue-600" />
             <h2 className="text-base sm:text-lg font-bold text-slate-900">
-              Question-by-Question Review
+              প্রশ্নভিত্তিক বিস্তারিত পর্যালোচনা
             </h2>
           </div>
           <span className="text-xs text-slate-500">
-            {result.answers.length} Questions Reviewed
+            {result.answers.length}টি প্রশ্ন যাচাই করা হয়েছে
           </span>
         </div>
 
         <p className="text-xs text-slate-500">
-          Click any question to review your answer, the correct solution, and full explanations.
+          প্রতিটি প্রশ্নের সঠিক সমাধান, আপনার উত্তর এবং শিক্ষণীয় ব্যাখ্যা জানতে নিচে ক্লিক করুন।
         </p>
 
         <div className="space-y-3 pt-2">
           {result.answers.map((item, idx) => {
             const isExpanded = expandedIndex === idx;
-            const letters = ['A', 'B', 'C', 'D'];
+            const letters = ['ক', 'খ', 'গ', 'ঘ'];
 
             return (
               <div
@@ -173,7 +173,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
                     </span>
                     <div>
                       <div className="text-xs font-semibold text-slate-400 mb-0.5">
-                        Question {idx + 1}
+                        প্রশ্ন নম্বর {idx + 1}
                       </div>
                       <p className="text-sm font-semibold text-slate-900 line-clamp-2">
                         {item.questionText}
@@ -195,21 +195,21 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
                     {/* Selected and Correct answer summary */}
                     <div className="space-y-1.5 pt-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-slate-600">Your Answer:</span>
+                        <span className="font-semibold text-slate-600">আপনার উত্তর:</span>
                         <span
                           className={`font-bold ${
                             item.isCorrect ? 'text-emerald-700' : 'text-rose-600'
                           }`}
                         >
-                          Option {letters[item.selectedIndex]}: {item.options[item.selectedIndex]}
+                          বিকল্প {letters[item.selectedIndex]}: {item.options[item.selectedIndex]}
                         </span>
                       </div>
 
                       {!item.isCorrect && (
                         <div className="flex items-center gap-2">
-                          <span className="font-semibold text-slate-600">Correct Answer:</span>
+                          <span className="font-semibold text-slate-600">সঠিক উত্তর:</span>
                           <span className="font-bold text-emerald-700">
-                            Option {letters[item.correctIndex]}: {item.options[item.correctIndex]}
+                            বিকল্প {letters[item.correctIndex]}: {item.options[item.correctIndex]}
                           </span>
                         </div>
                       )}
@@ -219,7 +219,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
                     <div className="p-3 bg-slate-50 rounded-lg space-y-1">
                       <div className="flex items-center gap-1.5 font-bold text-slate-700 text-xs uppercase tracking-wider">
                         <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
-                        <span>Explanation</span>
+                        <span>ব্যাখ্যা</span>
                       </div>
                       <p className="text-xs text-slate-600 leading-relaxed">
                         {item.explanation}
@@ -231,7 +231,7 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
                       <div className="p-3 bg-blue-50/70 rounded-lg space-y-1">
                         <div className="flex items-center gap-1.5 font-bold text-blue-700 text-xs uppercase tracking-wider">
                           <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                          <span>Did You Know?</span>
+                          <span>আপনি কি জানেন?</span>
                         </div>
                         <p className="text-xs text-slate-600 italic leading-relaxed">
                           {item.interestingFact}

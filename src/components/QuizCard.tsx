@@ -10,6 +10,19 @@ interface QuizCardProps {
 }
 
 export const QuizCard: React.FC<QuizCardProps> = ({ category, onSelect, highScore }) => {
+  const getDifficultyLabel = (diff: string) => {
+    switch (diff) {
+      case 'Beginner':
+        return 'সহজ লেভেল';
+      case 'Intermediate':
+        return 'মধ্যম লেভেল';
+      case 'Advanced':
+        return 'উচ্চ লেভেল';
+      default:
+        return 'সকলের জন্য';
+    }
+  };
+
   return (
     <div
       onClick={() => onSelect(category)}
@@ -24,7 +37,7 @@ export const QuizCard: React.FC<QuizCardProps> = ({ category, onSelect, highScor
           {highScore !== null && highScore !== undefined && (
             <div className="flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 px-2 py-0.5 rounded">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Best: {highScore}%</span>
+              <span>সেরা: {highScore}%</span>
             </div>
           )}
         </div>
@@ -40,13 +53,13 @@ export const QuizCard: React.FC<QuizCardProps> = ({ category, onSelect, highScor
 
       <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
         <div className="flex items-center gap-2">
-          <span>{category.questions.length} Questions</span>
+          <span>{category.questions.length}টি প্রশ্ন</span>
           <span aria-hidden="true" className="text-slate-300">·</span>
-          <span>{category.difficulty}</span>
+          <span>{getDifficultyLabel(category.difficulty)}</span>
         </div>
 
         <span className="inline-flex items-center gap-1 font-medium text-blue-600 group-hover:translate-x-0.5 transition-transform">
-          Play <ArrowRight className="w-3.5 h-3.5" />
+          খেলুন <ArrowRight className="w-3.5 h-3.5" />
         </span>
       </div>
     </div>

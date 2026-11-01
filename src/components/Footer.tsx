@@ -18,22 +18,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <HelpCircle className="w-4 h-4 stroke-[2.5]" />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
-                Quiz<span className="text-blue-400">Pulse</span>
+                Quiz <span className="text-blue-400">Zone</span>
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Test your knowledge, explore captivating facts, and cultivate curiosity across 16 authentic categories. Free, instant, and accessible for everyone.
+              আপনার সাধারণ জ্ঞান বৃদ্ধি করুন, চমকপ্রদ তথ্য জানুন এবং ১৬টি ভিন্ন ক্যাটাগরিতে নিয়মিত কুইজ খেলুন। সম্পূর্ণ বিনামূল্যে ও বাংলায়।
             </p>
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>No registration or API keys required</span>
+              <span>কোনো রেজিস্ট্রেশন বা সাবস্ক্রিপশন প্রয়োজন নেই</span>
             </div>
           </div>
 
           {/* Core Categories Col 1 */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
-              Popular Quizzes
+              জনপ্রিয় কুইজসমূহ
             </h4>
             <ul className="space-y-2 text-xs">
               {QUIZ_CATEGORIES.slice(0, 5).map((cat) => (
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Core Categories Col 2 */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
-              Knowledge & Sciences
+              বিজ্ঞান ও সাধারণ জ্ঞান
             </h4>
             <ul className="space-y-2 text-xs">
               {QUIZ_CATEGORIES.slice(5, 10).map((cat) => (
@@ -71,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Quick Links & Learning */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
-              Explore & Sitemap
+              কুইজ জোন এক্সপ্লোর করুন
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-1.5"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Today’s Daily Challenge</span>
+                  <span>আজকের দৈনিক কুইজ</span>
                 </button>
               </li>
               <li>
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => onNavigate('categories')}
                   className="text-slate-400 hover:text-blue-400 transition-colors"
                 >
-                  All 16 Quiz Categories
+                  সকল ১৬টি কুইজ ক্যাটাগরি
                 </button>
               </li>
               <li>
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => onNavigate('history')}
                   className="text-slate-400 hover:text-blue-400 transition-colors"
                 >
-                  My Progress & Statistics
+                  আমার কুইজ অগ্রগতি ও স্কোর
                 </button>
               </li>
               <li>
@@ -105,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-1.5"
                 >
                   <BookOpen className="w-3.5 h-3.5 text-slate-400" />
-                  <span>HTML & XML Sitemap</span>
+                  <span>সম্পূর্ণ সাইটম্যাপ</span>
                 </button>
               </li>
             </ul>
@@ -114,11 +114,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom copyright */}
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>© {new Date().getFullYear()} QuizPulse. Built for lifelong learners, students, and trivia enthusiasts worldwide.</p>
+          <p>© {new Date().getFullYear()} Quiz Zone (কুইজ জোন)। জ্ঞানপিপাসু ও শিক্ষার্থীদের জন্য নিবেদিত।</p>
           <div className="flex items-center gap-1 text-slate-400">
-            <span>Crafted with</span>
+            <span>ভালোবাসার সাথে প্রস্তুত</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-            <span>for genuine knowledge sharing</span>
+            <span>সবার জন্য উন্মুক্ত জ্ঞান চর্চা</span>
           </div>
         </div>
       </div>

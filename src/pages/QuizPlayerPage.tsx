@@ -20,19 +20,18 @@ interface QuizPlayerPageProps {
 }
 
 const ENCOURAGING_CORRECT_MESSAGES = [
-  'Amazing!',
-  'Well done!',
-  'You’re doing great!',
-  'Brilliant thinking!',
-  'Superb knowledge!',
-  'Fantastic work!'
+  'অসাধারণ!',
+  'দারুণ হয়েছে!',
+  'খুব ভালো করছেন!',
+  'অনবদ্য সাধারণ জ্ঞান!',
+  'চমৎকার পারদর্শিতা!',
+  'অসাধারণ মেধা!'
 ];
 
 const GENTLE_INCORRECT_MESSAGES = [
-  'Good effort! Every attempt makes you smarter.',
-  'Not quite, but that’s a wonderful learning opportunity!',
-  'Almost there! Curiosity is the key to knowledge.',
-  'Great try! Keep going, you’re learning fast.'
+  'ভালো চেষ্টা! প্রতিটি ভুলই নতুন কিছু শেখার চমৎকার সুযোগ।',
+  'খুব কাছাকাছি ছিলেন! জানার আগ্রহই মানুষকে জ্ঞানী করে।',
+  'সুন্দর প্রচেষ্টা! মন খারাপ করবেন না, প্রতিটি চেষ্টাই আপনাকে অভিজ্ঞ করে তুলছে।'
 ];
 
 export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
@@ -55,11 +54,11 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
 
   const isLastQuestion = currentIndex === totalQuestions - 1;
 
-  // Options letter tags: A, B, C, D
-  const optionLetters = ['A', 'B', 'C', 'D'];
+  // Options letter tags in Bengali: ক, খ, গ, ঘ
+  const optionLetters = ['ক', 'খ', 'গ', 'ঘ'];
 
   const handleSelectOption = (index: number) => {
-    if (isAnswerSubmitted) return; // Prevent changing after submission
+    if (isAnswerSubmitted) return;
     setSelectedOptionIndex(index);
   };
 
@@ -88,25 +87,24 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
     setSessionAnswers(updatedAnswers);
 
     if (isLastQuestion) {
-      // Calculate final results
       const correctCount = updatedAnswers.filter((a) => a.isCorrect).length;
       const incorrectCount = totalQuestions - correctCount;
       const percentage = Math.round((correctCount / totalQuestions) * 100);
 
       let performanceMessage = '';
       if (percentage === 100) {
-        performanceMessage = 'Outstanding! You answered every question correctly!';
+        performanceMessage = 'অসাধারণ! আপনি প্রতিটি প্রশ্নের সঠিক উত্তর দিয়েছেন!';
       } else if (percentage >= 80) {
-        performanceMessage = 'Excellent work! You have great knowledge!';
+        performanceMessage = 'চমৎকার কাজ! আপনার সাধারণ জ্ঞান সত্যিই প্রশংসনীয়!';
       } else if (percentage >= 50) {
-        performanceMessage = 'Good effort! Keep learning and improving!';
+        performanceMessage = 'ভালো প্রচেষ্টা! নিয়মিত কুইজ খেললে আরও উন্নতি হবে!';
       } else {
-        performanceMessage = 'Don’t give up! Every attempt makes you smarter.';
+        performanceMessage = 'হাল ছাড়বেন না! প্রতিটি চেষ্টাই আপনাকে আরও অভিজ্ঞ করে তুলছে।';
       }
 
       const result: QuizResult = {
         categoryId: category.id,
-        categoryTitle: isDaily ? 'Daily Quiz' : category.title,
+        categoryTitle: isDaily ? 'দৈনিক কুইজ' : category.title,
         isDaily: !!isDaily,
         totalQuestions,
         correctAnswers: correctCount,
@@ -120,7 +118,6 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
 
       onFinishQuiz(result);
     } else {
-      // Proceed to next question
       setCurrentIndex((prev) => prev + 1);
       setSelectedOptionIndex(null);
       setIsAnswerSubmitted(false);
@@ -132,7 +129,6 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   const isCurrentIncorrect =
     isAnswerSubmitted && selectedOptionIndex !== currentQ.correctIndex;
 
-  // Pick deterministic encouraging message based on index
   const cheerMessage =
     ENCOURAGING_CORRECT_MESSAGES[currentIndex % ENCOURAGING_CORRECT_MESSAGES.length];
   const gentleMessage =
@@ -145,15 +141,15 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         <div className="flex items-center justify-between">
           <button
             onClick={onExit}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Exit Quiz</span>
+            <span>কুইজ থেকে বের হন</span>
           </button>
 
           <div className="text-right">
             <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">
-              {isDaily ? 'Daily Quiz' : category.title}
+              {isDaily ? 'দৈনিক কুইজ' : category.title}
             </span>
           </div>
         </div>
@@ -162,9 +158,9 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         <div>
           <div className="flex items-center justify-between text-xs font-semibold text-slate-600 mb-1.5">
             <span>
-              Question <strong className="text-blue-600">{currentIndex + 1}</strong> of {totalQuestions}
+              প্রশ্ন <strong className="text-blue-600 font-bold">{currentIndex + 1}</strong> / {totalQuestions}
             </span>
-            <span>{progressPercent}% Complete</span>
+            <span>{progressPercent}% সম্পন্ন</span>
           </div>
 
           <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
@@ -182,7 +178,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
             <HelpCircle className="w-4 h-4" />
-            <span>Question {currentIndex + 1}</span>
+            <span>প্রশ্ন নম্বর {currentIndex + 1}</span>
           </div>
 
           <h2 className="text-lg sm:text-2xl font-bold text-slate-900 leading-snug">
@@ -190,13 +186,12 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
           </h2>
         </div>
 
-        {/* 4 Answer Options (A, B, C, D) */}
-        <div className="space-y-3" role="radiogroup" aria-label="Answer options">
+        {/* 4 Answer Options (ক, খ, গ, ঘ) */}
+        <div className="space-y-3" role="radiogroup" aria-label="উত্তরের বিকল্পসমূহ">
           {currentQ.options.map((optionText, index) => {
             const letter = optionLetters[index];
             const isSelected = selectedOptionIndex === index;
 
-            // Post-submission styling
             let optionStyles = 'border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50/40 text-slate-800';
             let badgeStyles = 'bg-slate-100 text-slate-700 border-slate-200';
 
@@ -206,7 +201,6 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                 badgeStyles = 'bg-blue-600 text-white border-blue-600';
               }
             } else {
-              // Answer is submitted
               if (index === currentQ.correctIndex) {
                 optionStyles = 'border-emerald-500 bg-emerald-50/90 text-emerald-950 ring-2 ring-emerald-500/30';
                 badgeStyles = 'bg-emerald-600 text-white border-emerald-600';
@@ -257,7 +251,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
         {selectedOptionIndex === null && !isAnswerSubmitted && (
           <p className="text-xs text-slate-600 flex items-center gap-1.5 italic">
             <AlertCircle className="w-3.5 h-3.5 text-blue-500" />
-            Please select one answer to continue.
+            অনুগ্রহ করে এগিয়ে যেতে একটি উত্তর নির্বাচন করুন।
           </p>
         )}
 
@@ -274,7 +268,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                   : 'bg-slate-100 text-slate-400 cursor-not-allowed'
               }`}
             >
-              <span>Check Answer</span>
+              <span>উত্তর যাচাই করুন</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
@@ -285,11 +279,11 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                     <span className="font-extrabold text-base text-emerald-800">
-                      Excellent! Your answer is correct!
+                      চমৎকার! আপনার উত্তরটি সঠিক হয়েছে!
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-emerald-700 pl-7 font-medium">
-                    {cheerMessage} You chose <strong>{currentQ.options[currentQ.correctIndex]}</strong>.
+                    {cheerMessage} আপনি বেছে নিয়েছিলেন: <strong>{currentQ.options[currentQ.correctIndex]}</strong>
                   </p>
                 </div>
               )}
@@ -303,7 +297,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-700 pl-7">
-                    The correct answer is Option {optionLetters[currentQ.correctIndex]}:{' '}
+                    সঠিক উত্তরটি হলো বিকল্প {optionLetters[currentQ.correctIndex]}:{' '}
                     <strong className="text-blue-700">{currentQ.options[currentQ.correctIndex]}</strong>
                   </p>
                 </div>
@@ -314,7 +308,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                 <div className="space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-600">
                     <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Explanation</span>
+                    <span>ব্যাখ্যা</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                     {currentQ.explanation}
@@ -324,7 +318,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                 <div className="pt-2 border-t border-slate-200/60 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-700">
                     <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Did You Know?</span>
+                    <span>আপনি কি জানেন?</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 italic leading-relaxed">
                     {currentQ.interestingFact}
@@ -338,7 +332,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
                 onClick={handleNextQuestion}
                 className="w-full py-3.5 px-6 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-md transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>{isLastQuestion ? 'Complete Quiz & View Results' : 'Next Question'}</span>
+                <span>{isLastQuestion ? 'কুইজ সম্পন্ন করুন ও ফলাফল দেখুন' : 'পরবর্তী প্রশ্ন'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

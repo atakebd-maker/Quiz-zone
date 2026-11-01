@@ -4,8 +4,8 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
   {
     id: 'world-geography',
     slug: 'world-geography',
-    title: 'World Geography Quiz',
-    description: 'Explore continents, rivers, mountain ranges, oceans, and geographical landmarks across the globe.',
+    title: 'বিশ্ব ভূগোল কুইজ',
+    description: 'মহাদেশ, নদ-নদী, পর্বতমালা, মহাসাগর এবং পৃথিবীর অনন্য ভৌগোলিক স্থান সম্পর্কে জানুন।',
     iconName: 'Globe',
     colorScheme: 'blue',
     featured: true,
@@ -15,64 +15,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'geo-1',
         categoryId: 'world-geography',
-        question: 'Which river is internationally recognized as the longest in the world by total length?',
-        options: ['Amazon River', 'Nile River', 'Yangtze River', 'Mississippi River'],
+        question: 'দৈর্ঘ্যের দিক থেকে পৃথিবীর দীর্ঘতম নদী কোনটি?',
+        options: ['আমাজন নদী', 'নীলনদ', 'ইয়াংসিকিয়াং নদী', 'মিসিসিপি নদী'],
         correctIndex: 1,
-        explanation: 'The Nile River in Africa spans approximately 6,650 kilometers (4,132 miles), making it the longest river in the world.',
-        interestingFact: 'The Nile flows northward through 11 different African nations before emptying into the Mediterranean Sea.'
+        explanation: 'নীলনদের মোট দৈর্ঘ্য প্রায় ৬,৬৫০ কিলোমিটার (৪,১৩২ মাইল), যা এটিকে পৃথিবীর দীর্ঘতম নদীর স্বীকৃতি দিয়েছে।',
+        interestingFact: 'নীলনদ আফ্রিকার ১১টি দেশের মধ্য দিয়ে প্রবাহিত হয়ে ভূমধ্যসাগরে পতিত হয়েছে।'
       },
       {
         id: 'geo-2',
         categoryId: 'world-geography',
-        question: 'What is the largest desert on Earth by total land area?',
-        options: ['Sahara Desert', 'Arabian Desert', 'Gobi Desert', 'Antarctic Desert'],
+        question: 'আয়তনের দিক থেকে পৃথিবীর বৃহত্তম মরুভূমি কোনটি?',
+        options: ['সাহারা মরুভূমি', 'আরব মরুভূমি', 'গোবি মরুভূমি', 'অ্যান্টার্কটিকা মরুভূমি'],
         correctIndex: 3,
-        explanation: 'A desert is defined by receiving less than 250 millimeters of precipitation per year. Antarctica covers 14.2 million square kilometers, making it the largest polar desert.',
-        interestingFact: 'The Dry Valleys in Antarctica have not seen rain or snow for an estimated 2 million years!'
+        explanation: 'ভৌগোলিক সংজ্ঞায় বার্ষিক ২৫০ মিলিমিটারের কম বৃষ্টিপাত হওয়া অঞ্চলকে মরুভূমি বলা হয়। অ্যান্টার্কটিকা ১ কোটি ৪২ লাখ বর্গকিলোমিটার এলাকা নিয়ে পৃথিবীর বৃহত্তম মেরু মরুভূমি।',
+        interestingFact: 'অ্যান্টার্কটিকার ড্রাই ভ্যালি অঞ্চলে বিগত প্রায় ২০ লাখ বছর ধরে কোনো বৃষ্টি বা তুষারপাত হয়নি!'
       },
       {
         id: 'geo-3',
         categoryId: 'world-geography',
-        question: 'Which country spans the highest number of time zones, including its overseas territories?',
-        options: ['Russia', 'United States', 'France', 'United Kingdom'],
+        question: 'নিজস্ব দ্বীপ ও সমুদ্রপার অঞ্চল মিলিয়ে কোন দেশের সবচেয়ে বেশি সময় অঞ্চল (Time Zone) রয়েছে?',
+        options: ['রাশিয়া', 'যুক্তরাষ্ট্র', 'ফ্রান্স', 'যুক্তরাজ্য'],
         correctIndex: 2,
-        explanation: 'Due to its numerous overseas regions and collectivities located around the world, France encompasses 12 standard time zones (13 during daylight saving).',
-        interestingFact: 'Russia covers the most contiguous time zones on a single mainland landmass, with 11 consecutive zones.'
+        explanation: 'সারা বিশ্বে ছড়িয়ে থাকা বিভিন্ন দ্বীপ ও সমুদ্রপার অঞ্চলের কারণে ফ্রান্সে মোট ১২টি টাইম জোন রয়েছে (গ্রীষ্মকালে ১৩টি)।',
+        interestingFact: 'রাশিয়ার অবিচ্ছিন্ন মূল ভূখণ্ডে সর্বোচ্চ ১১টি টাইম জোন রয়েছে।'
       },
       {
         id: 'geo-4',
         categoryId: 'world-geography',
-        question: 'What is the deepest known oceanic trench on the planet?',
-        options: ['Java Trench', 'Puerto Rico Trench', 'Mariana Trench', 'Tonga Trench'],
+        question: 'পৃথিবীর গভীরতম সামুদ্রিক খাত বা পরিখা কোনটি?',
+        options: ['জাভা পরিখা', 'পুয়ের্তো রিকো পরিখা', 'মারিয়ানা পরিখা', 'টোঙ্গা পরিখা'],
         correctIndex: 2,
-        explanation: 'The Mariana Trench in the western Pacific Ocean reaches a maximum known depth of approximately 10,994 meters (36,070 feet) at the Challenger Deep.',
-        interestingFact: 'Mount Everest could sit at the bottom of Challenger Deep and its summit would still be submerged under more than 2 kilometers of water.'
+        explanation: 'প্রশান্ত মহাসাগরে অবস্থিত মারিয়ানা পরিখার গভীরতম বিন্দু চ্যালেঞ্জার ডিপের গভীরতা প্রায় ১০,৯৯৪ মিটার (৩৬,০৭০ ফুট)।',
+        interestingFact: 'যদি মাউন্ট এভারেস্টকে চ্যালেঞ্জার ডিপের তলদেশে স্থাপন করা হয়, তবুও এর চূড়া সমুদ্রপৃষ্ঠ থেকে ২ কিলোমিটার পানির নিচে থাকবে।'
       },
       {
         id: 'geo-5',
         categoryId: 'world-geography',
-        question: 'Which country possesses the longest continuous coastline in the world?',
-        options: ['Australia', 'Canada', 'Indonesia', 'Norway'],
+        question: 'বিশ্বের সবচেয়ে দীর্ঘতম উপকূলরেখা (Coastline) কোন দেশের রয়েছে?',
+        options: ['অস্ট্রেলিয়া', 'কানাডা', 'ইন্দোনেশিয়া', 'নরওয়ে'],
         correctIndex: 1,
-        explanation: 'Canada holds the world record with over 202,080 kilometers (125,567 miles) of coastline bordering the Atlantic, Pacific, and Arctic oceans.',
-        interestingFact: 'At a walking pace of 20 km per day, it would take a person roughly 27 years to walk the entire Canadian coastline.'
+        explanation: 'কানাডার উপকূলরেখার মোট দৈর্ঘ্য প্রায় ২,০২,০৮০ কিলোমিটার (১,২৫,৫৬৭ মাইল), যা বিশ্বের যেকোনো দেশের চেয়ে দীর্ঘতম।',
+        interestingFact: 'প্রতিদিন ২০ কিমি করে হাঁটলে একজন মানুষের পুরো কানাডার উপকূলরেখা হেঁটে শেষ করতে প্রায় ২৭ বছর সময় লাগবে।'
       },
       {
         id: 'geo-6',
         categoryId: 'world-geography',
-        question: 'Lake Baikal, the deepest freshwater lake on Earth, is located in which country?',
-        options: ['Mongolia', 'Russia', 'Kazakhstan', 'Canada'],
+        question: 'পৃথিবীর গভীরতম মিষ্টি পানির হ্রদ বৈকাল হ্রদ কোন দেশে অবস্থিত?',
+        options: ['মঙ্গোলিয়া', 'রাশিয়া', 'কাজাখস্তান', 'কানাডা'],
         correctIndex: 1,
-        explanation: 'Lake Baikal in southern Siberia, Russia reaches depths of 1,642 meters (5,387 feet) and holds roughly 20% of Earth’s unfrozen surface freshwater.',
-        interestingFact: 'Lake Baikal is also the oldest lake on Earth, estimated to be between 25 and 30 million years old.'
+        explanation: 'দক্ষিণ সাইবেরিয়া, রাশিয়ায় অবস্থিত বৈকাল হ্রদের গভীরতা প্রায় ১,৬৪২ মিটার এবং এতে পৃথিবীর ২০% তরল মিষ্টি পানি রয়েছে।',
+        interestingFact: 'বৈকাল হ্রদ পৃথিবীর প্রাচীনতম হ্রদও বটে, যার বয়স আনুমানিক আড়াই থেকে তিন কোটি বছর।'
       }
     ]
   },
   {
     id: 'countries-capitals',
     slug: 'countries-capitals',
-    title: 'Countries and Capitals Quiz',
-    description: 'Test your mastery of national capitals, global governance centers, and sovereign states.',
+    title: 'দেশ ও রাজধানী কুইজ',
+    description: 'বিশ্বের বিভিন্ন সার্বভৌম রাষ্ট্র, প্রশাসনিক রাজধানী ও তাদের আকর্ষণীয় ইতিহাস যাচাই করুন।',
     iconName: 'Building2',
     colorScheme: 'sky',
     featured: true,
@@ -82,64 +82,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'cap-1',
         categoryId: 'countries-capitals',
-        question: 'What is the capital city of Japan?',
-        options: ['Beijing', 'Tokyo', 'Seoul', 'Bangkok'],
+        question: 'জাপানের রাজধানীর নাম কী?',
+        options: ['বেইজিং', 'টোকিও', 'সিউল', 'ব্যাংকক'],
         correctIndex: 1,
-        explanation: 'Tokyo serves as the capital and political center of Japan, and anchor of the world’s most populous metropolitan area.',
-        interestingFact: 'Tokyo was originally a small fishing village named Edo before becoming the imperial capital in 1868.'
+        explanation: 'টোকিও হলো জাপানের রাজধানী এবং বিশ্বের অন্যতম জনবহুল ও আধুনিক মহানগরী।',
+        interestingFact: '১৮৬৮ সালে রাজধানী হওয়ার আগে টোকিওর মূল নাম ছিল ‘এদো’ (Edo), যা ছিল একটি সাধারণ জেলেপল্লি।'
       },
       {
         id: 'cap-2',
         categoryId: 'countries-capitals',
-        question: 'Which city is the federal capital of Australia?',
-        options: ['Sydney', 'Melbourne', 'Canberra', 'Brisbane'],
+        question: 'অস্ট্রেলিয়ার জাতীয় রাজধানী কোনটি?',
+        options: ['সিডনি', 'মেলবোর্ন', 'ক্যানবেরা', 'ব্রিসবেন'],
         correctIndex: 2,
-        explanation: 'Canberra was chosen as a compromise between rival candidate cities Sydney and Melbourne in 1908 and fully designed by architects Walter Burley Griffin and Marion Mahony Griffin.',
-        interestingFact: 'The name Canberra is derived from an indigenous Ngunnawal word meaning "meeting place".'
+        explanation: 'সিডনি ও মেলবোর্নের মধ্যকার দীর্ঘ প্রতিদ্বন্দ্বিতা মেটাতে ১৯০৮ সালে ক্যানবেরাকে রাজধানী হিসেবে নির্ধারণ করা হয়।',
+        interestingFact: '‘ক্যানবেরা’ নামটি স্থানীয় আদিবাসী এনগুননাওয়াল ভাষার শব্দ থেকে এসেছে, যার অর্থ ‘মিলনস্থল’।'
       },
       {
         id: 'cap-3',
         categoryId: 'countries-capitals',
-        question: 'What is the capital city of Canada?',
-        options: ['Toronto', 'Montreal', 'Vancouver', 'Ottawa'],
+        question: 'কানাডার রাজধানীর নাম কী?',
+        options: ['টরন্টো', 'মন্ট্রিল', 'ভ্যাঙ্কুভার', 'অটোয়া'],
         correctIndex: 3,
-        explanation: 'Queen Victoria designated Ottawa as the capital of the Province of Canada in 1857 because of its central location between English and French populations and defensible position.',
-        interestingFact: 'Ottawa’s Rideau Canal becomes the world’s largest naturally frozen ice skating rink each winter.'
+        explanation: '১৮৫৭ সালে রানী ভিক্টোরিয়া অটোয়াকে কানাডার রাজধানী হিসেবে মনোনীত করেন ভৌগোলিক নিরাপত্তা ও ভারসাম্যের কারণে।',
+        interestingFact: 'অটোয়ার রিদো খাল শীতকালে জমে গিয়ে বিশ্বের বৃহত্তম প্রাকৃতিক উন্মুক্ত স্কেটিং ট্র্যাকে পরিণত হয়।'
       },
       {
         id: 'cap-4',
         categoryId: 'countries-capitals',
-        question: 'What is the official capital of Brazil?',
-        options: ['Rio de Janeiro', 'São Paulo', 'Brasília', 'Salvador'],
+        question: 'ব্রাজিলের দাপ্তরিক রাজধানী কোনটি?',
+        options: ['রিও ডি জেনিরো', 'সাঁও পাওলো', 'ব্রাসিলিয়া', 'সালভাদর'],
         correctIndex: 2,
-        explanation: 'Brasília was inaugurated in 1960 as a planned federal capital to promote development in Brazil’s interior, featuring an airplane-shaped master plan by Lúcio Costa.',
-        interestingFact: 'Brasília was built in just 41 months between 1956 and 1960 under President Juscelino Kubitschek.'
+        explanation: '১৯৬০ সালে একটি পরিকল্পিত নতুন শহর হিসেবে ব্রাসিলিয়াকে ব্রাজিলের রাজধানী করা হয়, যার নকশা বিমান আকৃতির।',
+        interestingFact: 'মাত্র ৪১ মাসের অবিশ্বাস্য দ্রুত সময়ে প্রেসিডেন্ট জুসেলিনো কুবিচেকের আমলে পুরো ব্রাসিলিয়া শহরটি নির্মিত হয়েছিল।'
       },
       {
         id: 'cap-5',
         categoryId: 'countries-capitals',
-        question: 'Which city is the capital of Turkey?',
-        options: ['Istanbul', 'Ankara', 'Izmir', 'Antalya'],
+        question: 'তুরস্কের রাজধানীর নাম কী?',
+        options: ['ইস্তাম্বুল', 'আঙ্কারা', 'ইজমির', 'আন্তালিয়া'],
         correctIndex: 1,
-        explanation: 'While Istanbul is Turkey’s largest commercial metropolis, Ankara was established as the modern republic’s capital in 1923 by Mustafa Kemal Atatürk.',
-        interestingFact: 'Ankara is renowned for its historic Roman citadel and the mausoleum of Atatürk, the Anıtkabir.'
+        explanation: 'ইস্তাম্বুল বৃহত্তম শহর হলেও আধুনিক তুরস্কের প্রতিষ্ঠাতা মোস্তফা কামাল আতাতুর্ক ১৯২৩ সালে আঙ্কারাকে রাজধানী করেন।',
+        interestingFact: 'আঙ্কারা শহরটি তার ঐতিহাসিক রোমান দুর্গ ও আতাতুর্কের সমাধি ‘আনিতকবির’-এর জন্য বিশ্বখ্যাত।'
       },
       {
         id: 'cap-6',
         categoryId: 'countries-capitals',
-        question: 'What is the capital city of Nigeria?',
-        options: ['Lagos', 'Abuja', 'Kano', 'Ibadan'],
+        question: 'পশ্চিম আফ্রিকার দেশ নাইজেরিয়ার রাজধানী কোনটি?',
+        options: ['লাগোস', 'আবুজা', 'কানো', 'ইবাদান'],
         correctIndex: 1,
-        explanation: 'Abuja officially replaced Lagos as the capital of Nigeria in December 1991, chosen for its central geography and cultural neutrality.',
-        interestingFact: 'Abuja’s skyline is dominated by Zuma Rock, an enormous 725-meter monolith sometimes called the "Gateway to Abuja".'
+        explanation: '১৯৯১ সালের ডিসেম্বরে লাগোসের পরিবর্তে দেশের কেন্দ্রীয় এলাকায় অবস্থিত আবুজাকে সরকারি রাজধানী করা হয়।',
+        interestingFact: 'আবুজা শহরের প্রবেশদ্বারে ৭২৫ মিটার উঁচু বিশাল জুমা রক এক প্রাকৃতিক বিস্ময়।'
       }
     ]
   },
   {
     id: 'world-food',
     slug: 'world-food',
-    title: 'World Food Quiz',
-    description: 'Savor culinary traditions, exotic spices, heritage dishes, and gastronomic history from every continent.',
+    title: 'বিশ্বের খাবার ও রন্ধনশিল্প কুইজ',
+    description: 'বিভিন্ন দেশের ঐতিহ্যবাহী খাবার, মসলা, রান্নার ইতিহাস ও বিশ্বখ্যাত পদের স্বাদ গ্রহণ করুন।',
     iconName: 'UtensilsCrossed',
     colorScheme: 'indigo',
     popular: true,
@@ -148,64 +148,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'food-1',
         categoryId: 'world-food',
-        question: 'Which spice is recognized as the most expensive in the world by weight?',
-        options: ['Vanilla', 'Cardamom', 'Saffron', 'Cinnamon'],
+        question: 'ওজনের দিক থেকে পৃথিবীর সবচেয়ে মূল্যবান ও দামি মসলা কোনটি?',
+        options: ['ভ্যানিলা', 'এলাচ', 'জাফরান (Saffron)', 'দারুচিনি'],
         correctIndex: 2,
-        explanation: 'Saffron is harvested by hand from the delicate stigmas of the Crocus sativus flower. It takes up to 75,000 flowers to produce a single pound of saffron.',
-        interestingFact: 'Over 90% of the world’s saffron supply is cultivated and harvested in Iran.'
+        explanation: 'জাফরান ক্রোকাস ফুলের গর্ভমুণ্ড থেকে হাতে সংগ্রহ করা হয়। মাত্র ১ পাউন্ড জাফরান পেতে প্রায় ৭৫,০০০ ফুল প্রয়োজন হয়।',
+        interestingFact: 'বিশ্বের ৯০ শতাংশের বেশি জাফরান ইরানে উৎপাদিত ও প্রক্রিয়াজাত হয়।'
       },
       {
         id: 'food-2',
         categoryId: 'world-food',
-        question: 'What country is the birthplace of the pastry known as the Croissant?',
-        options: ['France', 'Austria', 'Switzerland', 'Belgium'],
+        question: 'ক্রোয়াসোঁ (Croissant) পেস্ট্রির উৎপত্তি প্রকৃতপক্ষে কোন দেশে হয়েছিল?',
+        options: ['ফ্রান্স', 'অস্ট্রিয়া', 'সুইজারল্যান্ড', 'বেলজিয়াম'],
         correctIndex: 1,
-        explanation: 'The croissant is derived from the Austrian kipferl, which dates back to at least the 13th century in Vienna before being popularized in Paris in the 1830s.',
-        interestingFact: 'The crescent shape was allegedly created by Viennese bakers to celebrate the defeat of Ottoman forces in 1683.'
+        explanation: 'ক্রোয়াসোঁর আদি রূপ হলো অস্ট্রিয়ার ‘কিপফার্ল’ (Kipferl), যা ত্রয়োদশ শতাব্দীতে ভিয়েনায় শুরু হয় এবং পরে ফ্রান্সে জনপ্রিয় হয়।',
+        interestingFact: '১৬৮৩ সালে অটোমানদের বিরুদ্ধে যুদ্ধে বিজয়ের প্রতীক হিসেবে ভিয়েনার রুটি প্রস্তুতকারকরা অর্ধচন্দ্রাকার রুটি তৈরি করেছিলেন।'
       },
       {
         id: 'food-3',
         categoryId: 'world-food',
-        question: 'What key ingredient gives traditional Japanese Kimchi or Miso its probiotic fermented base?',
-        options: ['Fermented Soybeans', 'Barley Malt', 'Rice Bran', 'Kelp Powder'],
+        question: 'জাপানের জনপ্রিয় ঐতিহ্যবাহী ‘মিসো’ (Miso) পেস্টের প্রধান উপাদান কী?',
+        options: ['গাঁজানো সয়াবিন (Fermented Soybeans)', 'বার্লি মাল্ট', 'চালের গুঁড়ো', 'সামুদ্রিক শৈবাল'],
         correctIndex: 0,
-        explanation: 'Traditional Japanese miso paste is created by fermenting soybeans with salt and kōji (the fungus Aspergillus oryzae).',
-        interestingFact: 'Miso aging can range from a few weeks for mild white miso to over three years for rich, dark red miso.'
+        explanation: 'সয়াবিন ও কোজি ফাংগাসের সাহায্যে দীর্ঘ ফারমেন্টেশন বা গাঁজনের মাধ্যমে জাপানি মিসো পেস্ট তৈরি করা হয়।',
+        interestingFact: 'ভালো মানের রেড মিসো প্রস্তুত করতে তিন বছরেরও বেশি সময় ধরে বয়ামবদ্ধ রাখা হয়।'
       },
       {
         id: 'food-4',
         categoryId: 'world-food',
-        question: 'In Italian culinary law, authentic Neapolitan Pizza Margherita must feature which variety of cheese?',
-        options: ['Parmigiano Reggiano', 'Gorgonzola', 'Mozzarella di Bufala Campana', 'Pecorino Romano'],
+        question: 'ইতালির ঐতিহ্যবাহী নাপোলিতান পিৎজা মার্গারিটায় কোন বিশেষ পনির ব্যবহৃত হয়?',
+        options: ['পারমিজিয়ানো', 'গরগনজোলা', 'মোজারেলা দি বুফালা কাম্পানা', 'পেকোরিনো'],
         correctIndex: 2,
-        explanation: 'Authentic Pizza Napoletana certified by the AVPN requires certified fresh Mozzarella di Bufala Campana or Fior di Latte.',
-        interestingFact: 'Pizza Margherita was reportedly created in 1889 by Raffaele Esposito to represent the colors of the Italian flag: red tomato, white mozzarella, and green basil.'
+        explanation: 'প্রকৃত নাপোলিতান পিৎজায় জলমহিষের দুধ থেকে প্রস্তুত নরম মোজারেলা দি বুফালা ব্যবহার বাধ্যতামূলক।',
+        interestingFact: '১৮৮৯ সালে ইতালির রানীর সম্মানার্থে পতাকার তিন রঙে লাল টমেটো, সাদা মোজারেলা এবং সবুজ বেসিল পাতা দিয়ে এটি তৈরি হয়।'
       },
       {
         id: 'food-5',
         categoryId: 'world-food',
-        question: 'What is the primary ingredient in the Mediterranean spread known as Hummus?',
-        options: ['Fava Beans', 'Lentils', 'Chickpeas', 'White Cannellini Beans'],
+        question: 'মধ্যপ্রাচ্যের অত্যন্ত জনপ্রিয় খাবার ‘হুমুস’ (Hummus)-এর মূল উপাদান কী?',
+        options: ['ফাভা বিনস', 'মসুর ডাল', 'ছোলা (Chickpeas)', 'সাদা শিম'],
         correctIndex: 2,
-        explanation: 'The Arabic word "hummus" literally translates to chickpeas (garbanzo beans), blended with tahini, lemon juice, garlic, and olive oil.',
-        interestingFact: 'Chickpeas have been cultivated in the Middle East for more than 7,500 years.'
+        explanation: 'আরবি ভাষায় হুমুস শব্দের অর্থই হলো ছোলা। এটি তাহিনী (তিল বাটা), অলিভ অয়েল ও লেবুর রস মিশিয়ে তৈরি করা হয়।',
+        interestingFact: 'মধ্যপ্রাচ্যে সাড়ে সাত হাজার বছরেরও বেশি সময় ধরে ছোলার চাষ হয়ে আসছে।'
       },
       {
         id: 'food-6',
         categoryId: 'world-food',
-        question: 'Which fruit is famous in Southeast Asia for its pungent aroma and rich, custard-like flesh?',
-        options: ['Dragon Fruit', 'Durian', 'Jackfruit', 'Mangosteen'],
+        question: 'দক্ষিণ-পূর্ব এশিয়ার কোন ফলকে তীব্র গন্ধ ও ঘন স্বাদের কারণে ‘ফলের রাজা’ বলা হয়?',
+        options: ['ড্রাগন ফল', 'ডুরিয়ান (Durian)', 'কাঁঠাল', 'ম্যাঙ্গোস্টিন'],
         correctIndex: 1,
-        explanation: 'Known as the "King of Fruits", durian has a spiky husk and a notoriously strong sulfurous aroma that often gets it banned on public transit.',
-        interestingFact: 'Despite its sharp scent, its custard-like flesh has complex flavors of sweet cream, caramel, and almond.'
+        explanation: 'ডুরিয়ানের তীব্র সালফারযুক্ত গন্ধের জন্য অনেক দেশে এটি হোটেল ও গণপরিবহনে নিষিদ্ধ হলেও এর ভেতরটা ক্ষীরের মতো মিষ্টি।',
+        interestingFact: 'তীব্র গন্ধ সত্ত্বেও এর ক্রিমি স্বাদ ক্যারামেল, বাদাম ও মধুর চমৎকার মিশ্রণ।'
       }
     ]
   },
   {
     id: 'general-knowledge',
     slug: 'general-knowledge',
-    title: 'General Knowledge Quiz',
-    description: 'A rich mixture of trivia covering culture, arts, famous inventions, world records, and common curiosities.',
+    title: 'সাধারণ জ্ঞান কুইজ',
+    description: 'শিল্প, সাহিত্য, আন্তর্জাতিক রেকর্ড, আবিষ্কার এবং বিশ্ব সংস্কৃতির সেরা প্রশ্নাবলি।',
     iconName: 'Compass',
     colorScheme: 'blue',
     featured: true,
@@ -215,64 +215,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'gk-1',
         categoryId: 'general-knowledge',
-        question: 'Who painted the celebrated masterpiece "The Starry Night"?',
-        options: ['Claude Monet', 'Pablo Picasso', 'Vincent van Gogh', 'Salvador Dalí'],
+        question: 'বিখ্যাত চিত্রকর্ম ‘দ্য স্টারি নাইট’ (The Starry Night) কে এঁকেছেন?',
+        options: ['ক্লদ মনে', 'পাবলো পিকাসো', 'ভিনসেন্ট ভ্যান গগ', 'সালভাদর দালি'],
         correctIndex: 2,
-        explanation: 'Vincent van Gogh created "The Starry Night" in June 1889 depicting the view from his asylum room in Saint-Rémy-de-Provence.',
-        interestingFact: 'Van Gogh painted the nocturnal sky scene largely from memory during the daytime.'
+        explanation: '১৮৮৯ সালের জুনে ফ্রান্সের সেন্ট-রেমির মানসিক আশ্রমে থাকাকালীন ভিনসেন্ট ভ্যান গগ এই অবিস্মরণীয় চিত্রকর্মটি আঁকেন।',
+        interestingFact: 'ভ্যান গগ তাঁর ঘরের জানালা দিয়ে রাতের আকাশ দেখে পরদিন দিনের আলোয় স্মৃতি থেকে ছবিটি এঁকেছিলেন।'
       },
       {
         id: 'gk-2',
         categoryId: 'general-knowledge',
-        question: 'How many keys are standard on a full-size acoustic piano keyboard?',
-        options: ['76', '88', '92', '104'],
+        question: 'একটি পূর্ণাঙ্গ ক্লাসিক্যাল পিয়ানোতে মোট কয়টি কি বা চাবি থাকে?',
+        options: ['৭৬টি', '৮৮টি', '৯২টি', '১০৪টি'],
         correctIndex: 1,
-        explanation: 'A standard full-size piano has 88 keys: 52 white keys for diatonic notes and 36 black keys representing accidentals.',
-        interestingFact: 'Before the late 19th century, pianos had 85 keys until Steinway & Sons established the 88-key standard in the 1880s.'
+        explanation: 'একটি স্ট্যান্ডার্ড পিয়ানোতে মোট ৮৮টি কি থাকে: ৫২টি সাদা কি এবং ৩৬টি কালো কি।',
+        interestingFact: '১৮৮০-এর দশকে স্টেইনওয়ে অ্যান্ড সন্স পিয়ানো নির্মাতা প্রতিষ্ঠান এই ৮৮-কি স্ট্যান্ডার্ড প্রতিষ্ঠিত করে।'
       },
       {
         id: 'gk-3',
         categoryId: 'general-knowledge',
-        question: 'Which element is represented by the chemical symbol "Au" on the periodic table?',
-        options: ['Silver', 'Gold', 'Argon', 'Aluminum'],
+        question: 'পর্যায় সারণিতে স্বর্ণ বা গোল্ড-এর রাসায়নিক প্রতীক কোনটি?',
+        options: ['Ag', 'Au', 'Ar', 'Al'],
         correctIndex: 1,
-        explanation: 'The chemical symbol "Au" comes from the Latin word "Aurum", which translates poetically to "shining dawn".',
-        interestingFact: 'All the gold ever mined in human history would fit into a single cube measuring just 22 meters on each side.'
+        explanation: 'স্বর্ণের প্রতীক ‘Au’ এসেছে লাতিন শব্দ ‘Aurum’ থেকে, যার অর্থ ‘উজ্জ্বল ভোরের আভা’।',
+        interestingFact: 'মানব ইতিহাসে আজ পর্যন্ত উত্তোলিত সমস্ত সোনা একত্র করলে মাত্র ২২ মিটারের একটি কিউবে এঁটে যাবে।'
       },
       {
         id: 'gk-4',
         categoryId: 'general-knowledge',
-        question: 'What is the fastest land animal recorded in short sprinting bursts?',
-        options: ['Pronghorn', 'Lion', 'Cheetah', 'Quarter Horse'],
+        question: 'স্থলভাগে স্বল্প দূরত্বে সবচেয়ে দ্রুত দৌড়াতে পারে কোন প্রাণী?',
+        options: ['প্রংহর্ন হরিণ', 'সিংহ', 'চিতাবাঘ (Cheetah)', 'ঘোড়া'],
         correctIndex: 2,
-        explanation: 'The cheetah (Acinonyx jubatus) can achieve speeds between 97 and 113 km/h (60 to 70 mph) during hunting accelerations.',
-        interestingFact: 'A cheetah can accelerate from 0 to 60 miles per hour in just 3 seconds, faster than most production sports cars.'
+        explanation: 'চিতাবাঘ শিকার ধরার সময় ঘণ্টায় ৯৭ থেকে ১১৩ কিলোমিটার (৬০-৭০ মাইল) গতি তুলতে পারে।',
+        interestingFact: 'একটি চিতা মাত্র ৩ সেকেন্ডে শূন্য থেকে ৬০ মাইল গতিতে পৌঁছাতে পারে, যা বিশ্বের দামি স্পোর্টস কারের চেয়েও দ্রুত।'
       },
       {
         id: 'gk-5',
         categoryId: 'general-knowledge',
-        question: 'Which language holds the status of having the most native speakers worldwide?',
-        options: ['English', 'Spanish', 'Mandarin Chinese', 'Hindi'],
+        question: 'মাতৃভাষা হিসেবে বিশ্বের সবচেয়ে বেশিসংখ্যক মানুষের ভাষা কোনটি?',
+        options: ['ইংরেজি', 'স্প্যানিশ', 'ম্যান্ডারিন চাইনিজ', 'হিন্দি'],
         correctIndex: 2,
-        explanation: 'Mandarin Chinese has over 900 million native first-language speakers, primarily throughout mainland China and Taiwan.',
-        interestingFact: 'English remains the most widely spoken language overall when counting both native and second-language speakers.'
+        explanation: 'চীন ও তাইওয়ান মিলিয়ে ৯০ কোটিরও বেশি মানুষের প্রথম মাতৃভাষা হলো ম্যান্ডারিন চাইনিজ।',
+        interestingFact: 'তবে দ্বিতীয় ভাষা এবং সার্বিক যোগাযোগ মিলিয়ে ইংরেজি বিশ্বের সর্বাধিক ব্যবহৃত ভাষা।'
       },
       {
         id: 'gk-6',
         categoryId: 'general-knowledge',
-        question: 'In which year did the Titanic sink on its maiden voyage across the Atlantic?',
-        options: ['1905', '1912', '1918', '1923'],
+        question: 'টাইটানিক জাহাজটি কোন সালে আটলান্টিক মহাসাগরে ডুবে যায়?',
+        options: ['১৯০৫ সালে', '১৯১২ সালে', '১৯১৮ সালে', '১৯২৩ সালে'],
         correctIndex: 1,
-        explanation: 'The RMS Titanic struck an iceberg on the night of April 14, 1912, and sank in the early morning hours of April 15, 1912.',
-        interestingFact: 'The shipwreck of Titanic lay undiscovered on the North Atlantic seabed until 1985, when Robert Ballard located it.'
+        explanation: '১৯১২ সালের ১৪ এপ্রিল রাতে হিমশৈলের সাথে ধাক্কা খেয়ে ১৫ এপ্রিল সকালে টাইটানিক আটলান্টিকের অতলে ডুবে যায়।',
+        interestingFact: '১৯৮৫ সালে সমুদ্রবিজ্ঞানী রবার্ট ব্যালার্ড টাইটানিকের ধ্বংসাবশেষ প্রথম আবিষ্কার করেন।'
       }
     ]
   },
   {
     id: 'science',
     slug: 'science',
-    title: 'Science Quiz',
-    description: 'Delve into the fundamental laws of physics, chemistry, thermodynamics, genetics, and modern discovery.',
+    title: 'বিজ্ঞান ও মহাবিশ্ব কুইজ',
+    description: 'পদার্থবিজ্ঞান, রসায়ন, কোষ জীববিজ্ঞান, গতি ও মহাবিশ্বের মৌলিক নিয়মাবলি।',
     iconName: 'FlaskConical',
     colorScheme: 'cyan',
     featured: true,
@@ -281,64 +281,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'sci-1',
         categoryId: 'science',
-        question: 'What is the speed of light in a vacuum, rounded to standard scientific units?',
-        options: ['150,000 km/s', '299,792 km/s', '384,400 km/s', '1,080,000 km/s'],
+        question: 'শূন্য মাধ্যমে আলোর গতিবেগ প্রতি সেকেন্ডে প্রায় কত?',
+        options: ['১,৫০,০০০ কিমি', '২,৯৯,৭৯২ কিমি', '৩,৮৪,৪০০ কিমি', '১০,৮০,০০০ কিমি'],
         correctIndex: 1,
-        explanation: 'The speed of light in a vacuum is universally denoted as "c" and exactly defined as 299,792,458 meters per second (approx. 300,000 km/s).',
-        interestingFact: 'Light traveling from the Sun takes roughly 8 minutes and 20 seconds to reach the surface of the Earth.'
+        explanation: 'শূন্যে আলোর সঠিক গতিবেগ ২৯৯,৭৯২,৪৫৮ মিটার/সেকেন্ড বা প্রতি সেকেন্ডে প্রায় ৩ লাখ কিলোমিটার।',
+        interestingFact: 'সূর্য থেকে পৃথিবীতে আলো পৌঁছাতে প্রায় ৮ মিনিট ২০ সেকেন্ড সময় লাগে।'
       },
       {
         id: 'sci-2',
         categoryId: 'science',
-        question: 'Which gas is the most abundant by volume in Earth’s atmosphere?',
-        options: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Argon'],
+        question: 'পৃথিবীর বায়ুমণ্ডলে পরিমাণের দিক থেকে সবচেয়ে বেশি কোন গ্যাসটি বিদ্যমান?',
+        options: ['অক্সিজেন', 'কার্বন ডাই অক্সাইড', 'নাইট্রোজেন', 'আর্গন'],
         correctIndex: 2,
-        explanation: 'Nitrogen makes up approximately 78.08% of Earth’s atmosphere, followed by oxygen at approximately 20.95%.',
-        interestingFact: 'Pure nitrogen is chemically inert at standard room conditions because of its exceptionally strong triple covalent bond.'
+        explanation: 'বায়ুমণ্ডলে প্রায় ৭৮.০৮% নাইট্রোজেন এবং প্রায় ২০.৯৫% অক্সিজেন রয়েছে।',
+        interestingFact: 'নাইট্রোজেন অণুর শক্তিশালী ত্রিবন্ধনের কারণে সাধারণ তাপমাত্রায় এটি সহজে অন্য কোনো মৌলের সাথে বিক্রিয়া করে না।'
       },
       {
         id: 'sci-3',
         categoryId: 'science',
-        question: 'What organelle is famously known as the "powerhouse of the eukaryotic cell"?',
-        options: ['Endoplasmic Reticulum', 'Ribosome', 'Mitochondria', 'Golgi Apparatus'],
+        question: 'জীবদেহের কোষের ‘পাওয়ার হাউস’ বা শক্তিকেন্দ্র কাকে বলা হয়?',
+        options: ['রাইবোজোম', 'গলগি বডি', 'মাইটোকন্ড্রিয়া', 'এন্ডোপ্লাজমিক রেটিকুলাম'],
         correctIndex: 2,
-        explanation: 'Mitochondria generate most of the cell’s chemical energy supply in the form of Adenosine Triphosphate (ATP) via cellular respiration.',
-        interestingFact: 'Mitochondria contain their own unique circular DNA inherited almost exclusively from the maternal lineage.'
+        explanation: 'মাইটোকন্ড্রিয়ায় কোষীয় শ্বসনের মাধ্যমে এটিপি (ATP) রূপে রাসায়নিক শক্তি উৎপন্ন হয়।',
+        interestingFact: 'মাইটোকন্ড্রিয়ার নিজস্ব ডিএনএ রয়েছে যা মায়ের মাধ্যমে বংশানুক্রমে সন্তানের শরীরে আসে।'
       },
       {
         id: 'sci-4',
         categoryId: 'science',
-        question: 'What is the pH level of pure distilled neutral water at standard room temperature (25°C)?',
-        options: ['5', '7', '9', '14'],
+        question: '২৫ ডিগ্রি সেলসিয়াস তাপমাত্রায় বিশুদ্ধ নিরপেক্ষ পানির পিএইচ (pH) মান কত?',
+        options: ['৫', '৭', '৯', '১৪'],
         correctIndex: 1,
-        explanation: 'On the logarithmic pH scale, a value of 7 represents exact neutrality, where hydrogen ion and hydroxide ion concentrations are equal.',
-        interestingFact: 'Because the scale is logarithmic, water with a pH of 6 is ten times more acidic than water with a pH of 7.'
+        explanation: 'লগারিদমিক স্কেলে ৭ হলো সম্পূর্ণ নিরপেক্ষ মান, যেখানে অ্যাসিড বা ক্ষার কোনটিই বেশি নয়।',
+        interestingFact: 'যেহেতু পিএইচ একটি লগারিদমিক স্কেল, তাই পিএইচ ৬-এর পানি পিএইচ ৭-এর চেয়ে ১০ গুণ বেশি অ্যাসিডিক।'
       },
       {
         id: 'sci-5',
         categoryId: 'science',
-        question: 'Which scientist formulated the Three Laws of Motion and the universal law of gravitation?',
-        options: ['Galileo Galilei', 'Sir Isaac Newton', 'Albert Einstein', 'Johannes Kepler'],
+        question: 'মহাকর্ষ সূত্র এবং গতির ৩টি মৌলিক সূত্র কে প্রণয়ন করেছিলেন?',
+        options: ['গ্যালিলিও গ্যালিলি', 'স্যার আইজ্যাক নিউটন', 'অ্যালবার্ট আইনস্টাইন', 'ইয়োহানেস কেপলার'],
         correctIndex: 1,
-        explanation: 'Sir Isaac Newton published his landmark work "Philosophiae Naturalis Principia Mathematica" in 1687, defining the foundation of classical mechanics.',
-        interestingFact: 'Newton also invented calculus (concurrently with Gottfried Leibniz) to solve the mathematical problems of planetary motion.'
+        explanation: '১৬৮৭ সালে স্যার আইজ্যাক নিউটন তাঁর ঐতিহাসিক গ্রন্থ ‘প্রিন্সিপিয়া ম্যাথমেটিকা’-তে গতি ও মহাকর্ষ সূত্র প্রকাশ করেন।',
+        interestingFact: 'গ্রহগুলোর গতিপথের গণিত সমাধান করার জন্যই নিউটন ক্যালকুলাস আবিষ্কার করেছিলেন।'
       },
       {
         id: 'sci-6',
         categoryId: 'science',
-        question: 'Absolute zero, the theoretical point where molecular motion ceases, is equal to what temperature?',
-        options: ['0°C', '-100°C', '-273.15°C', '-459.67°C'],
+        question: 'পরম শূন্য তাপমাত্রা (Absolute Zero) সেলসিয়াস স্কেলে কত ডিগ্রির সমান?',
+        options: ['০°C', '-১০০°C', '-২৭৩.১৫°C', '-৪৫৯.৬৭°C'],
         correctIndex: 2,
-        explanation: 'Absolute zero corresponds to 0 Kelvin or -273.15° Celsius (-459.67° Fahrenheit).',
-        interestingFact: 'At temperatures within billionths of a degree above absolute zero, matter enters a fifth state known as a Bose-Einstein Condensate.'
+        explanation: 'পরম শূন্য তাপমাত্রা হলো ০ কেলভিন বা -২৭৩.১৫ ডিগ্রি সেলসিয়াস, যেখানে পরমাণুর তাপীয় কম্পন সম্পূর্ণ থেমে যায়।',
+        interestingFact: 'পরম শূন্য তাপমাত্রার কাছাকাছি পৌঁছালে পদার্থের পঞ্চম অবস্থা ‘বোস-আইনস্টাইন কনডেনসেট’ সৃষ্টি হয়।'
       }
     ]
   },
   {
     id: 'history',
     slug: 'history',
-    title: 'History Quiz',
-    description: 'Travel through ancient empires, historic revolutions, monumental treaties, and world-shaping events.',
+    title: 'বিশ্ব ইতিহাস কুইজ',
+    description: 'প্রাচীন সভ্যতা, যুগান্তকারী বিপ্লব, ঐতিহাসিক চুক্তি ও বিশ্বনেতাদের কীর্তি।',
     iconName: 'Landmark',
     colorScheme: 'blue',
     popular: true,
@@ -347,64 +347,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'hist-1',
         categoryId: 'history',
-        question: 'In which year did the French Revolution begin with the storming of the Bastille?',
-        options: ['1776', '1789', '1799', '1804'],
+        question: 'বাস্তিল দুর্গ আক্রমণের মধ্য দিয়ে ফরাসি বিপ্লব কোন সালে শুরু হয়েছিল?',
+        options: ['১৭৭৬ সালে', '১৭৮৯ সালে', '১৭৯৯ সালে', '১৮০৪ সালে'],
         correctIndex: 1,
-        explanation: 'The storming of the Bastille fortress prison on July 14, 1789, ignited the French Revolution against the absolute monarchy of Louis XVI.',
-        interestingFact: 'Bastille Day (July 14) remains France’s national holiday, celebrated every year with the oldest regular military parade in Europe.'
+        explanation: '১৭৮৯ সালের ১৪ জুলাই ক্ষুব্ধ জনতা রাজকীয় বাস্তিল দুর্গে আক্রমণ করে সামন্ততান্ত্রিক স্বৈরশাসনের অবসান সূচনা করে।',
+        interestingFact: '১৪ জুলাই এখনও ফ্রান্সে জাতীয় দিবস (বাস্তিল ডে) হিসেবে মহাসমারোহে উদযাপিত হয়।'
       },
       {
         id: 'hist-2',
         categoryId: 'history',
-        question: 'Who was the first Emperor of a unified China, known for the Terracotta Army?',
-        options: ['Kublai Khan', 'Qin Shi Huang', 'Emperor Wu of Han', 'Sun Yat-sen'],
+        question: 'টেরাকোটা আর্মির জন্য পরিচিত একীভূত চীনের প্রথম সম্রাট কে ছিলেন?',
+        options: ['কুবলাই খান', 'কিন শি হুয়াং', 'হান সম্রাট উ', 'সান ইয়াত-সেন'],
         correctIndex: 1,
-        explanation: 'Qin Shi Huang unified the warring states of China in 221 BC, standardizing currency, weights, measures, and the Chinese script.',
-        interestingFact: 'More than 8,000 life-sized terracotta soldiers, chariots, and horses were buried with him to protect his tomb in the afterlife.'
+        explanation: 'খ্রিস্টপূর্ব ২২১ অব্দে কিন শি হুয়াং যুদ্ধরত রাজ্যগুলোকে একত্র করে চীনের মুদ্রা, ওজন ও লিপির মানদণ্ড তৈরি করেন।',
+        interestingFact: 'মৃত্যুপরবর্তী সুরক্ষার জন্য তাঁর সমাধিস্থলে ৮,০০০-এর বেশি পূর্ণাঙ্গ টেরাকোটা সৈন্যের মূর্তি মাটির নিচে রাখা হয়েছিল।'
       },
       {
         id: 'hist-3',
         categoryId: 'history',
-        question: 'The ancient Library of Alexandria was located in which modern-day country?',
-        options: ['Greece', 'Italy', 'Egypt', 'Turkey'],
+        question: 'প্রাচীনকালের সুবিখ্যাত আলেকজান্দ্রিয়া লাইব্রেরিটি কোন দেশে অবস্থিত ছিল?',
+        options: ['গ্রিস', 'ইতালি', 'মিশর', 'তুরস্ক'],
         correctIndex: 2,
-        explanation: 'The Great Library of Alexandria was founded in Egypt during the Ptolemaic dynasty around the 3rd century BC under Ptolemy II Philadelphus.',
-        interestingFact: 'Scholars at the library were required to copy every manuscript entering the city by ship before returning the original or copy to travelers.'
+        explanation: 'খ্রিস্টপূর্ব তৃতীয় শতাব্দীতে মিশরের টলেমীয় রাজবংশের আমলে আলেকজান্দ্রিয়া লাইব্রেরি প্রাচীন জ্ঞানের কেন্দ্রস্থল ছিল।',
+        interestingFact: 'আলেকজান্দ্রিয়া বন্দরে ভেড়ানো প্রতিটি জাহাজের সমস্ত বই লাইব্রেরিতে নিয়ে অনুলিপি করে মূল বই রেখে দেওয়া হতো।'
       },
       {
         id: 'hist-4',
         categoryId: 'history',
-        question: 'Which international treaty officially concluded the First World War in 1919?',
-        options: ['Treaty of Paris', 'Treaty of Ghent', 'Treaty of Versailles', 'Treaty of Utrecht'],
+        question: '১৯১৯ সালে কোন চুক্তির মাধ্যমে প্রথম বিশ্বযুদ্ধের আনুষ্ঠানিক সমাপ্তি ঘটেছিল?',
+        options: ['প্যারিস চুক্তি', 'ঘেন্ট চুক্তি', 'ভার্সাই চুক্তি', 'ইউট্রেখট চুক্তি'],
         correctIndex: 2,
-        explanation: 'The Treaty of Versailles was signed on June 28, 1919, in the Hall of Mirrors at the Palace of Versailles, formally ending World War I.',
-        interestingFact: 'The treaty created the League of Nations, the predecessor to today’s United Nations.'
+        explanation: '১৯১৯ সালের ২৮ জুন ফ্রান্সের ভার্সাই রাজপ্রাসাদের আয়না হলে ‘ভার্সাই চুক্তি’ স্বাক্ষরিত হয়।',
+        interestingFact: 'এই চুক্তির ফলেই জাতিসংঘের পূর্বসূরি ‘লিগ অব নেশনস’ গঠিত হয়েছিল।'
       },
       {
         id: 'hist-5',
         categoryId: 'history',
-        question: 'Who led the famous March to the Sea in 1930 to protest the British colonial salt tax in India?',
-        options: ['Jawaharlal Nehru', 'Mahatma Gandhi', 'Subhas Chandra Bose', 'Bhagat Singh'],
+        question: 'ব্রিটিশ সরকারের অন্যায্য লবণ করের প্রতিবাদে ১৯৩০ সালে বিখ্যাত ডান্ডি অভিযান কে করেছিলেন?',
+        options: ['জওহরলাল নেহরু', 'মহাত্মা গান্ধী', 'সুভাষচন্দ্র বসু', 'ভগত সিং'],
         correctIndex: 1,
-        explanation: 'Mahatma Gandhi led the 240-mile Salt March from Sabarmati Ashram to Dandi, initiating nationwide nonviolent civil disobedience against British colonial monopolies.',
-        interestingFact: 'Over 60,000 Indians, including Gandhi, were imprisoned following the salt protest.'
+        explanation: 'মহাত্মা গান্ধী সবরমতী আশ্রম থেকে ডান্ডি পর্যন্ত ২৪০ মাইল পদযাত্রা করে সমুদ্রের পানি থেকে লবণ তৈরি করে ব্রিটিশ আইন ভাঙেন।',
+        interestingFact: 'লবণ সত্যাগ্রহের পর গান্ধীজিসহ প্রায় ৬০,০০০ ভারতীয়কে ব্রিটিশ পুলিশ গ্রেপ্তার করেছিল।'
       },
       {
         id: 'hist-6',
         categoryId: 'history',
-        question: 'Which civilization constructed the ancient mountain citadel of Machu Picchu in Peru?',
-        options: ['Mayan', 'Aztec', 'Inca', 'Olmec'],
+        question: 'পেরুর আন্দিজ পর্বতমালার চূড়ায় মাচু পিচু শহরটি কোন প্রাচীন সভ্যতা নির্মাণ করেছিল?',
+        options: ['মায়ান সভ্যতা', 'অ্যাজটেক সভ্যতা', 'ইনকা সভ্যতা', 'ওলমেক সভ্যতা'],
         correctIndex: 2,
-        explanation: 'Machu Picchu was built in the 15th century by the Inca Empire under Emperor Pachacuti high in the Andes mountains.',
-        interestingFact: 'The stones were carved with such precision ("ashlar" masonry) that not even a knife blade can fit between the unmortared blocks.'
+        explanation: 'পঞ্চদশ শতাব্দীতে ইনকা সম্রাট পাচাকুতি আন্দিজ পর্বতের ২,৪৩২ মিটার উঁচুতে পাথুরে মাচু পিচু গড়ে তোলেন।',
+        interestingFact: 'পাথরগুলোকে কোনো সিমেন্ট ছাড়াই এমন সূক্ষ্মভাবে জোড়া লাগানো হয়েছিল যে একটি ব্লেডও তাদের ফাঁকে ঢোকানো যায় না।'
       }
     ]
   },
   {
     id: 'animals-nature',
     slug: 'animals-nature',
-    title: 'Animals and Nature Quiz',
-    description: 'Encounter the marvels of the animal kingdom, biodiversity, marine life, and remarkable natural adaptations.',
+    title: 'জীবজন্তু ও প্রকৃতি কুইজ',
+    description: 'প্রাণিজগতের বিস্ময়, বন্যপ্রাণীর স্বভাব, সামুদ্রিক প্রাণী ও প্রাকৃতিক বৈচিত্র্য।',
     iconName: 'PawPrint',
     colorScheme: 'teal',
     featured: true,
@@ -413,64 +413,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'anim-1',
         categoryId: 'animals-nature',
-        question: 'What is the largest living mammal currently on planet Earth?',
-        options: ['African Bush Elephant', 'Colossal Squid', 'Blue Whale', 'Sperm Whale'],
+        question: 'পৃথিবীর ইতিহাসের সর্বকালের বৃহত্তম জীবিত স্তন্যপায়ী প্রাণী কোনটি?',
+        options: ['আফ্রিকান হাতি', 'কলোসাল স্কুইড', 'নীল তিমি (Blue Whale)', 'স্পার্ম হোয়েল'],
         correctIndex: 2,
-        explanation: 'The Blue Whale (Balaenoptera musculus) can reach lengths of up to 30 meters (100 feet) and weigh up to 200 tons.',
-        interestingFact: 'A blue whale’s heart alone weighs about 400 pounds (180 kg)—roughly the size of a small golf cart!'
+        explanation: 'নীল তিমি লম্বায় প্রায় ৩০ মিটার (১০০ ফুট) এবং ওজনে প্রায় ২০০ টন পর্যন্ত হতে পারে, যা ডাইনোসরের চেয়েও বড়।',
+        interestingFact: 'একটি পূর্ণবয়স্ক নীল তিমির হৃৎপিণ্ডের ওজনই প্রায় ১৮০ কেজি বা ৪০০ পাউন্ড—যা একটি ছোট গাড়ির সমান!'
       },
       {
         id: 'anim-2',
         categoryId: 'animals-nature',
-        question: 'How many hearts does an octopus possess?',
-        options: ['One', 'Two', 'Three', 'Four'],
+        question: 'একটি অক্টোপাসের শরীরে মোট কয়টি হৃৎপিণ্ড থাকে?',
+        options: ['১টি', '২টি', '৩টি', '৪টি'],
         correctIndex: 2,
-        explanation: 'An octopus has three hearts: two branchial hearts pump blood through the gills, while a systemic central heart pumps blood to the body.',
-        interestingFact: 'Octopus blood is blue because it uses a copper-rich protein called hemocyanin rather than iron-rich hemoglobin to transport oxygen.'
+        explanation: 'অক্টোপাসের তিনটি হৃৎপিণ্ড থাকে: দুটি ফুলকায় রক্ত সরবরাহ করে এবং একটি সারা শরীরে রক্ত সংবহন করে।',
+        interestingFact: 'অক্টোপাসের রক্ত নীল রঙের, কারণ এটি অক্সিজেন পরিবহনে তামাযুক্ত হিমোসায়ানিন ব্যবহার করে।'
       },
       {
         id: 'anim-3',
         categoryId: 'animals-nature',
-        question: 'Which species of bird is capable of flying backwards as well as hovering in mid-air?',
-        options: ['Swallow', 'Hummingbird', 'Swift', 'Kingfisher'],
+        question: 'কোন পাখি বাতাসে স্থির হয়ে ভেসে থাকতে এবং পেছনের দিকে উড়তে সক্ষম?',
+        options: ['সোয়ালো', 'হামিংবার্ড (Hummingbird)', 'সুইফট', 'কিংফিশার'],
         correctIndex: 1,
-        explanation: 'Hummingbirds have specialized ball-and-socket shoulder joints that allow their wings to rotate 180 degrees, generating lift on both forward and backward strokes.',
-        interestingFact: 'A hummingbird’s wings can flap up to 80 times per second, and its heart can beat over 1,200 times per minute.'
+        explanation: 'হামিংবার্ডের ডানার বিশেষ বল-অ্যান্ড-সকেট জয়েন্টের কারণে তারা ডানা ১৮০ ডিগ্রি ঘুরিয়ে সব দিকে উড়তে পারে।',
+        interestingFact: 'উড়ার সময় এদের ডানা প্রতি সেকেন্ডে ৮০ বার পর্যন্ত স্পন্দিত হয় এবং হৃদস্পন্দন মিনিটে ১,২০০ ছাড়িয়ে যায়।'
       },
       {
         id: 'anim-4',
         categoryId: 'animals-nature',
-        question: 'What is the primary food source of the Giant Panda in the wild?',
-        options: ['Eucalyptus Leaves', 'Bamboo Shoots', 'Acorns and Berries', 'Insects and Roots'],
+        question: 'বুনো পরিবেশের জায়ান্ট পান্ডার প্রধান খাদ্য কোনটি?',
+        options: ['ইউক্যালিপটাস পাতা', 'বাঁশের কঞ্চি ও পাতা', 'ফলমূল ও বাদাম', 'ছোট পোকামাকড়'],
         correctIndex: 1,
-        explanation: 'Bamboo makes up over 99% of a wild giant panda’s diet. An adult panda consumes between 12 to 38 kilograms of bamboo every single day.',
-        interestingFact: 'Pandas have a modified wrist bone that functions like an opposable thumb, helping them hold bamboo stems while chewing.'
+        explanation: 'পান্ডার খাদ্যের ৯৯ শতাংশই বাঁশ। একটি পূর্ণবয়স্ক পান্ডা দিনে ১২ থেকে ৩৮ কেজি বাঁশ চিবিয়ে খায়।',
+        interestingFact: 'পান্ডার হাতের কবজিতে একটি বিশেষ অতিরিক্ত হাড় রয়েছে যা মানুষের বুড়ো আঙুলের মতো বাঁশ ধরতে সাহায্য করে।'
       },
       {
         id: 'anim-5',
         categoryId: 'animals-nature',
-        question: 'Which marine creature is the only known animal where the male carries and gives birth to offspring?',
-        options: ['Clownfish', 'Seahorse', 'Sea Urchin', 'Manta Ray'],
+        question: 'কোন প্রাণীর ক্ষেত্রে স্ত্রী নয়, বরং পুরুষ প্রাণীটি গর্ভধারণ করে সন্তান প্রসব করে?',
+        options: ['ক্লাউনফিশ', 'সি-হর্স বা সিন্ধুঘোটক (Seahorse)', 'স্টারফিশ', 'ম্যান্টা রে'],
         correctIndex: 1,
-        explanation: 'In seahorses (genus Hippocampus), the female transfers her eggs into the male’s specialized brood pouch, where he fertilizes and carries them to term.',
-        interestingFact: 'A male seahorse can give birth to anywhere from 5 to over 1,000 baby seahorses (called fry) in a single labor.'
+        explanation: 'স্ত্রী সি-হর্স পুরুষ সি-হর্সের পেটের বিশেষ ব্রুড পাউচে ডিম্বাণু দেয়, সেখানে পুরুষটি তা নিষিক্ত করে বাচ্চা ফোটায়।',
+        interestingFact: 'এক দফায় একটি পুরুষ সি-হর্স ৫ থেকে ১,০০০টিরও বেশি বাচ্চা প্রসব করতে পারে।'
       },
       {
         id: 'anim-6',
         categoryId: 'animals-nature',
-        question: 'What is the collective noun for a group of flamingos?',
-        options: ['Flamboyance', 'Murder', 'Pride', 'Parliament'],
-        correctIndex: 0,
-        explanation: 'A gathering of flamingos is known as a "flamboyance", fitting their vivid pink plumage and synchronized dance rituals.',
-        interestingFact: 'Flamingos get their pink coloring from carotenoid pigments found in the algae and brine shrimp they consume.'
+        question: 'ফ্লেমিঙ্গো পাখির গায়ের পালক উজ্জ্বল গোলাপি হওয়ার কারণ কী?',
+        options: ['সূর্যের অতিবেগুনি রশ্মি', 'খাবারের ক্যারোটিনয়েড রঞ্জক', 'জেনেটিক মিউটেশন', 'লবণাক্ত পানি'],
+        correctIndex: 1,
+        explanation: 'ফ্লেমিঙ্গো যেসব শ্যাওলা ও চিংড়ি খায় তাতে প্রচুর বিটা-ক্যারোটিন থাকে, যা তাদের পালককে গোলাপি বর্ণ দেয়।',
+        interestingFact: 'জন্মের সময় ফ্লেমিঙ্গোর ছানারা সাদা বা ধূসর রঙের হয়ে থাকে, বড় হয়ে খাবারের রঙে পালক বদলায়।'
       }
     ]
   },
   {
     id: 'space-astronomy',
     slug: 'space-astronomy',
-    title: 'Space and Astronomy Quiz',
-    description: 'Venture into the cosmos: galaxies, black holes, solar systems, nebulae, and astrophysics.',
+    title: 'মহাকাশ ও জ্যোতির্বিজ্ঞান কুইজ',
+    description: 'সৌরজগৎ, কৃষ্ণগহ্বর, নীহারিকা, গ্যালাক্সি এবং মহাকাশ অভিযানের রোমাঞ্চকর তথ্য।',
     iconName: 'Sparkles',
     colorScheme: 'sky',
     featured: true,
@@ -479,64 +479,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'space-1',
         categoryId: 'space-astronomy',
-        question: 'Which planet in our solar system has the highest surface temperature?',
-        options: ['Mercury', 'Venus', 'Mars', 'Jupiter'],
+        question: 'আমাদের সৌরজগতের সবচেয়ে উত্তপ্ত গ্রহ কোনটি?',
+        options: ['বুধ (Mercury)', 'শুক্র (Venus)', 'মঙ্গল (Mars)', 'বৃহস্পতি (Jupiter)'],
         correctIndex: 1,
-        explanation: 'Although Mercury is closer to the Sun, Venus has a runaway greenhouse atmosphere of thick carbon dioxide and sulfuric acid clouds, trapping heat at a scorching 465°C (869°F).',
-        interestingFact: 'Venus also rotates in retrograde (clockwise), meaning the Sun rises in the west and sets in the east.'
+        explanation: 'সূর্যের সবচেয়ে কাছে বুধ হলেও শুক্র গ্রহের ঘন কার্বন ডাই অক্সাইড বায়ুমণ্ডল গ্রিনহাউস প্রতিক্রিয়ায় তাপমাত্রা ৪৬৫° সেলসিয়াসে উন্নীত করে।',
+        interestingFact: 'শুক্র গ্রহ উল্টো দিকে (ঘড়ির কাঁটার দিকে) ঘোরে, তাই সেখানে পশ্চিম দিকে সূর্য ওঠে এবং পূর্বে ডোবে।'
       },
       {
         id: 'space-2',
         categoryId: 'space-astronomy',
-        question: 'What is the name of the supermassive black hole located at the center of the Milky Way galaxy?',
-        options: ['Cygnus X-1', 'Sagittarius A*', 'Messier 87', 'Andromeda Core'],
+        question: 'মিল্কিওয়ে ছায়াপথের কেন্দ্রে অবস্থিত সুপারম্যাসিভ ব্ল্যাকহোলের নাম কী?',
+        options: ['সিগনাস এক্স-১', 'স্যাজিটেরিয়াস এ* (Sagittarius A*)', 'মেসিয়ার ৮৭', 'অ্যান্ড্রোমিডা কোর'],
         correctIndex: 1,
-        explanation: 'Sagittarius A* (pronounced Sagittarius A-star) is the supermassive black hole at our galactic core, containing roughly 4.1 million times the mass of our Sun.',
-        interestingFact: 'In May 2022, the Event Horizon Telescope collaboration unveiled the first direct image of Sagittarius A*.'
+        explanation: 'স্যাজিটেরিয়াস এ* হলো আমাদের গ্যালাক্সির কেন্দ্রস্থ দানবীয় ব্ল্যাকহোল, যার ভর সূর্যের ভরের চেয়ে প্রায় ৪১ লাখ গুণ বেশি।',
+        interestingFact: '২০২২ সালের মে মাসে ইভেন্ট হরাইজন টেলিস্কোপ স্যাজিটেরিয়াস এ*-এর প্রথম প্রত্যক্ষ ছবি প্রকাশ করে।'
       },
       {
         id: 'space-3',
         categoryId: 'space-astronomy',
-        question: 'How many planets in our solar system possess ring systems?',
-        options: ['One (only Saturn)', 'Two', 'Four', 'Six'],
+        question: 'আমাদের সৌরজগতের কয়টি গ্রহের চারপাশে বলয় (Rings) রয়েছে?',
+        options: ['১টি (শুধুমাত্র শনি)', '২টি', '৪টি', '৬টি'],
         correctIndex: 2,
-        explanation: 'All four giant outer planets—Jupiter, Saturn, Uranus, and Neptune—possess ring systems, though Saturn’s are by far the largest and brightest.',
-        interestingFact: 'Jupiter’s faint rings were only discovered in 1979 by NASA’s Voyager 1 spacecraft.'
+        explanation: 'সৌরজগতের চারটি বিশাল গ্যাসীয় গ্রহ—বৃহস্পতি, শনি, ইউরেনাস ও নেপচুন—সবারই বলয় রয়েছে, তবে শনির বলয় সবচেয়ে স্পষ্ট।',
+        interestingFact: '১৯৭৯ সালে নাসার ভয়েজার ১ মহাকাশযান প্রথম বৃহস্পতির ক্ষীণ বলয় আবিষ্কার করেছিল।'
       },
       {
         id: 'space-4',
         categoryId: 'space-astronomy',
-        question: 'What is the closest major spiral galaxy to the Milky Way?',
-        options: ['Triangulum Galaxy', 'Andromeda Galaxy', 'Sombrero Galaxy', 'Whirlpool Galaxy'],
+        question: 'আমাদের মিল্কিওয়ের সবচেয়ে নিকটবর্তী সর্পিল ছায়াপথ কোনটি?',
+        options: ['ট্রায়াঙ্গুলাম গ্যালাক্সি', 'অ্যান্ড্রোমিডা গ্যালাক্সি (Andromeda)', 'সমব্রেরো গ্যালাক্সি', 'হুইর্লপুল গ্যালাক্সি'],
         correctIndex: 1,
-        explanation: 'The Andromeda Galaxy (M31) lies approximately 2.5 million light-years away from Earth and is on a gravitational collision course to merge with the Milky Way in 4.5 billion years.',
-        interestingFact: 'On a dark, moonless night away from city lights, the Andromeda Galaxy is visible to the naked human eye.'
+        explanation: 'অ্যান্ড্রোমিডা গ্যালাক্সি পৃথিবী থেকে প্রায় ২৫ লাখ আলোকবর্ষ দূরে অবস্থিত এবং এটি আমাদের দিকে ধেয়ে আসছে।',
+        interestingFact: 'শহরের আলো থেকে দূরে সম্পূর্ণ অন্ধকার রাতে খালি চোখেই অ্যান্ড্রোমিডা ছায়াপথ আবছা মেঘের মতো দেখা যায়।'
       },
       {
         id: 'space-5',
         categoryId: 'space-astronomy',
-        question: 'Who was the first human being to journey into outer space?',
-        options: ['Neil Armstrong', 'Yuri Gagarin', 'Alan Shepard', 'John Glenn'],
+        question: 'মহাকাশে যাত্রা করা পৃথিবীর প্রথম মানব কে ছিলেন?',
+        options: ['নিল আর্মস্ট্রং', 'ইউরি গ্যাগারিন (Yuri Gagarin)', 'অ্যালান শেপার্ড', 'জন গ্লেন'],
         correctIndex: 1,
-        explanation: 'Soviet cosmonaut Yuri Gagarin made history on April 12, 1961, completing an orbit of Earth aboard the Vostok 1 capsule in 108 minutes.',
-        interestingFact: 'Gagarin famously exclaimed "Poyekhali!" ("Let’s go!") as his rocket lifted off from the Baikonur Cosmodrome.'
+        explanation: 'সোভিয়েত নভোচারী ইউরি গ্যাগারিন ১৯৬১ সালের ১২ এপ্রিল ভস্টক-১ মহাকাশযানে চেপে ১০৮ মিনিটে পৃথিবী প্রদক্ষিণ করেন।',
+        interestingFact: 'উৎক্ষেপণের মুহূর্তে গ্যাগারিন বিখ্যাত উল্লাস করেছিলেন: "পইয়েখালি!" (চলুন শুরু করা যাক!)।'
       },
       {
         id: 'space-6',
         categoryId: 'space-astronomy',
-        question: 'What celestial object in our solar system has the most volcanic activity?',
-        options: ['Mars', 'Venus', 'Io (moon of Jupiter)', 'Titan (moon of Saturn)'],
+        question: 'সৌরজগতের কোন উপগ্রহে সবচেয়ে বেশি সক্রিয় আগ্নেয়গিরি রয়েছে?',
+        options: ['চাঁদ', 'টাইটান', 'আইও (বৃহস্পতির চাঁদ Io)', 'ইউরোপা'],
         correctIndex: 2,
-        explanation: 'Io, Jupiter’s innermost Galilean moon, has over 400 active volcanoes fueled by immense tidal heating from gravitational tug-of-war between Jupiter and nearby moons.',
-        interestingFact: 'Io’s volcanic plumes can erupt sulfurous gas and silicates up to 500 kilometers into space!'
+        explanation: 'বৃহস্পতির প্রবল মহাকর্ষীয় জোয়ারের কারণে আইও উপগ্রহে ৪০০টিরও বেশি সক্রিয় জীবন্ত আগ্নেয়গিরি রয়েছে।',
+        interestingFact: 'আইও-র আগ্নেয়গিরির অগ্ন্যুৎপাত মহাকাশে ৫০০ কিলোমিটার উচ্চতা পর্যন্ত লাভা ও গ্যাস ছড়িয়ে দেয়।'
       }
     ]
   },
   {
     id: 'sports',
     slug: 'sports',
-    title: 'Sports Quiz',
-    description: 'Relive historic sports moments, Olympic milestones, iconic tournaments, and legendary athletes.',
+    title: 'খেলাধুলা ও স্পোর্টস কুইজ',
+    description: 'ফিফা বিশ্বকাপ, অলিম্পিক গেমস, ক্রিকেট, টেনিস ও বিশ্ব ক্রীড়াবিদদের অবিস্মরণীয় রেকর্ড।',
     iconName: 'Trophy',
     colorScheme: 'blue',
     difficulty: 'Beginner',
@@ -544,64 +544,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'sport-1',
         categoryId: 'sports',
-        question: 'Which national team has won the most FIFA Men’s World Cup titles in soccer history?',
-        options: ['Germany', 'Italy', 'Brazil', 'Argentina'],
+        question: 'ফিফা পুরুষ ফুটবল বিশ্বকাপে সর্বোচ্চ কতবার শিরোপা জিতেছে ব্রাজিল?',
+        options: ['৩ বার', '৪ বার', '৫ বার', '৬ বার'],
         correctIndex: 2,
-        explanation: 'Brazil holds the record with 5 FIFA World Cup championship titles (1958, 1962, 1970, 1994, and 2002).',
-        interestingFact: 'Brazil is also the only country to have participated in every single FIFA World Cup tournament since its inception in 1930.'
+        explanation: 'ব্রাজিল ১৯৫৮, ১৯৬২, ১৯৭০, ১৯৯৪ ও ২০০২ সালে মোট রেকর্ড ৫ বার বিশ্বকাপ ট্রফি ঘরে তুলেছে।',
+        interestingFact: 'ব্রাজিল একমাত্র দেশ যারা ১৯৩০ সালের প্রথম আসর থেকে এখন পর্যন্ত প্রতিটি বিশ্বকাপে অংশ নিয়েছে।'
       },
       {
         id: 'sport-2',
         categoryId: 'sports',
-        question: 'In tennis, winning all four Grand Slam tournaments in a single calendar year is known as what?',
-        options: ['The Triple Crown', 'A Calendar Grand Slam', 'The Masters Sweep', 'A Golden Slam'],
+        question: 'টেনিসে একই পঞ্জিকাবর্ষে চারটি গ্র্যান্ড স্ল্যাম জয় করাকে কী বলা হয়?',
+        options: ['ট্রিপল ক্রাউন', 'ক্যালেন্ডার গ্র্যান্ড স্ল্যাম', 'মাস্টার্স সুইপ', 'সুপার স্ল্যাম'],
         correctIndex: 1,
-        explanation: 'Achieving victories at the Australian Open, French Open, Wimbledon, and US Open in one calendar year is called a Calendar Grand Slam.',
-        interestingFact: 'Steffi Graf achieved a "Golden Slam" in 1988 by winning all four Grand Slams plus Olympic gold in the same year.'
+        explanation: 'একই বছরে অস্ট্রেলিয়ান ওপেন, ফরাসি ওপেন, উইম্বলডন ও ইউএস ওপেন জেতাকে ‘ক্যালেন্ডার গ্র্যান্ড স্ল্যাম’ বলা হয়।',
+        interestingFact: '১৯৮৮ সালে স্টেফি গ্রাফ চার গ্র্যান্ড স্ল্যামের পাশাপাশি অলিম্পিক সোনা জিতে ‘গোল্ডেন স্ল্যাম’ অর্জন করেছিলেন।'
       },
       {
         id: 'sport-3',
         categoryId: 'sports',
-        question: 'How long is an official standard marathon road race?',
-        options: ['40.0 kilometers', '42.195 kilometers', '45.5 kilometers', '50.0 kilometers'],
+        question: 'একটি পূর্ণাঙ্গ অফিশিয়াল ম্যারাথন দৌড়ের দূরত্ব কত কিলোমিটার?',
+        options: ['৪০ কিমি', '৪২.১৯৫ কিমি', '৪৫.৫ কিমি', '৫০ কিমি'],
         correctIndex: 1,
-        explanation: 'An official marathon covers exactly 42.195 kilometers (26 miles and 385 yards), standardized during the 1908 London Olympic Games.',
-        interestingFact: 'The 1908 standard was chosen so the race could start at Windsor Castle and finish right in front of the Royal Box at the stadium.'
+        explanation: 'ম্যারাথনের সঠিক দূরত্ব হলো ৪২.১৯৫ কিলোমিটার (২৬ মাইল ৩৮৫ গজ), যা ১৯০৮ লন্ডন অলিম্পিকে স্থির করা হয়।',
+        interestingFact: 'উইন্ডসর ক্যাসেল থেকে অলিম্পিক স্টেডিয়ামের রাজকীয় বক্সের সামনে শেষ করার সুবিধার্থে এই দূরত্ব নির্ধারণ করা হয়েছিল।'
       },
       {
         id: 'sport-4',
         categoryId: 'sports',
-        question: 'Which athlete has won the most Olympic medals in history?',
-        options: ['Usain Bolt', 'Michael Phelps', 'Larisa Latynina', 'Carl Lewis'],
+        question: 'অলিম্পিকের ইতিহাসে সর্বকালের সর্বোচ্চ পদকবিজয়ী ক্রীড়াবিদ কে?',
+        options: ['উসাইন বোল্ট', 'মাইকেল ফেলপস (Michael Phelps)', 'লারিসা লাতিনিনা', 'কার্ল লুইস'],
         correctIndex: 1,
-        explanation: 'American swimmer Michael Phelps won 28 Olympic medals (including an unprecedented 23 gold medals) across four Olympic Games.',
-        interestingFact: 'In the 2008 Beijing Olympics, Phelps won 8 gold medals in a single Games, breaking Mark Spitz’s 1972 record.'
+        explanation: 'মার্কিন সাঁতারু মাইকেল ফেলপস অলিম্পিকে অবিশ্বাস্য ২৮টি পদক (২৩টি স্বর্ণসহ) জয় করেছেন।',
+        interestingFact: '২০০৮ বেইজিং অলিম্পিকেই ফেলপস একক আসরে সর্বোচ্চ ৮টি স্বর্ণপদক জয়ের অনন্য রেকর্ড করেন।'
       },
       {
         id: 'sport-5',
         categoryId: 'sports',
-        question: 'In basketball, how many points is a regular shot worth if made from behind the arc?',
-        options: ['1', '2', '3', '4'],
+        question: 'বাস্কেটবলে থ্রি-পয়েন্ট লাইনের বাইরে থেকে সফল শটে কত পয়েন্ট পাওয়া যায়?',
+        options: ['১ পয়েন্ট', '২ পয়েন্ট', '৩ পয়েন্ট', '৪ পয়েন্ট'],
         correctIndex: 2,
-        explanation: 'A field goal made from beyond the designated three-point line is worth three points.',
-        interestingFact: 'The NBA first introduced the three-point line in the 1979–1980 season.'
+        explanation: 'আর্ক বা থ্রি-পয়েন্ট লাইনের পেছনের যেকোনো স্থান থেকে বল জালে ঢোকাতে পারলে ৩ পয়েন্ট লাভ হয়।',
+        interestingFact: '১৯৭৯-৮০ মৌসুমে এনবিএ লিগে প্রথম থ্রি-পয়েন্ট লাইনের নিয়ম প্রবর্তন করা হয়েছিল।'
       },
       {
         id: 'sport-6',
         categoryId: 'sports',
-        question: 'Which country hosted the first modern Olympic Games in 1896?',
-        options: ['France', 'United Kingdom', 'Greece', 'United States'],
+        question: '১৮৯৬ সালে প্রথম আধুনিক অলিম্পিক গেমস কোন শহরে অনুষ্ঠিত হয়েছিল?',
+        options: ['প্যারিস', 'লন্ডন', 'অ্যাথেন্স (গ্রিস)', 'নিউ ইয়র্ক'],
         correctIndex: 2,
-        explanation: 'The first modern Olympic Games were held in Athens, Greece, in April 1896, paying homage to the ancient Greek Olympiads.',
-        interestingFact: 'Winners in 1896 were awarded silver medals and olive branches; gold medals were introduced in the 1904 St. Louis Games.'
+        explanation: 'প্রাচীন গ্রিক অলিম্পিয়াডের স্মরণে ১৮৯৬ সালে গ্রিসের রাজধানী অ্যাথেন্সে প্রথম আধুনিক অলিম্পিক শুরু হয়।',
+        interestingFact: '১৮৯৬ সালে বিজয়ীদের স্বর্ণ নয়, বরং রৌপ্য পদক ও জলপাই পাতার মুকুট পরিয়ে দেওয়া হতো।'
       }
     ]
   },
   {
     id: 'technology',
     slug: 'technology',
-    title: 'Technology Quiz',
-    description: 'Test your understanding of software engineering, computers, cybersecurity, the internet, and AI.',
+    title: 'তথ্যপ্রযুক্তি ও কম্পিউটার কুইজ',
+    description: 'প্রোগ্রামিং, কৃত্রিম বুদ্ধিমত্তা, ইন্টারনেট, সাইবার নিরাপত্তা ও কম্পিউটার বিজ্ঞান।',
     iconName: 'Cpu',
     colorScheme: 'indigo',
     featured: true,
@@ -611,64 +611,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'tech-1',
         categoryId: 'technology',
-        question: 'Who is widely celebrated as the world’s first computer programmer for writing an algorithm for Babbage’s Analytical Engine?',
-        options: ['Alan Turing', 'Ada Lovelace', 'Grace Hopper', 'Charles Babbage'],
+        question: 'বিশ্বের প্রথম কম্পিউটার প্রোগ্রামার হিসেবে কাকে স্বীকৃতি দেওয়া হয়?',
+        options: ['অ্যালান টুরিং', 'অ্যাডা লাভলেস (Ada Lovelace)', 'গ্রেস হপার', 'চার্লস ব্যাবেজ'],
         correctIndex: 1,
-        explanation: 'Ada Lovelace published the first algorithm intended for processing on Charles Babbage’s mechanical Analytical Engine in 1843.',
-        interestingFact: 'Lovelace foresaw that computers could compose music and manipulate graphics, not just crunch numbers.'
+        explanation: '১৮৪৩ সালে চার্লস ব্যাবেজের অ্যানালিটিক্যাল ইঞ্জিনের জন্য প্রথম অ্যালগরিদম রচনা করেছিলেন অ্যাডা লাভলেস।',
+        interestingFact: 'লাভলেস ভবিষ্যদ্বাণী করেছিলেন যে কম্পিউটার শুধু সংখ্যার হিসেব নয়, বরং সুর তৈরি ও ছবি আঁকার কাজেও ব্যবহৃত হবে।'
       },
       {
         id: 'tech-2',
         categoryId: 'technology',
-        question: 'What do the letters "HTTP" stand for in web internet architecture?',
+        question: 'ইন্টারনেট ব্রাউজিংয়ে বহুল ব্যবহৃত "HTTP"-এর পূর্ণরূপ কী?',
         options: ['HyperText Transfer Protocol', 'High Technical Transfer Process', 'Hyperlink Text Testing Program', 'Home Terminal Transfer Packet'],
         correctIndex: 0,
-        explanation: 'HTTP stands for HyperText Transfer Protocol, the foundational protocol used by the World Wide Web to transmit web pages.',
-        interestingFact: 'Sir Tim Berners-Lee created HTTP along with HTML and URLs while working at CERN in 1989.'
+        explanation: 'HTTP হলো HyperText Transfer Protocol, যার মাধ্যমে ওয়েব সার্ভার ও ব্রাউজারের মধ্যে ডেটা আদান-প্রদান সম্পন্ন হয়।',
+        interestingFact: 'স্যার টিম বার্নার্স-লি ১৯৮৯ সালে সার্ন (CERN)-এ কাজ করার সময় HTTP ও ওয়ার্ল্ড ওয়াইড ওয়েব উদ্ভাবন করেন।'
       },
       {
         id: 'tech-3',
         categoryId: 'technology',
-        question: 'In computer science, what is the time complexity of binary search on a sorted array of size N?',
+        question: 'সাজানো (Sorted) ডেটায় বাইনারি সার্চ (Binary Search) অ্যালগরিদমের টাইম কমপ্লেক্সিটি কত?',
         options: ['O(1)', 'O(log N)', 'O(N)', 'O(N^2)'],
         correctIndex: 1,
-        explanation: 'Binary search halves the search space at every step, yielding logarithmic time complexity O(log N).',
-        interestingFact: 'Searching through 1,000,000 sorted items using binary search takes at most 20 comparisons!'
+        explanation: 'প্রতিটি ধাপে সার্চ স্পেস অর্ধেক হয়ে যাওয়ার কারণে বাইনারি সার্চের টাইম কমপ্লেক্সিটি লগারিদমিক বা O(log N)।',
+        interestingFact: '১০ লাখ সাজানো উপাত্তের মধ্যে একটি নির্দিষ্ট মান খুঁজতে বাইনারি সার্চে সর্বোচ্চ মাত্র ২০টি তুলনা করতে হয়!'
       },
       {
         id: 'tech-4',
         categoryId: 'technology',
-        question: 'Which computer scientist coined the term "compiler" and popularized machine-independent programming languages?',
-        options: ['Margaret Hamilton', 'Rear Admiral Grace Hopper', 'Katherine Johnson', 'Barbara Liskov'],
+        question: '১৯৯১ সালে ওপেন সোর্স লিনাক্স (Linux) কার্নেল কে উদ্ভাবন করেছিলেন?',
+        options: ['স্টিভ ওজনিয়াক', 'লিনাস টরভাল্ডস (Linus Torvalds)', 'রিচার্ড স্টলম্যান', 'কেন থম্পসন'],
         correctIndex: 1,
-        explanation: 'Grace Hopper developed the first compiler (A-0 System) in 1952 and helped shape COBOL, proving code could be written in English-like statements.',
-        interestingFact: 'She also popularized the term "debugging" after discovering a real moth trapped inside the Mark II relay computer in 1947.'
+        explanation: 'ফিনল্যান্ডের শিক্ষার্থী লিনাস টরভাল্ডস ফ্রি অপারেটিং সিস্টেম কার্নেল হিসেবে লিনাক্স উন্মুক্ত করেন, যা আজ বিশ্বমঞ্চে রাজত্ব করছে।',
+        interestingFact: 'বর্তমানে বিশ্বের শীর্ষ ৫০০টি দ্রুততম সুপারকম্পিউটারের সবগুলোই লিনাক্স অপারেটিং সিস্টেমে পরিচালিত হয়।'
       },
       {
         id: 'tech-5',
         categoryId: 'technology',
-        question: 'Which open-source operating system kernel was created by Linus Torvalds in 1991?',
-        options: ['Unix', 'Linux', 'BSD', 'DOS'],
-        correctIndex: 1,
-        explanation: 'Linus Torvalds released the Linux kernel in 1991 as a free alternative to MINIX, which now powers the majority of global servers, supercomputers, and Android.',
-        interestingFact: 'All 500 of the world’s top 500 fastest supercomputers run on Linux distributions.'
+        question: 'কম্পিউটার হার্ডওয়্যারে ‘SSD’ শব্দের পূর্ণরূপ কী?',
+        options: ['Solid State Drive', 'Silicon Storage Device', 'Synchronous Serial Disk', 'Static System Driver'],
+        correctIndex: 0,
+        explanation: 'Solid State Drive (SSD) ফ্ল্যাশ মেমোরি ব্যবহার করে যাতে কোনো চলনশীল যান্ত্রিক পার্টস থাকে না, ফলে ডেটা রিড/রাইট অত্যন্ত দ্রুত হয়।',
+        interestingFact: 'বিদ্যুৎ সংযোগ বিচ্ছিন্ন হলেও এসএসডি ফ্ল্যাশ সেলে সংরক্ষিত বৈদ্যুতিক চার্জের মাধ্যমে তথ্য বহু বছর অপরিবর্তিত থাকে।'
       },
       {
         id: 'tech-6',
         categoryId: 'technology',
-        question: 'What does "SSD" stand for in computer storage hardware?',
-        options: ['Solid State Drive', 'Silicon Storage Device', 'Synchronous Serial Disk', 'Static System Driver'],
-        correctIndex: 0,
-        explanation: 'Solid State Drive (SSD) uses NAND flash memory without moving mechanical parts, resulting in vastly faster read/write speeds than traditional HDDs.',
-        interestingFact: 'SSDs use floating-gate transistors that retain electrical charge even when power is turned off.'
+        question: 'কম্পিউটার বিজ্ঞানে "বাগ" (Bug) বা ত্রুটি দূরীকরণে "Debugging" শব্দটি জনপ্রিয় করেছিলেন কে?',
+        options: ['মার্গারেট হ্যামিল্টন', 'রিয়ার অ্যাডমিরাল গ্রেস হপার', 'ক্যাথরিন জনসন', 'বারবারা লিসকভ'],
+        correctIndex: 1,
+        explanation: '১৯৪৭ সালে হার্ভার্ডের মার্ক-২ কম্পিউটারের রিলেতে আটকে থাকা একটি আসল মথ পোকা খুঁজে পাওয়ার পর গ্রেস হপার ডিবাগিং কথাটি প্রচার করেন।',
+        interestingFact: 'গ্রেস হপারই প্রথম কম্পিউটার কম্পাইলার আবিষ্কার করেছিলেন যা ইংরেজি ভাষার কোডকে মেশিন ভাষায় রূপান্তর করত।'
       }
     ]
   },
   {
     id: 'famous-places',
     slug: 'famous-places',
-    title: 'Famous Places Quiz',
-    description: 'Recognize world wonders, architectural icons, UNESCO World Heritage monuments, and sacred sanctuaries.',
+    title: 'বিখ্যাত স্থান ও বিশ্ব ঐতিহ্য কুইজ',
+    description: 'পৃথিবীর সপ্তাশ্চর্য, ঐতিহাসিক স্থাপত্য, দুর্গ, স্মৃতিস্তম্ভ ও ইউনেস্কো ঐতিহ্যবাহী স্থান।',
     iconName: 'MapPin',
     colorScheme: 'sky',
     popular: true,
@@ -677,64 +677,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'place-1',
         categoryId: 'famous-places',
-        question: 'In which city is the Taj Mahal, the iconic ivory-white marble mausoleum, located?',
-        options: ['New Delhi', 'Jaipur', 'Agra', 'Mumbai'],
+        question: 'শ্বেতশুভ্র মার্বেলের তাজমহল ভারতের কোন শহরে অবস্থিত?',
+        options: ['নতুন দিল্লি', 'জয়পুর', 'আগ্রা', 'মুম্বাই'],
         correctIndex: 2,
-        explanation: 'The Taj Mahal was commissioned in 1631 by Mughal Emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal, on the banks of the Yamuna River in Agra.',
-        interestingFact: 'The Taj Mahal’s marble appears to change color throughout the day, glowing soft pink in morning and golden milky under the moonlight.'
+        explanation: '১৬৩১ সালে মুঘল সম্রাট শাহজাহান তাঁর প্রিয়তমা স্ত্রী মমতাজ মহলের স্মরণে যমুনা নদীর তীরে আগ্রায় তাজমহল নির্মাণ করেন।',
+        interestingFact: 'দিনের আলোভেদে তাজমহলের মার্বেল ভোরবেলা হালকা গোলাপি, দুপুরে দুধসাদা এবং পূর্ণিমায় সোনালি আভায় উদ্ভাসিত হয়।'
       },
       {
         id: 'place-2',
         categoryId: 'famous-places',
-        question: 'Which ancient Wonder of the Ancient World is the only one still largely intact today?',
-        options: ['Hanging Gardens of Babylon', 'Colossus of Rhodes', 'Great Pyramid of Giza', 'Lighthouse of Alexandria'],
+        question: 'প্রাচীন সপ্তাশ্চর্যের মধ্যে একমাত্র কোন আশ্চর্যটি আজও পৃথিবীতে টিকে রয়েছে?',
+        options: ['ব্যাবিলনের শূন্য উদ্যান', 'রোডস-এর কলোসাস', 'গিজার মহা পিরামিড', 'আলেকজান্দ্রিয়ার বাতিঘর'],
         correctIndex: 2,
-        explanation: 'The Great Pyramid of Giza, built around 2560 BC for Pharaoh Khufu, is the oldest and only surviving monument of the original Seven Wonders of the Ancient World.',
-        interestingFact: 'The Great Pyramid was the tallest human-made structure in the world for over 3,800 years.'
+        explanation: 'খ্রিস্টপূর্ব প্রায় ২৫৬০ অব্দে ফারাও খুফুর জন্য নির্মিত মিশরের গিজার পিরামিড প্রাচীন সপ্তাশ্চর্যের একমাত্র অক্ষত স্মারক।',
+        interestingFact: 'গিজার পিরামিডটি দীর্ঘ ৩,৮০০ বছরেরও বেশি সময় ধরে মানুষের তৈরি পৃথিবীর সর্বোচ্চ স্থাপত্য ছিল।'
       },
       {
         id: 'place-3',
         categoryId: 'famous-places',
-        question: 'The Colosseum, an enormous stone amphitheater completed in 80 AD, stands in which European city?',
-        options: ['Athens', 'Rome', 'Madrid', 'Florence'],
+        question: '৮০ খ্রিস্টাব্দে নির্মিত বিখ্যাত রোমান কলোসিয়াম (Colosseum) কোন শহরে অবস্থিত?',
+        options: ['অ্যাথেন্স', 'রোম', 'মাদ্রিদ', 'ফ্লোরেন্স'],
         correctIndex: 1,
-        explanation: 'The Colosseum was built in Rome under Emperors Vespasian and Titus of the Flavian dynasty to hold up to 50,000 spectators.',
-        interestingFact: 'The amphitheater had a massive canvas retractable awning called the Velarium, operated by Roman naval sailors to shade the crowd.'
+        explanation: 'রোমের কেন্দ্রস্থলে অবস্থিত সুবিশাল পাথুরে কলোসিয়াম গ্ল্যাডিয়েটরদের যুদ্ধ ও জনসমাবেশের জন্য ব্যবহৃত হতো।',
+        interestingFact: 'দর্শককে রোদ থেকে বাঁচাতে এই স্টেডিয়ামে নাবিকদের দ্বারা পরিচালিত বিশাল ক্যানভাস ছাদ টানানো হতো।'
       },
       {
         id: 'place-4',
         categoryId: 'famous-places',
-        question: 'The ancient rock-cut city of Petra, featuring "The Treasury" carved into sandstone cliffs, is located in which nation?',
-        options: ['Egypt', 'Jordan', 'Morocco', 'Lebanon'],
+        question: 'পাহাড়ের খাঁদে খোদাই করা প্রাচীন গোলাপী শহর পেত্রা (Petra) কোন দেশে অবস্থিত?',
+        options: ['মিশর', 'জর্ডান', 'মরক্কো', 'লেবানন'],
         correctIndex: 1,
-        explanation: 'Petra was the thriving capital of the Nabataean kingdom established around the 4th century BC in southwestern Jordan.',
-        interestingFact: 'Because of the rose-hued sandstone cliffs in which it is carved, Petra is often called the "Rose City".'
+        explanation: 'খ্রিস্টপূর্ব চতুর্থ শতাব্দীতে নাবাতীয় রাজ্যের রাজধানী পেত্রা দক্ষিণ-পশ্চিম জর্ডানের লাল বেলেপাথরের পাহাড় কেটে নির্মিত হয়।',
+        interestingFact: 'গোলাপী লাল পাথরের রঙের জন্য কবি জন উইলিয়াম বার্গন পেত্রাকে "সময়ের সমান প্রাচীন গোলাপী শহর" বলে আখ্যায়িত করেছিলেন।'
       },
       {
         id: 'place-5',
         categoryId: 'famous-places',
-        question: 'What is the name of the famous 19th-century suspension bridge spanning the entrance to San Francisco Bay?',
-        options: ['Brooklyn Bridge', 'Golden Gate Bridge', 'Tower Bridge', 'Sydney Harbour Bridge'],
+        question: 'সান ফ্রান্সিসকো বে-তে অবস্থিত বিশ্ববিখ্যাত ঝুলন্ত সেতুটির নাম কী?',
+        options: ['ব্রুকলিন ব্রিজ', 'গোল্ডেন গেট ব্রিজ (Golden Gate Bridge)', 'টাওয়ার ব্রিজ', 'সিডনি হারবার ব্রিজ'],
         correctIndex: 1,
-        explanation: 'The Golden Gate Bridge was opened in 1937, spanning the one-mile strait connecting San Francisco to Marin County.',
-        interestingFact: 'The bridge’s signature color is officially titled "International Orange", selected because it enhances visibility in heavy sea fog.'
+        explanation: '১৯৩৭ সালে উদ্বোধন হওয়া গোল্ডেন গেট ব্রিজ সান ফ্রান্সিসকোকে মেরিন কাউন্টির সাথে যুক্ত করেছে।',
+        interestingFact: 'সেতুটির অনন্য রঙের নাম হলো "ইন্টারন্যাশনাল অরেঞ্জ", যা ঘন কুয়াশার মধ্যেও সহজে চোখে পড়ে।'
       },
       {
         id: 'place-6',
         categoryId: 'famous-places',
-        question: 'Angkor Wat, the largest religious temple complex in the world, is situated in which country?',
-        options: ['Thailand', 'Vietnam', 'Cambodia', 'Laos'],
+        question: 'আয়তনের দিক থেকে পৃথিবীর বৃহত্তম ধর্মীয় মন্দির কমপ্লেক্স আঙ্কোর ওয়াট কোন দেশে অবস্থিত?',
+        options: ['থাইল্যান্ড', 'ভিয়েতনাম', 'কম্বোডিয়া', 'লাওস'],
         correctIndex: 2,
-        explanation: 'Angkor Wat was built by King Suryavarman II in the early 12th century in Siem Reap, Cambodia, originally dedicated to the Hindu god Vishnu before transitioning into a Buddhist temple.',
-        interestingFact: 'Angkor Wat is featured directly on Cambodia’s national flag.'
+        explanation: 'দ্বাদশ শতাব্দীর শুরুতে রাজা দ্বিতীয় সূর্যবর্মণ কম্বোডিয়ায় সুবিশাল আঙ্কোর ওয়াট নির্মাণ করেন।',
+        interestingFact: 'আঙ্কোর ওয়াট এতই গর্বের প্রতীক যে এটি কম্বোডিয়ার জাতীয় পতাকায় স্থান পেয়েছে।'
       }
     ]
   },
   {
     id: 'mathematics',
     slug: 'mathematics',
-    title: 'Mathematics Quiz',
-    description: 'Sharpen your mind with mental math, geometry, prime numbers, algebra, and mathematical puzzles.',
+    title: 'গণিত ও মেধা যাচাই কুইজ',
+    description: 'মৌলিক সংখ্যা, পাটিগণিত, জ্যামিতি, ধারা ও যৌক্তিক গণিত ধাঁধা।',
     iconName: 'Calculator',
     colorScheme: 'blue',
     difficulty: 'Intermediate',
@@ -742,64 +742,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'math-1',
         categoryId: 'mathematics',
-        question: 'What is the only even prime number in mathematics?',
-        options: ['0', '1', '2', '4'],
+        question: 'গণিতে একমাত্র জোড় মৌলিক সংখ্যা (Even Prime Number) কোনটি?',
+        options: ['০', '১', '২', '৪'],
         correctIndex: 2,
-        explanation: '2 is a prime number because its only positive divisors are 1 and 2. Any other even number is divisible by 2, making 2 the only even prime.',
-        interestingFact: 'Primes are known as the "atoms" of mathematics because every integer greater than 1 can be uniquely factored into primes.'
+        explanation: '২-এর মাত্র দুটি গুণনীয়ক রয়েছে (১ এবং ২)। ২ ছাড়া বাকি সব জোড় সংখ্যাই ২ দ্বারা বিভাজ্য হওয়ায় তারা মৌলিক নয়।',
+        interestingFact: 'মৌলিক সংখ্যাকে গণিতের "পরমাণু" বলা হয়, কারণ ১-এর চেয়ে বড় যেকোনো পূর্ণসংখ্যাকে মৌলিক সংখ্যার গুণফল হিসেবে প্রকাশ করা যায়।'
       },
       {
         id: 'math-2',
         categoryId: 'mathematics',
-        question: 'What is the sum of the interior angles of any planar triangle?',
-        options: ['90 degrees', '180 degrees', '270 degrees', '360 degrees'],
+        question: 'যেকোনো সমতল ত্রিভুজের তিনটি অন্তঃস্থ কোণের সমষ্টি কত ডিগ্রি?',
+        options: ['৯০ ডিগ্রি', '১৮০ ডিগ্রি', '২৭০ ডিগ্রি', '৩৬০ ডিগ্রি'],
         correctIndex: 1,
-        explanation: 'In Euclidean geometry, the sum of the three interior angles of any triangle is always strictly equal to 180 degrees (π radians).',
-        interestingFact: 'In non-Euclidean spherical geometry, a triangle drawn on a sphere can have interior angles summing to more than 180 degrees!'
+        explanation: 'ইউক্লিডীয় জ্যামিতিতে যেকোনো ত্রিভুজের তিনটি অভ্যন্তরীণ কোণের যোগফল সর্বদা ১৮০ ডিগ্রি (বা π রেডিয়ান)।',
+        interestingFact: 'তবে গোলকের পৃষ্ঠের মতো বক্রতলে ত্রিভুজ আঁকলে তার তিন কোণের সমষ্টি ১৮০ ডিগ্রির বেশি হতে পারে।'
       },
       {
         id: 'math-3',
         categoryId: 'mathematics',
-        question: 'What is the mathematical constant Pi (π) rounded to four decimal places?',
-        options: ['3.1412', '3.1416', '3.1428', '3.1492'],
+        question: 'পাই (π)-এর মান চার দশমিক স্থান পর্যন্ত আসন্ন করলে কত হবে?',
+        options: ['৩.১৪১২', '৩.১৪১৬', '৩.১৪২৮', '৩.১৪৯২'],
         correctIndex: 1,
-        explanation: 'The value of Pi begins 3.14159265... which rounds to 3.1416 at four decimal places.',
-        interestingFact: 'Pi is an irrational and transcendental number, meaning its decimal digits never end and never settle into a repeating cycle.'
+        explanation: 'পাই-এর সঠিক মান হলো ৩.১৪১৫৯২৬৫... চার দশমিকে আসন্ন করলে এটি ৩.১৪১৬ দাঁড়ায়।',
+        interestingFact: 'পাই একটি অমূলদ সংখ্যা, এর দশমিক অংশ কখনোই শেষ হয় না এবং কখনো নির্দিষ্ট ছকে ফিরে আসে না।'
       },
       {
         id: 'math-4',
         categoryId: 'mathematics',
-        question: 'In the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, ...), what is the next number?',
-        options: ['11', '12', '13', '15'],
+        question: 'ফিবোনাচ্চি ধারায় (০, ১, ১, ২, ৩, ৫, ৮, ...) পরবর্তী পদটি কত হবে?',
+        options: ['১১', '১২', '১৩', '১৫'],
         correctIndex: 2,
-        explanation: 'Each term in the Fibonacci sequence is the sum of the two preceding terms. Here, 5 + 8 = 13.',
-        interestingFact: 'The ratio between successive Fibonacci numbers converges to the Golden Ratio (phi ≈ 1.618), frequently found in sunflower seeds and pinecones.'
+        explanation: 'ফিবোনাচ্চি ধারার নিয়ম অনুযায়ী প্রতিটি পদ পূর্ববর্তী দুটি পদের যোগফল। সুতরাং, ৫ + ৮ = ১৩।',
+        interestingFact: 'ফিবোনাচ্চি ধারার অনুপাত গোল্ডেন রেশিও বা সোনালী অনুপাতে (১.৬১৮) রূপ নেয় যা সূর্যমুখী ফুল ও শামুকের খোলসে দেখা যায়।'
       },
       {
         id: 'math-5',
         categoryId: 'mathematics',
-        question: 'What is the square root of 256?',
-        options: ['14', '16', '18', '24'],
+        question: '২৫৬-এর বর্গমূল (Square Root) কত?',
+        options: ['১৪', '১৬', '১৮', '২৪'],
         correctIndex: 1,
-        explanation: '16 multiplied by 16 equals 256 (16² = 256).',
-        interestingFact: '256 is also 2 to the 8th power (2^8), representing the exact number of distinct values an 8-bit byte can store.'
+        explanation: '১৬-কে ১৬ দিয়ে গুণ করলে ২৫৬ পাওয়া যায় (১৬ × ১৬ = ২৫৬)।',
+        interestingFact: '২৫৬ হলো ২-এর অষ্টম ঘাত (2^8), যা কম্পিউটারের ১ বাইট মেমোরিতে ধারণক্ষম মান সংখ্যা।'
       },
       {
         id: 'math-6',
         categoryId: 'mathematics',
-        question: 'What is the mathematical term for a polygon with eight sides?',
-        options: ['Heptagon', 'Hexagon', 'Octagon', 'Nonagon'],
+        question: 'আটটি বাহুবিশিষ্ট সমতল জ্যামিতিক বহুভুজকে কী বলা হয়?',
+        options: ['সপ্তভুজ (Heptagon)', 'ষড়ভুজ (Hexagon)', 'অষ্টভুজ (Octagon)', 'নবভুজ (Nonagon)'],
         correctIndex: 2,
-        explanation: 'An octagon is an eight-sided geometric polygon. A regular octagon has equal interior angles of 135 degrees each.',
-        interestingFact: 'The standard red STOP sign used in traffic across most of the world is shaped as a regular octagon.'
+        explanation: 'আটটি সোজা বাহু দ্বারা গঠিত বহুভুজকে অষ্টভুজ বা Octagon বলা হয়। এর প্রতিটি কোণ ১৩৫ ডিগ্রি।',
+        interestingFact: 'সারা বিশ্বের সড়কে ব্যবহৃত লাল রঙের ‘STOP’ ট্রাফিক সাইনটি একটি সুষম অষ্টভুজ।'
       }
     ]
   },
   {
     id: 'human-body',
     slug: 'human-body',
-    title: 'Human Body Quiz',
-    description: 'Discover the marvels of human anatomy, physiology, organs, circulation, and sensory systems.',
+    title: 'মানবদেহ ও স্বাস্থ্যবিজ্ঞান কুইজ',
+    description: 'মানুষের শারীরস্থান, হৃদযন্ত্র, কঙ্কালতন্ত্র, স্নায়ু ও অনাক্রম্যতার চমৎকার তথ্য।',
     iconName: 'Activity',
     colorScheme: 'cyan',
     popular: true,
@@ -808,64 +808,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'body-1',
         categoryId: 'human-body',
-        question: 'What is the largest organ of the human body by surface area and weight?',
-        options: ['Liver', 'Brain', 'Skin', 'Lungs'],
+        question: 'আয়তন ও ওজনের দিক থেকে মানবদেহের বৃহত্তম অঙ্গ কোনটি?',
+        options: ['যকৃৎ (Liver)', 'মস্তিষ্ক', 'ত্বক (Skin)', 'ফুসফুস'],
         correctIndex: 2,
-        explanation: 'The integumentary system (the skin) is the body’s largest organ, covering approximately 2 square meters (22 square feet) and weighing about 3.6 to 5 kilograms.',
-        interestingFact: 'Every minute, humans shed approximately 30,000 to 40,000 dead skin cells.'
+        explanation: 'মানুষের ত্বক প্রায় ২ বর্গমিটার আয়তন নিয়ে গঠিত এবং এর ওজন গড়ে ৩.৫ থেকে ৫ কেজি পর্যন্ত হয়ে থাকে।',
+        interestingFact: 'প্রতি মিনিটে আমাদের ত্বক থেকে গড়ে ৩০,০০০ থেকে ৪০,০০০ মৃত কোষ ঝরে পড়ে।'
       },
       {
         id: 'body-2',
         categoryId: 'human-body',
-        question: 'How many bones are there in an average adult human skeletal system?',
-        options: ['186', '206', '236', '300'],
+        question: 'একজন প্রাপ্তবয়স্ক মানুষের কঙ্কালে মোট কয়টি হাড় থাকে?',
+        options: ['১৮৬টি', '২০৬টি', '২৩৬টি', '৩০০টি'],
         correctIndex: 1,
-        explanation: 'An adult human skeleton consists of 206 bones. Infants are born with around 270 bones, many of which fuse together as the skeleton matures.',
-        interestingFact: 'More than half of your 206 bones are located in your hands, wrists, feet, and ankles!'
+        explanation: 'প্রাপ্তবয়স্কদের শরীরে ২০৬টি হাড় থাকে। শিশুরা জন্মের সময় প্রায় ২৭০টি হাড় নিয়ে জন্মায় যা বয়সের সাথে জোড়া লেগে যায়।',
+        interestingFact: 'আমাদের মোট ২০৬টি হাড়ের অর্ধেকেরও বেশি হাড় শুধু হাত, কবজি ও পায়ের পাতাতেই থাকে!'
       },
       {
         id: 'body-3',
         categoryId: 'human-body',
-        question: 'Which chamber of the human heart pumps oxygen-rich blood into the aorta to the rest of the body?',
-        options: ['Right Atrium', 'Right Ventricle', 'Left Atrium', 'Left Ventricle'],
+        question: 'হৃৎপিণ্ডের কোন প্রকোষ্ঠটি মহাধমনীর মাধ্যমে সারা শরীরে বিশুদ্ধ অক্সিজেনযুক্ত রক্ত পাম্প করে?',
+        options: ['ডান অলিন্দ', 'ডান নিলয়', 'বাম অলিন্দ', 'বাম নিলয় (Left Ventricle)'],
         correctIndex: 3,
-        explanation: 'The Left Ventricle has the thickest muscular wall in the heart because it must generate enough pressure to pump oxygenated blood throughout the entire systemic circulation.',
-        interestingFact: 'A human heart beats over 100,000 times each day, pumping roughly 7,500 liters (2,000 gallons) of blood.'
+        explanation: 'বাম নিলয়ের পেশিবহুল প্রাচীর সবচেয়ে পুরু কারণ এটি সারা শরীরে রক্ত পাঠাতে প্রয়োজনীয় উচ্চচাপ তৈরি করে।',
+        interestingFact: 'একজন মানুষের হৃৎপিণ্ড প্রতিদিন প্রায় ১ লাখ বার স্পন্দিত হয় এবং প্রায় সাড়ে সাত হাজার লিটার রক্ত পাম্প করে।'
       },
       {
         id: 'body-4',
         categoryId: 'human-body',
-        question: 'What is the hardest substance in the entire human body?',
-        options: ['Femur Bone', 'Tooth Enamel', 'Skull Cranium', 'Fingernail Keratin'],
+        question: 'মানবদেহের সবচেয়ে শক্ত ও কঠিনতম উপাদান কোনটি?',
+        options: ['উরুর ফিমার হাড়', 'দাঁতের এনামেল (Tooth Enamel)', 'মাথার খুলি', 'নখের কেরাটিন'],
         correctIndex: 1,
-        explanation: 'Tooth enamel consists of roughly 96% minerals (mainly hydroxyapatite crystals), making it even harder than skeletal bones.',
-        interestingFact: 'Unlike bones, tooth enamel contains no living cells and cannot regenerate once chipped or worn away.'
+        explanation: 'দাঁতের বাইরের চকচকে এনামেল ৯৬% খনিজে গঠিত, যা আমাদের শরীরের যেকোনো হাড়ের চেয়েও কঠিন।',
+        interestingFact: 'হাড় ভেঙে গেলে পুনরায় জোড়া লাগে, কিন্তু দাঁতের এনামেলে জীবিত কোষ না থাকায় একবার নষ্ট হলে প্রাকৃতিকভাবে তৈরি হয় না।'
       },
       {
         id: 'body-5',
         categoryId: 'human-body',
-        question: 'Which part of the brain controls voluntary muscle coordination, balance, and posture?',
-        options: ['Cerebellum', 'Cerebrum', 'Brainstem', 'Hypothalamus'],
+        question: 'মস্তিষ্কের কোন অংশ দেহের ভারসাম্য, অঙ্গবিন্যাস এবং পেশির সমন্বয় নিয়ন্ত্রণ করে?',
+        options: ['সেরিবেলাম (Cerebellum)', 'সেরিব্রাম', 'ব্রেনস্টেম', 'হাইপোথ্যালামাস'],
         correctIndex: 0,
-        explanation: 'The cerebellum (Latin for "little brain") accounts for only 10% of total brain volume but contains roughly 50% of all neurons in the brain.',
-        interestingFact: 'The cerebellum fine-tunes motor movements so you can ride a bicycle or play an instrument smoothly.'
+        explanation: 'সেরিবেলাম পুরো মস্তিষ্কের মাত্র ১০% আয়তন হলেও দেহের মোট নিউরনের প্রায় ৫০% এতে অবস্থিত।',
+        interestingFact: 'সাইকেল চালানো কিংবা বাদ্যযন্ত্র বাজানোর মতো মসৃণ দক্ষতা বজায় রাখতে সেরিবেলাম সবচেয়ে বড় ভূমিকা রাখে।'
       },
       {
         id: 'body-6',
         categoryId: 'human-body',
-        question: 'What type of blood cells are primarily responsible for fighting infections and foreign pathogens?',
-        options: ['Erythrocytes (Red)', 'Leukocytes (White)', 'Thrombocytes (Platelets)', 'Plasma Proteins'],
+        question: 'রক্তের কোন উপাদানটি রোগজীবাণু ও সংক্রমণের বিরুদ্ধে লড়াই করার মূল সৈনিক?',
+        options: ['লোহিত রক্তকণিকা', 'শ্বেত রক্তকণিকা (Leukocytes)', 'অণুচক্রিকা বা প্লাটিলেট', 'রক্তরস'],
         correctIndex: 1,
-        explanation: 'Leukocytes, or white blood cells, are key components of the immune system that identify, engulf, and neutralize harmful bacteria, viruses, and parasites.',
-        interestingFact: 'White blood cells make up only about 1% of your total blood volume, but their count can spike rapidly during an infection.'
+        explanation: 'শ্বেত রক্তকণিকা বা লিউকোসাইট ক্ষতিকর ব্যাকটেরিয়া ও ভাইরাস শনাক্ত করে তাদের ধ্বংস করে দেহকে রক্ষা করে।',
+        interestingFact: 'রক্তের মাত্র ১% হলো শ্বেত রক্তকণিকা, তবে সংক্রমণ হলে এদের সংখ্যা নিমেষেই বহু গুণ বেড়ে যায়।'
       }
     ]
   },
   {
     id: 'islamic-knowledge',
     slug: 'islamic-knowledge',
-    title: 'Islamic Knowledge Quiz',
-    description: 'Enrich your understanding of Islamic history, sacred texts, pillars of faith, and heritage.',
+    title: 'ইসলামিক জ্ঞান ও ইতিহাস কুইজ',
+    description: 'পবিত্র কুরআন, নবী-রাসূলগণের জীবনী, ইসলামের স্তম্ভসমূহ ও সোনালী ঐতিহ্য।',
     iconName: 'Moon',
     colorScheme: 'teal',
     featured: true,
@@ -874,64 +874,64 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'islam-1',
         categoryId: 'islamic-knowledge',
-        question: 'How many daily obligatory prayers (Salah) are prescribed for Muslims?',
-        options: ['Three', 'Four', 'Five', 'Seven'],
+        question: 'মুসলমানদের ওপর প্রতিদিন কয় ওয়াক্ত নামাজ আদায় করা ফরজ?',
+        options: ['৩ ওয়াক্ত', '৪ ওয়াক্ত', '৫ ওয়াক্ত', '৭ ওয়াক্ত'],
         correctIndex: 2,
-        explanation: 'Muslims perform five obligatory daily prayers: Fajr (dawn), Dhuhr (midday), Asr (afternoon), Maghrib (sunset), and Isha (night).',
-        interestingFact: 'The obligation of the five daily prayers was gifted during the miraculous journey of Al-Isra wal-Mi’raj.'
+        explanation: 'প্রতিদিন ফজর, জোহর, আসর, মাগরিব ও এশা—এই পাঁচ ওয়াক্ত সালাত বা নামাজ আদায় করা প্রত্যেক মুসলিমের ওপর ফরজ।',
+        interestingFact: 'পবিত্র মেরাজের রজনীতে প্রিয়নবী হযরত মুহাম্মদ (সা.)-কে এই পাঁচ ওয়াক্ত নামাজের বিধান হাদিয়া দেওয়া হয়েছিল।'
       },
       {
         id: 'islam-2',
         categoryId: 'islamic-knowledge',
-        question: 'How many chapters (Surahs) are there in the Holy Quran?',
-        options: ['110', '114', '120', '128'],
+        question: 'পবিত্র কুরআনে মোট কয়টি সূরা বা অধ্যায় রয়েছে?',
+        options: ['১১০টি', '১১৪টি', '১২০টি', '১২৮টি'],
         correctIndex: 1,
-        explanation: 'The Holy Quran consists of 114 Surahs, beginning with Surah Al-Fatihah (The Opening) and concluding with Surah An-Nas (Mankind).',
-        interestingFact: 'Surah Al-Baqarah is the longest Surah in the Quran with 286 verses, while Surah Al-Kawthar is the shortest with 3 verses.'
+        explanation: 'পবিত্র কুরআনুল কারীমে মোট ১১৪টি সূরা রয়েছে; যার শুরু সূরা আল-ফাতিহা দিয়ে এবং সমাপ্তি সূরা আন-নাস দিয়ে।',
+        interestingFact: 'সূরা আল-বাকারা কুরআনের দীর্ঘতম সূরা (২৮৬ আয়াত) এবং সূরা আল-কাউসার সবচেয়ে সংক্ষিপ্ত সূরা (৩ আয়াত)।'
       },
       {
         id: 'islam-3',
         categoryId: 'islamic-knowledge',
-        question: 'In which lunar Islamic month is the obligatory annual fasting of Ramadan observed?',
-        options: ['7th month (Rajab)', '8th month (Sha’ban)', '9th month (Ramadan)', '12th month (Dhul-Hijjah)'],
+        question: 'হিজরি বর্ষপঞ্জির কোন পবিত্র মাসে ফরজ সিয়াম বা রোজা পালন করা হয়?',
+        options: ['রজব মাসে (৭ম)', 'শা’বান মাসে (৮ম)', 'রমজান মাসে (৯ম)', 'জিলহজ্জ মাসে (১২তম)'],
         correctIndex: 2,
-        explanation: 'Ramadan is the ninth month of the Islamic Hijri calendar, during which Muslims fast daily from true dawn (Fajr) until sunset (Maghrib).',
-        interestingFact: 'The Quran was first revealed to Prophet Muhammad (peace be upon him) on Laylat al-Qadr during the month of Ramadan.'
+        explanation: 'রমজান হলো হিজরি সনের ৯ম মাস, যে মাসে সুবহে সাদিক থেকে সূর্যাস্ত পর্যন্ত সংযম সাধনায় রোজা রাখা হয়।',
+        interestingFact: 'রমজান মাসের লাইলাতুল কদর-এর রাতে পবিত্র কুরআন মানবজাতির হিদায়াতের জন্য নাজিল শুরু হয়েছিল।'
       },
       {
         id: 'islam-4',
         categoryId: 'islamic-knowledge',
-        question: 'What is the sacred city toward which Muslims face in all prayers (the Qiblah)?',
-        options: ['Medina', 'Jerusalem', 'Makkah', 'Cairo'],
+        question: 'বিশ্বের সকল মুসলিম কোন পবিত্র শহরের কাবার দিকে মুখ করে নামাজ আদায় করেন?',
+        options: ['মদিনা', 'জেরুজালেম', 'মক্কা মুকাররমা', 'কায়রো'],
         correctIndex: 2,
-        explanation: 'Muslims worldwide direct their prayers toward the Kaaba located inside the Masjid al-Haram in Makkah, Saudi Arabia.',
-        interestingFact: 'Historically, Jerusalem (Bayt al-Maqdis) was the initial Qiblah before Allah commanded the change toward the Kaaba in Makkah.'
+        explanation: 'সৌদি আরবের মক্কা নগরীর মসজিদুল হারামে অবস্থিত পবিত্র কাবার দিকে মুখ করে সারা বিশ্বের মুসল্লিরা কিবলামুখী হন।',
+        interestingFact: 'ইসলামের প্রাথমিক যুগে বায়তুল মুকাদ্দাস (জেরুজালেম) কিবলা ছিল, পরবর্তীতে আল্লাহর নির্দেশে কাবা কিবলা নির্ধারিত হয়।'
       },
       {
         id: 'islam-5',
         categoryId: 'islamic-knowledge',
-        question: 'What is the second pillar of Islam, following the declaration of faith (Shahada)?',
-        options: ['Zakat (Charity)', 'Salah (Prayer)', 'Sawm (Fasting)', 'Hajj (Pilgrimage)'],
+        question: 'কালিমা বা ঈমানের পর ইসলামের দ্বিতীয় মৌলিক স্তম্ভ কোনটি?',
+        options: ['যাকাত প্রদান', 'নামাজ (সালাত)', 'রোজা (সাওম)', 'হজ পালন'],
         correctIndex: 1,
-        explanation: 'The Five Pillars of Islam are: 1. Shahada (Declaration of Faith), 2. Salah (Prayer), 3. Zakat (Almsgiving), 4. Sawm (Fasting), and 5. Hajj (Pilgrimage).',
-        interestingFact: 'Salah serves as a direct spiritual link and communion between the believer and the Creator throughout the day.'
+        explanation: 'ইসলামের পাঁচটি ভিত্তি হলো: ১. ঈমান (শাহাদাত), ২. সালাত (নামাজ), ৩. যাকাত, ৪. সাওম (রোজা) এবং ৫. হজ।',
+        interestingFact: 'সালাত হলো বান্দা ও মহান সৃষ্টিকর্তার মধ্যকার সরাসরি সংযোগ ও ইবাদত।'
       },
       {
         id: 'islam-6',
         categoryId: 'islamic-knowledge',
-        question: 'Who was the first companion to accept Islam among adult free men and the first Caliph?',
-        options: ['Umar ibn al-Khattab', 'Ali ibn Abi Talib', 'Abu Bakr as-Siddiq', 'Uthman ibn Affan'],
+        question: 'প্রাপ্তবয়স্ক স্বাধীন পুরুষদের মধ্যে প্রথম ইসলাম গ্রহণকারী এবং প্রথম খলিফা কে ছিলেন?',
+        options: ['হযরত উমর ইবনুল খাত্তাব (রা.)', 'হযরত আলী ইবনে আবি তালিব (রা.)', 'হযরত আবু বকর সিদ্দিক (রা.)', 'হযরত উসমান ইবনে আফফান (রা.)'],
         correctIndex: 2,
-        explanation: 'Abu Bakr as-Siddiq (RA) was the closest companion of Prophet Muhammad (peace be upon him) and served as the first Rightly Guided Caliph (Rashidun).',
-        interestingFact: 'Abu Bakr was titled "As-Siddiq" (The Truthful) for his immediate and unwavering belief in the Prophet’s night journey.'
+        explanation: 'হযরত আবু বকর সিদ্দিক (রা.) মহানবী (সা.)-এর আজীবন বিশ্বস্ত সঙ্গী এবং খোলাফায়ে রাশেদীনের প্রথম খলিফা ছিলেন।',
+        interestingFact: 'মেরাজের ঘটনা নিঃসংকোচে বিশ্বাস করার কারণে রাসুলুল্লাহ (সা.) তাঁকে ‘আস-সিদ্দিক’ (মহা সত্যবাদী) উপাধিতে ভূষিত করেন।'
       }
     ]
   },
   {
     id: 'daily-quiz',
     slug: 'daily-quiz',
-    title: 'Daily Quiz',
-    description: 'A fresh, handpicked mix of trivia questions updated every day to test your daily streak and general intellect.',
+    title: 'দৈনিক কুইজ',
+    description: 'প্রতিদিন নতুন ৭টি আকর্ষণীয় প্রশ্নে নিজের সাধারণ জ্ঞান যাচাই করুন এবং স্ট্রিক ধরে রাখুন।',
     iconName: 'CalendarCheck',
     colorScheme: 'blue',
     featured: true,
@@ -941,73 +941,73 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'daily-1',
         categoryId: 'daily-quiz',
-        question: 'What natural phenomenon creates the stunning northern and southern auroras?',
-        options: ['Moonlight reflection on ice', 'Solar wind colliding with magnetosphere', 'Lightning in upper stratosphere', 'Volcanic dust scattering'],
+        question: 'মেরু অঞ্চলে আকাশে রঙিন আলোর নৃত্য বা অরোরা (Aurora) সৃষ্টির মূল কারণ কী?',
+        options: ['বরফে চাঁদের আলোর প্রতিফলন', 'চৌম্বকক্ষেত্রে সৌরকণার সংঘর্ষ', 'বায়ুমণ্ডলে বজ্রপাত', 'আগ্নেয়গিরির ছাই'],
         correctIndex: 1,
-        explanation: 'Auroras occur when charged particles from solar wind collide with oxygen and nitrogen atoms in Earth’s magnetic field, emitting brilliant dancing lights.',
-        interestingFact: 'Green auroras are produced by oxygen molecules roughly 100 kilometers high, while rare red auroras occur above 200 kilometers.'
+        explanation: 'সূর্য থেকে আসা চার্জযুক্ত সৌরকণা পৃথিবীর বায়ুমণ্ডলের অক্সিজেন ও নাইট্রোজেনের সাথে সংঘর্ষে জড়িয়ে এই আলো ছড়ায়।',
+        interestingFact: '১০০ কিলোমিটার উঁচুতে অক্সিজেনের সংঘর্ষে সবুজ অরোরা এবং ২০০ কিলোমিটারের ওপরে বিরল লাল অরোরা দেখা যায়।'
       },
       {
         id: 'daily-2',
         categoryId: 'daily-quiz',
-        question: 'Which country is credited with inventing paper in the 2nd century BC?',
-        options: ['Egypt', 'China', 'Greece', 'India'],
+        question: 'খ্রিস্টপূর্ব দ্বিতীয় শতকে গাছ ও পাটের আঁশ থেকে কাগজ আবিষ্কারের গৌরব কোন দেশের?',
+        options: ['মিশর', 'চীন', 'গ্রিস', 'ভারত'],
         correctIndex: 1,
-        explanation: 'Cai Lun, an official of the Han Dynasty in China, is credited with refining the papermaking process using mulberry bark, hemp, and rags around 105 AD.',
-        interestingFact: 'Papermaking remained a closely guarded state secret in China for over 500 years before spreading along the Silk Road.'
+        explanation: '১০৫ খ্রিস্টাব্দে চীনের হান রাজবংশের রাজদরবারের কর্মকর্তা সাই লুন আধুনিক কাগজ তৈরির পদ্ধতি চূড়ান্ত করেন।',
+        interestingFact: 'চীন কাগজ তৈরির এই গোপন কৌশল প্রায় ৫০০ বছর বাইরের দুনিয়া থেকে অত্যন্ত সতর্কতার সাথে লুকিয়ে রেখেছিল।'
       },
       {
         id: 'daily-3',
         categoryId: 'daily-quiz',
-        question: 'Which planet possesses the largest moon relative to its own size in the solar system?',
-        options: ['Earth (the Moon)', 'Jupiter (Ganymede)', 'Saturn (Titan)', 'Pluto (Charon)'],
+        question: 'সৌরজগতের কোন বামন গ্রহের উপগ্রহটি মূল গ্রহের আকারের প্রায় অর্ধেক?',
+        options: ['চাঁদ (পৃথিবী)', 'গ্যানিমিড (বৃহস্পতি)', 'টাইটান (শনি)', 'ক্যারন (প্লুটো)'],
         correctIndex: 3,
-        explanation: 'Charon is roughly half the diameter of dwarf planet Pluto, creating a binary planetary system where both orbit a barycenter outside Pluto itself.',
-        interestingFact: 'Because of tidal locking, the same face of Charon always points directly toward the same face of Pluto.'
+        explanation: 'ক্যারন উপগ্রহটি প্লুটোর আকারের প্রায় অর্ধেক হওয়ায় তারা পরস্পরকে কেন্দ্র করে একটি জোড়া ব্যবস্থার মতো ঘোরে।',
+        interestingFact: 'টাইডাল লকিংয়ের কারণে ক্যারনের একই পাশ সর্বদা প্লুটোর দিকে ফেরানো থাকে।'
       },
       {
         id: 'daily-4',
         categoryId: 'daily-quiz',
-        question: 'What is the only bird species known to drink water through suction rather than tilting its head back?',
-        options: ['Pigeon (and Dove)', 'Eagle', 'Crow', 'Pelican'],
+        question: 'কোন পাখি মাথা পেছনে না হেলিয়ে স্ট্র-এর মতো সরাসরি চুষে পানি পান করতে পারে?',
+        options: ['কবুতর বা পায়রা', 'ঈগল', 'কাক', 'পেলিক্যান'],
         correctIndex: 0,
-        explanation: 'Pigeons and doves drink water using peristalsis to pump water upwards like a straw, whereas almost all other birds must scoop water and tilt their heads back.',
-        interestingFact: 'Pigeons can fly at speeds up to 90 mph and possess remarkable navigational magnetite in their beaks.'
+        explanation: 'পায়রা পেশির সংকোচন প্রক্রিয়ায় নলের মতো পানি চুষে সরাসরি পান করতে পারে, যা অন্য পাখিরা পারে না।',
+        interestingFact: 'পায়রা ঘণ্টায় ৯০ মাইল পর্যন্ত গতি তুলতে পারে এবং তাদের ঠোঁটে ম্যাগনেটাইট খনিজ থাকায় অসাধারণ দিক নির্ণয় ক্ষমতা রয়েছে।'
       },
       {
         id: 'daily-5',
         categoryId: 'daily-quiz',
-        question: 'In computer programming, what does the acronym "API" stand for?',
+        question: 'সফটওয়্যার জগতে বহুল ব্যবহৃত "API"-এর পূর্ণরূপ কী?',
         options: ['Application Programming Interface', 'Automated Program Input', 'Advanced Protocol Integration', 'Application Parsing Identifier'],
         correctIndex: 0,
-        explanation: 'An Application Programming Interface defines rules and mechanisms that allow distinct software programs to communicate with each other.',
-        interestingFact: 'APIs allow websites to embed Google Maps, process payments securely, or retrieve weather forecasts in milliseconds.'
+        explanation: 'API হলো Application Programming Interface, যার মাধ্যমে দুটি ভিন্ন সফটওয়্যার পরস্পরের সাথে যোগাযোগ ও ডেটা আদান-প্রদান করে।',
+        interestingFact: 'গুগল ম্যাপস এম্বেড করা থেকে শুরু করে অনলাইন পেমেন্ট সবই এপিআই-এর সাহায্যে কয়েক মিলি সেকেন্ডে ঘটে।'
       },
       {
         id: 'daily-6',
         categoryId: 'daily-quiz',
-        question: 'Which chemical element makes up roughly 70% of the Sun’s mass?',
-        options: ['Helium', 'Hydrogen', 'Carbon', 'Oxygen'],
+        question: 'সূর্যের মোট ভরের প্রায় ৭০ শতাংশেরও বেশি কোন মৌলিক গ্যাস দিয়ে গঠিত?',
+        options: ['হিলিয়াম', 'হাইড্রোজেন', 'কার্বন', 'অক্সিজেন'],
         correctIndex: 1,
-        explanation: 'Hydrogen makes up about 73% of the Sun’s mass, continually fusing into helium under immense core temperatures and pressures.',
-        interestingFact: 'Every second, the Sun converts 600 million tons of hydrogen into helium via nuclear fusion.'
+        explanation: 'সূর্যের প্রায় ৭৩% উপাদানই হাইড্রোজেন, যা অতি উচ্চ তাপ ও চাপে নিউক্লিয়ার ফিউশন প্রক্রিয়ায় হিলিয়ামে পরিণত হচ্ছে।',
+        interestingFact: 'সূর্যের কেন্দ্রে প্রতি সেকেন্ডে প্রায় ৬০ কোটি টন হাইড্রোজেন হিলিয়ামে রূপান্তরিত হয়ে প্রচণ্ড শক্তি ছড়াচ্ছে।'
       },
       {
         id: 'daily-7',
         categoryId: 'daily-quiz',
-        question: 'Which world-famous landmark was originally constructed as the entrance arch for the 1889 World’s Fair?',
-        options: ['Eiffel Tower', 'Arc de Triomphe', 'Brandenburg Gate', 'Statue of Liberty'],
+        question: '১৮৮৯ সালে প্যারিসের বিশ্ব প্রদর্শনীর প্রবেশ তোরণ হিসেবে কোন স্মৃতিস্তম্ভ নির্মিত হয়েছিল?',
+        options: ['আইফেল টাওয়ার (Eiffel Tower)', 'আর্ক দ্য ত্রিয়োম্ফ', 'ব্র্যান্ডেনবার্গ গেট', 'স্ট্যাচু অব লিবার্টি'],
         correctIndex: 0,
-        explanation: 'The Eiffel Tower was designed by Gustave Eiffel’s engineering firm as the temporary centerpiece for the 1889 Exposition Universelle in Paris.',
-        interestingFact: 'It was originally intended to be dismantled after 20 years, but was saved because it served as an invaluable radio telegraph antenna.'
+        explanation: 'গুস্তাভ আইফেলের প্রকৌশলী দল ১৮৮৯ সালের প্যারিস ওয়ার্ল্ড ফেয়ারের জন্য আইফেল টাওয়ার তৈরি করেছিল।',
+        interestingFact: 'প্রথমে কথা ছিল ২০ বছর পর এটি ভেঙে ফেলা হবে, কিন্তু রেডিও যোগাযোগের অ্যান্টেনা হিসেবে মূল্যবান প্রমাণিত হওয়ায় এটি টিকে যায়।'
       }
     ]
   },
   {
     id: 'fun-entertainment',
     slug: 'fun-entertainment',
-    title: 'Fun and Entertainment Quiz',
-    description: 'Test your knowledge on cinema classics, gaming legends, animated blockbusters, pop icons, and music.',
+    title: 'বিনোদন ও সিনেমা কুইজ',
+    description: 'হলিউড ক্লাসিক, ভিডিও গেমস, অ্যানিমেশন, অস্কার ও পপ সংগীতের দুনিয়া।',
     iconName: 'Clapperboard',
     colorScheme: 'indigo',
     recentlyAdded: true,
@@ -1017,56 +1017,56 @@ export const QUIZ_CATEGORIES: QuizCategory[] = [
       {
         id: 'fun-1',
         categoryId: 'fun-entertainment',
-        question: 'Which animated film was the first full-length feature produced entirely using computer-generated imagery (CGI)?',
-        options: ['A Bug’s Life', 'Toy Story', 'Shrek', 'Monsters, Inc.'],
+        question: 'সম্পূর্ণ কম্পিউটার গ্রাফিক্স (CGI) প্রযুক্তিতে নির্মিত প্রথম পূর্ণদৈর্ঘ্য অ্যানিমেশন সিনেমা কোনটি?',
+        options: ['আ বাগস লাইফ', 'টয় স্টোরি (Toy Story)', 'শ্রেক', 'মনস্টার্স, ইনক.'],
         correctIndex: 1,
-        explanation: 'Pixar Animation Studios and Walt Disney Pictures released Toy Story in November 1995, pioneering the era of 3D computer-animated cinema.',
-        interestingFact: 'Toy Story required 800,000 machine hours of computing power to render its 77 minutes of groundbreaking animation.'
+        explanation: '১৯৯৫ সালে পিক্সার অ্যানিমেশন স্টুডিওস ও ডিজনির ‘টয় স্টোরি’ চলচ্চিত্র জগতে ৩ডি কম্পিউটার অ্যানিমেশনের যুগ শুরু করে।',
+        interestingFact: 'টয় স্টোরির ৭৭ মিনিটের অ্যানিমেশন রেন্ডার করতে মোট ৮ লাখ কম্পিউটার ঘণ্টা সময় লেগেছিল।'
       },
       {
         id: 'fun-2',
         categoryId: 'fun-entertainment',
-        question: 'What is the best-selling video game of all time across all platforms, with over 300 million copies sold?',
-        options: ['Tetris', 'Grand Theft Auto V', 'Minecraft', 'Wii Sports'],
+        question: 'বিশ্বের ইতিহাসে ৩০ কোটি কপিরও বেশি বিক্রি হওয়া সর্বকালের সেরা বিক্রিত ভিডিও গেম কোনটি?',
+        options: ['টেট্রিস', 'গ্র্যান্ড থেফট অটো ৫', 'মাইনক্রাফ্ট (Minecraft)', 'উই স্পোর্টস'],
         correctIndex: 2,
-        explanation: 'Created by Markus "Notch" Persson and released in 2011, Minecraft has surpassed 300 million copies sold worldwide.',
-        interestingFact: 'A standard Minecraft world generates a procedurally generated terrain that spans over 60 million blocks in diameter—larger than the surface of Neptune!'
+        explanation: 'মার্কাস পার্সন উদ্ভাবিত ২০১১ সালের স্যান্ডবক্স গেম মাইনক্রাফ্ট ৩০ কোটিরও বেশি কপি বিক্রি হয়ে এক নম্বর স্থান দখল করেছে।',
+        interestingFact: 'একটি মাইনক্রাফ্ট গেম ওয়ার্ল্ডের ব্যাস প্রায় ৬ কোটি ব্লক লম্বা—যা নেপচুন গ্রহের ক্ষেত্রফলের চেয়েও বড়!'
       },
       {
         id: 'fun-3',
         categoryId: 'fun-entertainment',
-        question: 'Who composed the iconic, Academy Award-winning film scores for Star Wars, Jaws, Indiana Jones, and Jurassic Park?',
-        options: ['Hans Zimmer', 'John Williams', 'Ennio Morricone', 'Danny Elfman'],
+        question: 'স্টার ওয়ার্স, জুরাসিক পার্ক ও জোস-এর অবিস্মরণীয় সুরস্রষ্টা কিংবদন্তি কে?',
+        options: ['হ্যান্স জিমার', 'জন উইলিয়ামস (John Williams)', 'এন্নিও মরিকোনে', 'ড্যানি এলফম্যান'],
         correctIndex: 1,
-        explanation: 'John Williams has earned 54 Academy Award nominations, making him the most-nominated living person in Oscar history, second only to Walt Disney.',
-        interestingFact: 'Williams composed the thrilling two-note shark motif for Jaws using just an alternating E and F on the tuba and double bass.'
+        explanation: 'জন উইলিয়ামস অস্কারে ৫৪ বার মনোনয়ন পেয়েছেন, যা জীবিত যেকোনো ব্যক্তির ক্ষেত্রে সর্বোচ্চ রেকর্ড।',
+        interestingFact: 'জোস চলচ্চিত্রের বিখ্যাত হাঙরের আবহ সঙ্গীত তিনি মাত্র দুটি সুর স্বরলিপি (E এবং F) দিয়ে তৈরি করেছিলেন।'
       },
       {
         id: 'fun-4',
         categoryId: 'fun-entertainment',
-        question: 'What was the first music video ever broadcast when MTV launched on cable television on August 1, 1981?',
-        options: ['"Thriller" by Michael Jackson', '"Video Killed the Radio Star" by The Buggles', '"Bohemian Rhapsody" by Queen', '"Take On Me" by a-ha'],
+        question: '১৯৮১ সালের ১ আগস্ট এমটিভি (MTV) চ্যানেলের যাত্রায় প্রথম প্রচারিত মিউজিক ভিডিও কোনটি ছিল?',
+        options: ['মাইকেল জ্যাকসনের থ্রিলার', '"Video Killed the Radio Star"', 'কুইনের বোহেমিয়ান র‍্যাপসোডি', 'আ-হা-এর টেক অন মি'],
         correctIndex: 1,
-        explanation: 'MTV launched at 12:01 AM with the prophetic title "Video Killed the Radio Star" by British new wave group The Buggles.',
-        interestingFact: 'The channel’s famous opening visuals showed Apollo 11 moon landing footage overlaid with the MTV logo.'
+        explanation: 'এমটিভি রাত ১২:০১ মিনিটে ব্রিটিশ ব্যান্ড দ্য বাগলস-এর "Video Killed the Radio Star" গানের মাধ্যমে সম্প্রচার শুরু করেছিল।',
+        interestingFact: 'চ্যানেলের ঐতিহাসিক উদ্বোধনী ভিডিওতে অ্যাপোলো-১১ চন্দ্রাভিযানের দৃশ্য এমটিভির লোগোর সাথে মিশিয়ে দেখানো হয়েছিল।'
       },
       {
         id: 'fun-5',
         categoryId: 'fun-entertainment',
-        question: 'In the Wizarding World of Harry Potter, what is the name of the high-speed golden sphere caught by the Seeker in Quidditch?',
-        options: ['Quaffle', 'Bludger', 'Golden Snitch', 'Remembrall'],
+        question: 'হ্যারি পটারের জাদুবিশ্বে কুইডিচ খেলায় সিকার যে অতিদ্রুত ডানাওয়ালা স্বর্ণগোলকটি ধরে তার নাম কী?',
+        options: ['কোয়াফল', 'ব্লাজার', 'গোল্ডেন স্নিচ (Golden Snitch)', 'রিমেমব্রাল'],
         correctIndex: 2,
-        explanation: 'Catching the Golden Snitch awards the Seeker’s team 150 points and officially ends the Quidditch match.',
-        interestingFact: 'In lore, Snitches possess flesh memories: they remember the exact touch of the first person to handle them bare-handed.'
+        explanation: 'গোল্ডেন স্নিচ ধরলে সিকারের দল ১৫০ পয়েন্ট পায় এবং কুইডিচ খেলা শেষ বলে গণ্য হয়।',
+        interestingFact: 'স্নিচের ‘ফ্লেশ মেমোরি’ থাকে—যে প্রথম তাকে খালি হাতে ধরে তার স্পর্শ স্নিচ আজীবন মনে রাখে।'
       },
       {
         id: 'fun-6',
         categoryId: 'fun-entertainment',
-        question: 'Which legendary actor voiced the wise and mighty lion Mufasa in Disney’s 1994 animated classic "The Lion King"?',
-        options: ['Morgan Freeman', 'James Earl Jones', 'Samuel L. Jackson', 'Keith David'],
+        question: 'ডিজনির ১৯৯৪ সালের বিখ্যাত ‘দ্য লায়ন কিং’ সিনেমায় মহাপ্রতাপশালী রাজা মুফাসার কণ্ঠ দিয়েছিলেন কে?',
+        options: ['মরগান ফ্রিম্যান', 'জেমস আর্ল জোন্স (James Earl Jones)', 'স্যামুয়েল এল. জ্যাকসন', 'কিথ ডেভিড'],
         correctIndex: 1,
-        explanation: 'James Earl Jones provided the iconic, resonant voice for King Mufasa in both the 1994 animated film and the 2019 CGI adaptation.',
-        interestingFact: 'Jones is also famous for voicing the galactic villain Darth Vader in the Star Wars franchise.'
+        explanation: 'জেমস আর্ল জোন্স তাঁর গভীর গম্ভীর ব্যারিটোন কণ্ঠে রাজা মুফাসার চরিত্রে কণ্ঠ দিয়ে চরিত্রটিকে চিরস্মরণীয় করেছেন।',
+        interestingFact: 'জেমস আর্ল জোন্স স্টার ওয়ার্স ফ্র্যাঞ্চাইজির বিখ্যাত খলনায়ক ডার্থ ভ্যাডারের চরিত্রেও কণ্ঠ দিয়েছিলেন।'
       }
     ]
   }
@@ -1087,7 +1087,6 @@ export function getRandomQuiz(): QuizCategory {
 }
 
 export function getDailyQuizForDate(dateStr: string): { title: string; dateFormatted: string; questions: QuizCategory['questions'] } {
-  // Deterministic seed based on date string e.g. "2026-10-31"
   let hash = 0;
   for (let i = 0; i < dateStr.length; i++) {
     hash = (hash << 5) - hash + dateStr.charCodeAt(i);
@@ -1095,7 +1094,6 @@ export function getDailyQuizForDate(dateStr: string): { title: string; dateForma
   }
   const absHash = Math.abs(hash);
 
-  // Pool questions from all categories to create a balanced 7-question daily quiz
   const allQuestions = QUIZ_CATEGORIES.flatMap((c) => c.questions);
   const selectedQuestions: typeof allQuestions = [];
   const seenIds = new Set<string>();
@@ -1104,7 +1102,6 @@ export function getDailyQuizForDate(dateStr: string): { title: string; dateForma
     const index = (absHash + i * 17) % allQuestions.length;
     let candidate = allQuestions[index];
     if (seenIds.has(candidate.id)) {
-      // Find next unused
       for (let j = 0; j < allQuestions.length; j++) {
         const nextCandidate = allQuestions[(index + j) % allQuestions.length];
         if (!seenIds.has(nextCandidate.id)) {
@@ -1117,9 +1114,9 @@ export function getDailyQuizForDate(dateStr: string): { title: string; dateForma
     selectedQuestions.push(candidate);
   }
 
-  // Format date nicely
+  // Format date in Bengali
   const d = new Date(dateStr + 'T12:00:00');
-  const dateFormatted = d.toLocaleDateString('en-US', {
+  const dateFormatted = d.toLocaleDateString('bn-BD', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -1127,7 +1124,7 @@ export function getDailyQuizForDate(dateStr: string): { title: string; dateForma
   });
 
   return {
-    title: `Daily Quiz · ${dateFormatted}`,
+    title: `দৈনিক কুইজ · ${dateFormatted}`,
     dateFormatted,
     questions: selectedQuestions
   };

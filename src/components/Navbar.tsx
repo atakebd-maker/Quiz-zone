@@ -36,38 +36,38 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const navLinks = [
-    { id: 'home', label: 'Home', icon: null },
-    { id: 'categories', label: 'All Categories', icon: Grid },
-    { id: 'daily', label: 'Daily Quiz', icon: CalendarCheck, special: true },
-    { id: 'history', label: 'My Progress', icon: History },
-    { id: 'sitemap', label: 'Sitemap', icon: Map }
+    { id: 'home', label: 'হোম', icon: null },
+    { id: 'categories', label: 'সকল কুইজ', icon: Grid },
+    { id: 'daily', label: 'দৈনিক কুইজ', icon: CalendarCheck, special: true },
+    { id: 'history', label: 'আমার অগ্রগতি', icon: History },
+    { id: 'sitemap', label: 'সাইটম্যাপ', icon: Map }
   ];
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-blue-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Brand Logo */}
+          {/* Brand Logo - Quiz Zone */}
           <button
             onClick={() => onNavigate('home')}
             className="flex items-center gap-2.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-1"
-            aria-label="QuizPulse Homepage"
+            aria-label="Quiz Zone হোমপেজ"
           >
             <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-xs">
               <HelpCircle className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
-              <span className="text-lg font-extrabold tracking-tight text-slate-900">
-                Quiz<span className="text-blue-600">Pulse</span>
+              <span className="text-xl font-extrabold tracking-tight text-slate-900">
+                Quiz <span className="text-blue-600">Zone</span>
               </span>
-              <span className="hidden sm:inline-block text-[10px] text-slate-600 tracking-wider uppercase ml-1.5 font-semibold">
-                Online Trivia
+              <span className="hidden sm:inline-block text-[11px] text-blue-700 font-bold ml-1.5 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
+                কুইজ জোন
               </span>
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1.5" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center gap-1.5" aria-label="মূল নেভিগেশন">
             {navLinks.map((link) => {
               const isActive = currentRoute === link.id;
               const Icon = link.icon;
@@ -85,11 +85,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span>{link.label}</span>
                   {link.id === 'daily' && streakCount > 0 && (
                     <span className="text-[11px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200">
-                      🔥 {streakCount}d
+                      🔥 {streakCount} দিন
                     </span>
                   )}
                   {link.id === 'daily' && dailyCompletedToday && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5" title="Completed today" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5" title="আজ সম্পন্ন হয়েছে" />
                   )}
                 </button>
               );
@@ -101,10 +101,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={handleRandomPlay}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-xs"
-              title="Pick a random quiz category"
+              title="এলোমেলো কুইজ খেলুন"
             >
               <Dices className="w-4 h-4" />
-              <span>Random Quiz</span>
+              <span>এলোমেলো কুইজ</span>
             </button>
           </div>
 
@@ -113,15 +113,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={handleRandomPlay}
               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"
-              title="Random Quiz"
-              aria-label="Random Quiz"
+              title="এলোমেলো কুইজ"
+              aria-label="এলোমেলো কুইজ"
             >
               <Dices className="w-5 h-5" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileMenuOpen ? 'মেনু বন্ধ করুন' : 'মেনু খুলুন'}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -154,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
                 {link.id === 'daily' && streakCount > 0 && (
                   <span className="text-xs font-semibold text-amber-700">
-                    🔥 {streakCount} day streak
+                    🔥 {streakCount} দিনের স্ট্রিক
                   </span>
                 )}
               </button>

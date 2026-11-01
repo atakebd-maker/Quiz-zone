@@ -2,9 +2,7 @@ import React from 'react';
 import {
   Trophy,
   CheckCircle2,
-  Calendar,
   Flame,
-  ArrowRight,
   RotateCcw,
   BookOpen,
   ArrowLeft
@@ -44,22 +42,22 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
       <div>
         <button
           onClick={() => onNavigate('home')}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Home</span>
+          <span>হোমে ফিরে যান</span>
         </button>
       </div>
 
       <header className="space-y-2">
         <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
-          Personal Learning Analytics
+          ব্যক্তিগত কুইজ ও মেধা বিশ্লেষণ
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Your Quiz Progress & History
+          আপনার কুইজ অগ্রগতি ও অতীত ফলাফল
         </h1>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-          Review all your completed quiz sessions, track your accuracy improvements over time, and keep your daily streak alive.
+          আপনার সম্পূর্ণ কুইজ সেশনগুলোর রেকর্ড দেখুন, সময়ের সাথে সাথে সঠিকতার হার বৃদ্ধি পর্যবেক্ষণ করুন এবং স্ট্রিক ধরে রাখুন।
         </p>
       </header>
 
@@ -68,27 +66,27 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
         <div className="p-5 rounded-2xl bg-white border border-blue-100 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-1">
             <Trophy className="w-4 h-4 text-blue-600" />
-            <span>Quizzes Taken</span>
+            <span>মোট কুইজ খেলেছেন</span>
           </div>
           <div className="text-2xl sm:text-3xl font-black text-slate-900">
-            {stats.totalQuizzesTaken}
+            {stats.totalQuizzesTaken}টি
           </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-white border border-blue-100 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-1">
             <BookOpen className="w-4 h-4 text-indigo-600" />
-            <span>Questions Solved</span>
+            <span>মোট উত্তর দিয়েছেন</span>
           </div>
           <div className="text-2xl sm:text-3xl font-black text-slate-900">
-            {stats.totalQuestionsAnswered}
+            {stats.totalQuestionsAnswered}টি প্রশ্ন
           </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-white border border-blue-100 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-1">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>Overall Accuracy</span>
+            <span>সার্বিক সঠিকতার হার</span>
           </div>
           <div className="text-2xl sm:text-3xl font-black text-emerald-700">
             {overallAccuracy}%
@@ -98,10 +96,10 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
         <div className="p-5 rounded-2xl bg-white border border-blue-100 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-1">
             <Flame className="w-4 h-4 text-amber-500" />
-            <span>Daily Streak</span>
+            <span>দৈনিক স্ট্রিক</span>
           </div>
           <div className="text-2xl sm:text-3xl font-black text-amber-600">
-            {stats.streakDays} {stats.streakDays === 1 ? 'Day' : 'Days'}
+            {stats.streakDays} দিন
           </div>
         </div>
       </div>
@@ -110,16 +108,16 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
       <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <h2 className="text-base font-bold text-slate-900">
-            Recent Quiz Sessions ({stats.history.length})
+            বিগত কুইজ সেশনসমূহ ({stats.history.length}টি)
           </h2>
-          <span className="text-xs text-slate-500">Stored on your browser</span>
+          <span className="text-xs text-slate-500">আপনার ডিভাইসে সংরক্ষিত</span>
         </div>
 
         {stats.history.length > 0 ? (
           <div className="divide-y divide-slate-100">
             {stats.history.map((record, idx) => {
               const dateFormatted = new Date(record.completedAt).toLocaleDateString(
-                'en-US',
+                'bn-BD',
                 {
                   month: 'short',
                   day: 'numeric',
@@ -141,7 +139,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                       </span>
                       {record.isDaily && (
                         <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                          Daily
+                          দৈনিক
                         </span>
                       )}
                     </div>
@@ -149,7 +147,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                       <span>{dateFormatted}</span>
                       <span>·</span>
                       <span>
-                        Score: <strong>{record.scoreRatio}</strong>
+                        স্কোর: <strong>{record.scoreRatio}</strong>
                       </span>
                       <span>·</span>
                       <span
@@ -161,7 +159,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                             : 'text-slate-600'
                         }`}
                       >
-                        {record.percentage}% Accuracy
+                        {record.percentage}% সঠিকতা
                       </span>
                     </div>
                   </div>
@@ -169,10 +167,10 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleRetake(record.categoryId)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors cursor-pointer"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
-                      <span>Retake</span>
+                      <span>পুনরায় খেলুন</span>
                     </button>
                   </div>
                 </div>
@@ -182,13 +180,13 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
         ) : (
           <div className="text-center py-12 space-y-3">
             <p className="text-sm text-slate-500">
-              You haven’t completed any quizzes yet. Start with our Daily Quiz or choose a category!
+              আপনি এখনও কোনো কুইজ সম্পন্ন করেননি। দৈনিক কুইজ দিয়ে এখনই আপনার যাত্রা শুরু করুন!
             </p>
             <button
               onClick={() => onNavigate('categories')}
-              className="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs shadow-xs hover:bg-blue-700"
+              className="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs shadow-xs hover:bg-blue-700 cursor-pointer"
             >
-              Browse 16 Quiz Categories
+              ১৬টি কুইজ ক্যাটাগরি ব্রাউজ করুন
             </button>
           </div>
         )}

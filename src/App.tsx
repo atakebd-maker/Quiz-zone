@@ -14,9 +14,9 @@ import { QuizPlayerPage } from './pages/QuizPlayerPage';
 import { QuizResultPage } from './pages/QuizResultPage';
 import { HistoryPage } from './pages/HistoryPage';
 import { SitemapPage } from './pages/SitemapPage';
-import { QUIZ_CATEGORIES, getCategoryById, getDailyQuizForDate } from './data/quizData';
+import { QUIZ_CATEGORIES, getCategoryById } from './data/quizData';
 import { QuizCategory, QuizQuestion, QuizResult } from './types/quiz';
-import { getUserStats, saveQuizResult, hasCompletedDailyToday, getTodayDateString } from './utils/quizStorage';
+import { getUserStats, saveQuizResult, hasCompletedDailyToday } from './utils/quizStorage';
 import { updateSEO } from './utils/seo';
 
 export default function App() {
@@ -45,7 +45,6 @@ export default function App() {
       setCurrentRoute(page);
       setRouteParams(params);
 
-      // If route is category and id provided, locate category
       if (page === 'category' && id) {
         const cat = getCategoryById(id);
         if (cat) setActiveCategory(cat);
@@ -89,30 +88,32 @@ export default function App() {
   useEffect(() => {
     if (currentRoute === 'home') {
       updateSEO({
-        title: 'QuizPulse – Test Your Knowledge with Interactive Online Quizzes',
-        description: 'Explore 16+ free quiz categories, participate in our daily challenge, test your knowledge with instant answers, and track your scores.',
+        title: 'হোম – জ্ঞান যাচাই করুন ও কুইজ খেলুন',
+        description: 'Quiz Zone (কুইজ জোন) - ১৬টি বিভাগে ১০০+ আকর্ষণীয় কুইজ, দৈনিক চ্যালেঞ্জ ও তাৎক্ষণিক ব্যাখ্যা।',
         canonicalPath: '/?page=home',
         jsonLd: {
           '@context': 'https://schema.org',
           '@type': 'WebApplication',
-          name: 'QuizPulse',
+          name: 'Quiz Zone',
+          inLanguage: 'bn',
           applicationCategory: 'EducationalApplication',
           operatingSystem: 'All',
-          description: 'Interactive online quiz website featuring 16 categories, daily quizzes, and instant feedback.',
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+          description: 'অনলাইন বাংলা কুইজ প্ল্যাটফর্ম - Quiz Zone.',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'BDT' }
         }
       });
     } else if (currentRoute === 'category' && routeParams.id) {
       const cat = getCategoryById(routeParams.id);
       if (cat) {
         updateSEO({
-          title: `${cat.title} – Free Interactive Trivia & Learning`,
-          description: `Play the ${cat.title}. ${cat.description} Features 4-choice questions, detailed explanations, and fun facts.`,
+          title: `${cat.title} – সাধারণ জ্ঞান কুইজ ও উত্তর`,
+          description: `${cat.title} খেলুন Quiz Zone-এ। ${cat.description}`,
           canonicalPath: `/?page=category&id=${cat.id}`,
           jsonLd: {
             '@context': 'https://schema.org',
             '@type': 'Quiz',
             name: cat.title,
+            inLanguage: 'bn',
             description: cat.description,
             educationalLevel: cat.difficulty,
             hasPart: cat.questions.map((q) => ({
@@ -125,26 +126,26 @@ export default function App() {
       }
     } else if (currentRoute === 'daily') {
       updateSEO({
-        title: 'Daily Quiz Challenge – Fresh Questions Every Day',
-        description: 'Challenge yourself with today’s handpicked 7-question trivia quiz. Learn new facts and maintain your daily streak on QuizPulse.',
+        title: 'দৈনিক কুইজ – আজকের বিশেষ জ্ঞান পরীক্ষা',
+        description: 'প্রতিদিনের নতুন ৭টি প্রশ্নের দৈনিক কুইজ খেলুন এবং নিজের স্ট্রিক অক্ষুণ্ণ রাখুন।',
         canonicalPath: '/?page=daily'
       });
     } else if (currentRoute === 'categories') {
       updateSEO({
-        title: 'All 16 Quiz Categories – Explore Subjects & Trivia',
-        description: 'Browse all 16 quiz categories on QuizPulse including World Geography, Countries, Science, History, Technology, Mathematics, and more.',
+        title: 'সকল ১৬টি কুইজ ক্যাটাগরি',
+        description: 'ভূগোল, বিজ্ঞান, ইতিহাস, গণিত, খেলাধুলা ও প্রযুক্তিসহ সকল কুইজ অন্বেষণ করুন।',
         canonicalPath: '/?page=categories'
       });
     } else if (currentRoute === 'history') {
       updateSEO({
-        title: 'My Learning Progress & Past Quizzes',
-        description: 'Track your quiz completion scores, accuracy percentages, and daily streaks on QuizPulse.',
+        title: 'আমার কুইজ অগ্রগতি ও স্কোর রেকর্ড',
+        description: 'আপনার সমাপ্ত কুইজ সেশন, সঠিকতার হার ও দৈনিক স্ট্রিক দেখুন।',
         canonicalPath: '/?page=history'
       });
     } else if (currentRoute === 'sitemap') {
       updateSEO({
-        title: 'Sitemap & Real URL Index – QuizPulse',
-        description: 'Comprehensive directory of all accessible quiz categories, daily challenges, and educational trivia pages.',
+        title: 'সাইটম্যাপ ও সক্রিয় পেজ ইনডেক্স',
+        description: 'Quiz Zone-এর সমস্ত কার্যকরী ইউআরএল ও বিষয়ের সম্পূর্ণ তালিকা।',
         canonicalPath: '/?page=sitemap'
       });
     }
@@ -230,7 +231,6 @@ export default function App() {
 
       case 'quiz': {
         if (!activeCategory || activeQuestions.length === 0) {
-          // Fallback if refreshed directly on quiz URL
           const fallbackCat = getCategoryById(routeParams.id || '') || QUIZ_CATEGORIES[0];
           return (
             <CategoryPage

@@ -5,8 +5,6 @@ import {
   Check,
   ExternalLink,
   ChevronRight,
-  ArrowLeft,
-  MapPin,
   CalendarCheck,
   FolderOpen
 } from 'lucide-react';
@@ -21,11 +19,11 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
   const [showRawXml, setShowRawXml] = useState(false);
 
   const mainPages = [
-    { title: 'QuizPulse Homepage', path: '/?page=home', description: 'Main landing page featuring daily challenge, categories, and search.' },
-    { title: 'All Quiz Categories', path: '/?page=categories', description: 'Catalog of 16 interactive quiz categories and difficulty levels.' },
-    { title: 'Daily Quiz Challenge', path: '/?page=daily', description: 'Fresh 7-question daily quiz with streak tracker.' },
-    { title: 'Personal Progress & Stats', path: '/?page=history', description: 'User test history, accuracy metrics, and local scores.' },
-    { title: 'Sitemap & Index', path: '/?page=sitemap', description: 'Complete accessible directory of all public URLs on QuizPulse.' }
+    { title: 'Quiz Zone হোমপেজ', path: '/?page=home', description: 'মূল ল্যান্ডিং পেজ যেখানে রয়েছে দৈনিক কুইজ, ক্যাটাগরি ও সার্চ সুবিধা।' },
+    { title: 'সকল কুইজ ক্যাটাগরি', path: '/?page=categories', description: '১৬টি ভিন্ন কুইজ বিষয় ও লেভেলের সম্পূর্ণ ক্যাটালগ।' },
+    { title: 'দৈনিক কুইজ চ্যালেঞ্জ', path: '/?page=daily', description: 'প্রতিদিনের নতুন ৭টি প্রশ্নের বিশেষ চ্যালেঞ্জ ও স্ট্রিক ট্র্যাকার।' },
+    { title: 'ব্যক্তিগত অগ্রগতি ও স্কোর', path: '/?page=history', description: 'ব্যবহারকারীর অতীতের কুইজের ইতিহাস ও সঠিকতার পরিসংখ্যান।' },
+    { title: 'সাইটম্যাপ ও ইনডেক্স', path: '/?page=sitemap', description: 'Quiz Zone-এর সমস্ত সক্রিয় ইউআরএল ও পেজের নির্দেশিকা।' }
   ];
 
   const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
@@ -75,26 +73,26 @@ ${QUIZ_CATEGORIES.map(
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+      <nav className="flex items-center gap-2 text-xs text-slate-500" aria-label="ব্রেডক্রাম্ব">
         <button
           onClick={() => onNavigate('home')}
-          className="hover:text-blue-600 transition-colors"
+          className="hover:text-blue-600 transition-colors cursor-pointer"
         >
-          Home
+          হোম
         </button>
         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-        <span className="text-slate-800 font-semibold">HTML & XML Sitemap</span>
+        <span className="text-slate-800 font-semibold">এইচটিএমএল ও এক্সএমএল সাইটম্যাপ</span>
       </nav>
 
       <header className="space-y-2">
         <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
-          SEO Index & URL Manifest
+          SEO ইনডেক্স ও ইউআরএল ম্যানিফেস্ট
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Website Sitemap & Real Page Index
+          Quiz Zone ওয়েবসাইট সাইটম্যাপ
         </h1>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-          QuizPulse contains only real, verified, accessible URLs without dead stubs or placeholder routes. Use this index to navigate directly to any quiz category or inspect the SEO XML markup.
+          Quiz Zone-এ শুধুমাত্র সক্রিয় ও কার্যকরী লিংক ও পেজসমূহ অন্তর্ভুক্ত রয়েছে। সরাসরি যেকোনো কুইজ ক্যাটাগরিতে যেতে বা এসইও এক্সএমএল কোড দেখতে নিচের বিকল্পগুলো ব্যবহার করুন।
         </p>
       </header>
 
@@ -102,25 +100,25 @@ ${QUIZ_CATEGORIES.map(
       <div className="flex flex-wrap items-center gap-3 p-4 bg-white rounded-xl border border-blue-100 shadow-xs">
         <button
           onClick={() => setShowRawXml(!showRawXml)}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition-colors"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition-colors cursor-pointer"
         >
           <FileCode className="w-4 h-4" />
-          <span>{showRawXml ? 'Hide XML Source' : 'View XML Sitemap'}</span>
+          <span>{showRawXml ? 'এক্সএমএল কোড লুকান' : 'এক্সএমএল সাইটম্যাপ দেখুন'}</span>
         </button>
 
         <button
           onClick={handleCopyXml}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors cursor-pointer"
         >
           {copied ? (
             <>
               <Check className="w-4 h-4 text-emerald-600" />
-              <span>Copied XML!</span>
+              <span>এক্সএমএল কপি করা হয়েছে!</span>
             </>
           ) : (
             <>
               <Copy className="w-4 h-4 text-slate-500" />
-              <span>Copy XML to Clipboard</span>
+              <span>এক্সএমএল ক্লিপবোর্ডে কপি করুন</span>
             </>
           )}
         </button>
@@ -131,7 +129,7 @@ ${QUIZ_CATEGORIES.map(
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors ml-auto"
         >
-          <span>Open /sitemap.xml</span>
+          <span>/sitemap.xml ফাইল খুলুন</span>
           <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
         </a>
       </div>
@@ -149,7 +147,7 @@ ${QUIZ_CATEGORIES.map(
           <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
             <FolderOpen className="w-4 h-4 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900">
-              Core Pages & Hubs ({mainPages.length})
+              মূল পেজসমূহ ({mainPages.length}টি)
             </h2>
           </div>
 
@@ -187,7 +185,7 @@ ${QUIZ_CATEGORIES.map(
           <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
             <CalendarCheck className="w-4 h-4 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900">
-              Dedicated Category Pages ({QUIZ_CATEGORIES.length})
+              ১৬টি কুইজ ক্যাটাগরির লিংক ({QUIZ_CATEGORIES.length}টি)
             </h2>
           </div>
 
@@ -200,20 +198,20 @@ ${QUIZ_CATEGORIES.map(
                 <div>
                   <button
                     onClick={() => onNavigate('category', { id: cat.id })}
-                    className="font-semibold text-xs text-slate-900 hover:text-blue-700 text-left block"
+                    className="font-semibold text-xs text-slate-900 hover:text-blue-700 text-left block cursor-pointer"
                   >
                     {cat.title}
                   </button>
-                  <span className="text-[11px] text-slate-600 font-mono">
+                  <span className="text-[11px] text-slate-500 font-mono">
                     ?page=category&id={cat.id}
                   </span>
                 </div>
 
                 <button
                   onClick={() => onNavigate('category', { id: cat.id })}
-                  className="text-xs font-semibold text-blue-600 hover:underline inline-flex items-center gap-1"
+                  className="text-xs font-semibold text-blue-600 hover:underline inline-flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Visit</span>
+                  <span>প্রবেশ করুন</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
