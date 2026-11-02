@@ -10,6 +10,7 @@ export interface TranslationDictionary {
 
   // Nav
   navHome: string;
+  navRiddles: string;
   navAllCategories: string;
   navDaily: string;
   navHistory: string;
@@ -17,6 +18,25 @@ export interface TranslationDictionary {
   randomQuiz: string;
   dailyStreak: string;
   todayCompleted: string;
+
+  // Bangla Riddles Page & Game
+  riddlesHeroBadge: string;
+  riddlesHeroTitle: string;
+  riddlesHeroSubtitle: string;
+  riddlesTabPlay: string;
+  riddlesTabBrowse: string;
+  riddlesQuick10: string;
+  riddlesChallenge25: string;
+  riddlesMega50: string;
+  riddlesMarathon: string;
+  riddlesShowAnswer: string;
+  riddlesHideAnswer: string;
+  riddlesNext: string;
+  riddlesFinish: string;
+  riddlesScoreCorrect: string;
+  riddlesScoreIncorrect: string;
+  riddlesCongratulations: string;
+  riddlesShareSuccess: string;
 
   // Hero
   heroBadge: string;
@@ -158,6 +178,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     switchLanguage: 'ভাষা পরিবর্তন করুন',
 
     navHome: 'হোম',
+    navRiddles: 'বাংলা ধাঁধা',
     navAllCategories: 'সকল কুইজ',
     navDaily: 'দৈনিক কুইজ',
     navHistory: 'আমার অগ্রগতি',
@@ -165,6 +186,24 @@ export const translations: Record<Language, TranslationDictionary> = {
     randomQuiz: 'এলোমেলো কুইজ',
     dailyStreak: 'দিন',
     todayCompleted: 'আজ সম্পন্ন হয়েছে',
+
+    riddlesHeroBadge: '✨ ২০০+ সেরা ও মজার বাংলা ধাঁধা · সঠিক উত্তর ও বিস্তারিত ব্যাখ্যা',
+    riddlesHeroTitle: 'বাংলা মজার ধাঁধা ও বুদ্ধির খেলা',
+    riddlesHeroSubtitle: '২০০টি অনন্য, চতুর ও আকর্ষণীয় বাংলা ধাঁধা উত্তরসহ। খেলুন ইন্টারঅ্যাকটিভ কুইজ গেম, যাচাই করুন নিজের তাৎক্ষণিক আইকিউ মেধা!',
+    riddlesTabPlay: '🎮 ধাঁধা খেলুন (ইন্টারঅ্যাকটিভ)',
+    riddlesTabBrowse: '📖 সকল ২০০ ধাঁধা ও উত্তর পড়ুন',
+    riddlesQuick10: '১০টি ধাঁধা খেলুন',
+    riddlesChallenge25: '২৫টি চ্যালেঞ্জ ধাঁধা',
+    riddlesMega50: '৫০টি মেগা ধাঁধা',
+    riddlesMarathon: 'সকল ২০০ ধাঁধা ম্যারাথন',
+    riddlesShowAnswer: 'উত্তর ও ব্যাখ্যা দেখুন',
+    riddlesHideAnswer: 'উত্তর লুকিয়ে রাখুন',
+    riddlesNext: 'পরবর্তী ধাঁধা',
+    riddlesFinish: 'ফলাফল দেখুন',
+    riddlesScoreCorrect: 'সঠিক',
+    riddlesScoreIncorrect: 'ভুল',
+    riddlesCongratulations: 'অভিনন্দন!',
+    riddlesShareSuccess: 'ধাঁধা কপি করা হয়েছে!',
 
     heroBadge: '⏱️ প্রতি প্রশ্নে ১ মিনিট টাইমার · 🧠 আনুমানিক আইকিউ (IQ) মেধা বিশ্লেষণ',
     heroTitle1: 'জ্ঞান যাচাই করুন, ',
@@ -305,6 +344,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     switchLanguage: 'Switch Language',
 
     navHome: 'Home',
+    navRiddles: 'Bangla Riddles',
     navAllCategories: 'All Quizzes',
     navDaily: 'Daily Quiz',
     navHistory: 'My Progress',
@@ -312,6 +352,24 @@ export const translations: Record<Language, TranslationDictionary> = {
     randomQuiz: 'Random Quiz',
     dailyStreak: 'days',
     todayCompleted: 'Completed Today',
+
+    riddlesHeroBadge: '✨ 200+ Best Bengali Riddles · Verified Answers & Explanations',
+    riddlesHeroTitle: 'Bengali Riddles & Brain Teasers',
+    riddlesHeroSubtitle: '200 authentic, clever, and fun Bengali riddles with instant multiple-choice answers, explanations, and cognitive IQ assessment!',
+    riddlesTabPlay: '🎮 Play Riddles (Interactive)',
+    riddlesTabBrowse: '📖 Browse All 200 Riddles & Answers',
+    riddlesQuick10: 'Play 10 Quick Riddles',
+    riddlesChallenge25: '25 Riddles Challenge',
+    riddlesMega50: '50 Mega Riddles',
+    riddlesMarathon: 'All 200 Marathon',
+    riddlesShowAnswer: 'Show Answer & Explanation',
+    riddlesHideAnswer: 'Hide Answer',
+    riddlesNext: 'Next Riddle',
+    riddlesFinish: 'View Results',
+    riddlesScoreCorrect: 'Correct',
+    riddlesScoreIncorrect: 'Incorrect',
+    riddlesCongratulations: 'Congratulations!',
+    riddlesShareSuccess: 'Riddle copied to clipboard!',
 
     heroBadge: '⏱️ 1-Minute Timer Per Question · 🧠 Estimated IQ Analysis',
     heroTitle1: 'Test Your Knowledge, ',

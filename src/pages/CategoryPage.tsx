@@ -184,7 +184,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
               {t.selectQuestionCount}
             </label>
             <div className="flex flex-wrap gap-2">
-              {[5, 10, category.questions.length]
+              {[5, 10, 25, 50, category.questions.length]
                 .filter((v, i, a) => a.indexOf(v) === i && v <= category.questions.length)
                 .map((count) => {
                   const isAll = count === category.questions.length;
@@ -204,6 +204,18 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   );
                 })}
             </div>
+            {category.id === 'bangla-riddles' && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('riddles')}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>{isEn ? 'Switch to Interactive Riddle Game Hub (All 200)' : 'ইন্টারঅ্যাকটিভ ধাঁধা গেম হাবে যান (সকল ২০০ ধাঁধা)'}</span>
+                </button>
+              </div>
+            )}
             <p className="text-[11px] text-slate-400">
               {isEn
                 ? `You will answer ${questionCount} questions in this session with a 1-minute timer per question.`

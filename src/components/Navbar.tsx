@@ -8,7 +8,8 @@ import {
   Menu,
   X,
   Map,
-  Languages
+  Languages,
+  Sparkles
 } from 'lucide-react';
 import { getRandomQuiz } from '../data/quizData';
 import { QuizCategory, Language } from '../types/quiz';
@@ -44,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { id: 'home', label: t.navHome, icon: null },
+    { id: 'riddles', label: t.navRiddles, icon: Sparkles, badge: '২০০+' },
     { id: 'categories', label: t.navAllCategories, icon: Grid },
     { id: 'daily', label: t.navDaily, icon: CalendarCheck, special: true },
     { id: 'history', label: t.navHistory, icon: History },
@@ -84,6 +86,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   {Icon && <Icon className="w-4 h-4 text-blue-500" />}
                   <span>{link.label}</span>
+                  {link.badge && (
+                    <span className="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full border border-blue-200">
+                      {link.badge}
+                    </span>
+                  )}
                   {link.id === 'daily' && streakCount > 0 && (
                     <span className="text-[11px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200">
                       🔥 {streakCount} {t.dailyStreak}
@@ -212,6 +219,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="flex items-center gap-2.5">
                   {Icon && <Icon className="w-4 h-4 text-blue-500" />}
                   <span>{link.label}</span>
+                  {link.badge && (
+                    <span className="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full border border-blue-200">
+                      {link.badge}
+                    </span>
+                  )}
                 </div>
                 {link.id === 'daily' && streakCount > 0 && (
                   <span className="text-xs font-semibold text-amber-700">

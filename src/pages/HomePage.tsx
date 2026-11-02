@@ -134,7 +134,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
             <div className="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-2xs">
               <Sparkles className="w-4 h-4 text-emerald-600" />
               <span>
-                <strong>70+</strong> {t.statTotalQuestions}
+                <strong>২৭০+</strong> {t.statTotalQuestions}
               </span>
             </div>
             <div className="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-2xs">
@@ -155,6 +155,57 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <AdBanner refreshKey="home-hero-ad" />
       </div>
+
+      {/* Dedicated Bangla Riddles Banner */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="bg-gradient-to-r from-indigo-900 via-blue-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden border border-indigo-500/30">
+          <div className="absolute right-0 top-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-10 -bottom-10 w-60 h-60 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-300 font-bold text-xs">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>{isEn ? 'GRAND COLLECTION · 200+ RIDDLES' : 'নতুন সংযোজন · ২০০+ বাংলা ধাঁধা'}</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+                {isEn ? 'Bangla Riddles & Brain Teasers' : 'বাংলা মজার ধাঁধা ও বুদ্ধির খেলা'}
+              </h2>
+
+              <p className="text-sm text-slate-200 leading-relaxed">
+                {isEn
+                  ? 'Explore 200 authentic Bengali riddles with 4 multiple-choice answers, instant explanations, and cognitive IQ evaluation. Folk riddles, brain teasers, math puzzles, and tricky questions.'
+                  : 'উত্তর ও ব্যাখ্যাসহ ২০০টি আসল বাংলা ধাঁধা! ৪টি বহুনির্বাচনী অপশন, তাৎক্ষণিক ফলাফল, বিস্তারিত ব্যাখ্যা এবং আইকিউ মেধা যাচাই। চিরায়ত লোকগাঁথা, বুদ্ধির প্রশ্ন ও মজার ধাঁধা।'}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-slate-300">
+                <span className="bg-white/10 px-2.5 py-1 rounded-md">✨ উত্তরসহ ধাঁধা</span>
+                <span className="bg-white/10 px-2.5 py-1 rounded-md">🧠 আইকিউ মেধা যাচাই</span>
+                <span className="bg-white/10 px-2.5 py-1 rounded-md">💡 বিস্তারিত ব্যাখ্যা</span>
+                <span className="bg-white/10 px-2.5 py-1 rounded-md">💯 সম্পূর্ণ ফ্রি</span>
+              </div>
+            </div>
+
+            <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+              <button
+                onClick={() => onNavigate('riddles')}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-extrabold text-sm shadow-md transition-all active:scale-98"
+              >
+                <span>{isEn ? 'Play Riddle Game' : 'ধাঁধা খেলা শুরু করুন'}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => onNavigate('riddles')}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-colors"
+              >
+                <span>{isEn ? 'Browse All 200' : 'সকল ২০০ ধাঁধা পড়ুন'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Daily Challenge Card Callout */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6">

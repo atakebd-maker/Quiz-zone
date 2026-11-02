@@ -14,6 +14,7 @@ import { QuizPlayerPage } from './pages/QuizPlayerPage';
 import { QuizResultPage } from './pages/QuizResultPage';
 import { HistoryPage } from './pages/HistoryPage';
 import { SitemapPage } from './pages/SitemapPage';
+import { BanglaRiddlesPage } from './pages/BanglaRiddlesPage';
 import { QUIZ_CATEGORIES, getCategoryById } from './data/quizData';
 import { QuizCategory, QuizQuestion, QuizResult, Language } from './types/quiz';
 import { getUserStats, saveQuizResult, hasCompletedDailyToday } from './utils/quizStorage';
@@ -237,6 +238,48 @@ export default function App() {
           : 'আপনার সমাপ্ত কুইজ সেশন, সঠিকতার হার ও দৈনিক স্ট্রিক দেখুন।',
         canonicalPath: `/?page=history&lang=${lang}`
       });
+    } else if (currentRoute === 'riddles') {
+      updateSEO({
+        title: isEn
+          ? 'Bangla Riddles – 200+ Bengali Riddles with Answers & Explanations | Quiz Zone BD'
+          : 'বাংলা ধাঁধা – ২০০+ মজার ও বুদ্ধির ধাঁধা উত্তরসহ (Bangla Riddles) | কুইজ জোন বিডি',
+        description: isEn
+          ? 'Explore 200 authentic Bengali riddles, folk brain teasers, and funny tricky questions with instant multiple-choice answers, deep explanations, and cognitive IQ evaluation.'
+          : '২০০টি সেরা ও অনন্য বাংলা ধাঁধা উত্তর ও ব্যাখ্যাসহ। মজার ধাঁধা, বুদ্ধির ধাঁধা, শিশুদের ধাঁধা, গণিতের ধাঁধা এবং চিরায়ত লোকগাঁথা। ইন্টারঅ্যাকটিভ কুইজ গেম খেলুন ও মেধা যাচাই করুন।',
+        canonicalPath: `/?page=riddles&lang=${lang}`,
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          name: isEn ? '200+ Bengali Riddles with Answers' : '২০০+ বাংলা মজার ধাঁধা উত্তরসহ',
+          inLanguage: lang,
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'দাঁত আছে কিন্তু কামড়াতে পারে না, সেটি কী?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'চিরুনি। চিরুনির দাঁত থাকে চুল আঁচড়ানোর জন্য, কিন্তু প্রাণহীন বলে কামড়াতে পারে না।'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'যত কাটবে তত বড় হবে, সেটি কী?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'গর্ত। মাটি কেটে সরালে গর্তের আকার আরও বড় হয়।'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'এক কেজি তুলা আর এক কেজি লোহা—কোনটি বেশি ভারী?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'দুটিই সমান ভারী। কারণ দুটির ওজনই সমান এক কেজি।'
+              }
+            }
+          ]
+        }
+      });
     } else if (currentRoute === 'sitemap') {
       updateSEO({
         title: isEn
@@ -390,6 +433,9 @@ export default function App() {
             lang={lang}
           />
         );
+
+      case 'riddles':
+        return <BanglaRiddlesPage onNavigate={navigate} lang={lang} />;
 
       case 'sitemap':
         return <SitemapPage onNavigate={navigate} lang={lang} />;

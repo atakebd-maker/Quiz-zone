@@ -32,6 +32,13 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate, lang }) =>
         : 'মূল ল্যান্ডিং পেজ যেখানে রয়েছে দৈনিক কুইজ, ক্যাটাগরি ও সার্চ সুবিধা।'
     },
     {
+      title: isEn ? 'Bangla Riddles (200+ Collection)' : 'বাংলা ধাঁধা (২০০+ সংগ্রহ ও খেলা)',
+      path: `/?page=riddles&lang=${lang}`,
+      description: isEn
+        ? 'Interactive riddle game with 200 authentic Bengali riddles, instant explanations, and searchable browser.'
+        : 'উত্তরসহ ২০০টি আসল বাংলা ধাঁধা, ইন্টারঅ্যাকটিভ খেলা ও মেধা যাচাই।'
+    },
+    {
       title: isEn ? 'All Quiz Categories' : 'সকল কুইজ ক্যাটাগরি',
       path: `/?page=categories&lang=${lang}`,
       description: isEn
