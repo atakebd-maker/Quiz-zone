@@ -5,11 +5,15 @@ import {
   Flame,
   RotateCcw,
   BookOpen,
-  ArrowLeft
+  ArrowLeft,
+  Download,
+  Loader2,
+  Check
 } from 'lucide-react';
 import { getUserStats } from '../utils/quizStorage';
 import { getCategoryById } from '../data/quizData';
-import { QuizCategory, Language } from '../types/quiz';
+import { QuizCategory, Language, QuizResult } from '../types/quiz';
+import { downloadIQCardImage } from '../utils/generateIQCardImage';
 import { translations } from '../utils/translations';
 
 interface HistoryPageProps {
@@ -32,6 +36,22 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
     totalAnswered > 0
       ? Math.round((stats.totalCorrect / totalAnswered) * 100)
       : 0;
+
+  const [downloadingIdx, setDownloadingIdx] = React.useState<number | null>(null);
+  const [downloadedIdx, setDownloadedIdx] = React.useState<number | null>(null);
+
+  const handleDownloadRecordCard = async (record: QuizResult, idx: number) => {
+    setDownloadingIdx(idx);
+    try {
+      await downloadIQCardImage(record, lang);
+      setDownloadedIdx(idx);
+      setTimeout(() => setDownloadedIdx(null), 2500);
+    } catch (err) {
+      console.error('Failed to download card:', err);
+    } finally {
+      setDownloadingIdx(null);
+    }
+  };
 
   const handleRetake = (categoryId: string) => {
     const cat = getCategoryById(categoryId);
@@ -186,6 +206,22 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                   </div>
 
                   <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleDownloadRecordCard(record, idx)}
+                      disabled={downloadingIdx === idx}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer disabled:opacity-50"
+                      title={isEn ? 'Download IQ Card (PNG)' : 'আইকিউ কার্ড ডাউনলোড করুন'}
+                    >
+                      {downloadingIdx === idx ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
+                      ) : downloadedIdx === idx ? (
+                        <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      ) : (
+                        <Download className="w-3.5 h-3.5 text-slate-500" />
+                      )}
+                      <span>{downloadedIdx === idx ? (isEn ? 'Downloaded' : 'ডাউনলোড সম্পন্ন') : (isEn ? 'IQ Card' : 'আইকিউ কার্ড')}</span>
+                    </button>
+
                     <button
                       onClick={() => handleRetake(record.categoryId)}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors cursor-pointer"

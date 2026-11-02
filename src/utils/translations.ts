@@ -102,6 +102,11 @@ export interface TranslationDictionary {
   reviewCorrectAnswer: string;
   reviewYourAnswer: string;
   reviewTimeTaken: string;
+  downloadIQCardBtn: string;
+  downloadingCard: string;
+  downloadSuccess: string;
+  previewCardBtn: string;
+  closeModalBtn: string;
 
   // Daily Quiz Page
   dailyPageTitle: string;
@@ -249,6 +254,11 @@ export const translations: Record<Language, TranslationDictionary> = {
     reviewCorrectAnswer: 'সঠিক উত্তর',
     reviewYourAnswer: 'আপনার দেওয়া উত্তর',
     reviewTimeTaken: 'ব্যয়িত সময়',
+    downloadIQCardBtn: 'আইকিউ কার্ড ডাউনলোড করুন (ছবি)',
+    downloadingCard: 'কার্ড প্রস্তুত হচ্ছে...',
+    downloadSuccess: 'আইকিউ কার্ড ডাউনলোড সফল হয়েছে!',
+    previewCardBtn: 'কার্ড প্রিভিউ দেখুন',
+    closeModalBtn: 'বন্ধ করুন',
 
     dailyPageTitle: 'দৈনিক কুইজ ও জ্ঞান চ্যালেঞ্জ',
     dailyPageSubtitle: 'প্রতিদিন নতুন ৭টি বাছাইকৃত প্রশ্ন সমাধান করে নিজের জ্ঞান শাণিত রাখুন',
@@ -391,6 +401,11 @@ export const translations: Record<Language, TranslationDictionary> = {
     reviewCorrectAnswer: 'Correct Answer',
     reviewYourAnswer: 'Your Selected Answer',
     reviewTimeTaken: 'Time Spent',
+    downloadIQCardBtn: 'Download IQ Card (Image)',
+    downloadingCard: 'Generating Card...',
+    downloadSuccess: 'IQ Card downloaded successfully!',
+    previewCardBtn: 'Preview IQ Card',
+    closeModalBtn: 'Close',
 
     dailyPageTitle: 'Daily Quiz & Brain Challenge',
     dailyPageSubtitle: 'Stay sharp by solving 7 unique curated questions every single day',

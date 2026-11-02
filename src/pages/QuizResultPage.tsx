@@ -14,11 +14,16 @@ import {
   Clock,
   Zap,
   Target,
-  Check
+  Check,
+  Download,
+  Eye,
+  Loader2
 } from 'lucide-react';
 import { QuizResult, Language } from '../types/quiz';
 import { Confetti } from '../components/Confetti';
 import { AdBanner } from '../components/AdBanner';
+import { IQCardModal } from '../components/IQCardModal';
+import { downloadIQCardImage } from '../utils/generateIQCardImage';
 import { translations } from '../utils/translations';
 
 interface QuizResultPageProps {
@@ -36,6 +41,9 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
 }) => {
   const [copiedShare, setCopiedShare] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isCardModalOpen, setIsCardModalOpen] = useState(false);
+  const [downloadingCard, setDownloadingCard] = useState(false);
+  const [cardDownloaded, setCardDownloaded] = useState(false);
 
   const t = translations[lang];
   const isEn = lang === 'en';
@@ -67,6 +75,19 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
 
   const toggleExpand = (idx: number) => {
     setExpandedIndex(expandedIndex === idx ? null : idx);
+  };
+
+  const handleDirectDownload = async () => {
+    setDownloadingCard(true);
+    try {
+      await downloadIQCardImage(result, lang);
+      setCardDownloaded(true);
+      setTimeout(() => setCardDownloaded(false), 3000);
+    } catch (err) {
+      console.error('Failed to download card:', err);
+    } finally {
+      setDownloadingCard(false);
+    }
   };
 
   // Determine IQ ring colors
@@ -158,50 +179,121 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
           </div>
         </div>
 
-        {/* Dedicated IQ Evaluation Highlight Box */}
-        <div className="bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-2xl border border-blue-100 p-6 max-w-2xl mx-auto mb-8 text-left space-y-4">
+        {/* Dedicated IQ Evaluation Highlight Box with Download Certificate Card */}
+        <div className="bg-gradient-to-b from-slate-50 via-blue-50/30 to-indigo-50/40 rounded-2xl border-2 border-blue-200/90 p-5 sm:p-7 max-w-2xl mx-auto mb-8 text-left space-y-4 shadow-sm relative overflow-hidden">
+          {/* Subtle watermark badge in background */}
+          <div className="absolute -right-8 -bottom-8 opacity-10 pointer-events-none select-none">
+            <Brain className="w-44 h-44 text-blue-800" />
+          </div>
+
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-blue-100">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
-                <Brain className="w-5 h-5" />
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
+                <Brain className="w-6 h-6" />
               </div>
               <div>
                 <span className="text-xs font-bold text-slate-500 block">
                   {t.estimatedIQTitle}
                 </span>
-                <span className="text-xl sm:text-2xl font-black text-slate-900">
+                <span className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                   IQ {iq}
                 </span>
               </div>
             </div>
 
-            <div className={`px-3 py-1 rounded-full text-xs font-extrabold border ${iqBadgeColor}`}>
+            <div className={`px-3.5 py-1.5 rounded-full text-xs font-extrabold border ${iqBadgeColor} shadow-2xs self-start sm:self-auto`}>
               {iqClassification}
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
             {iqDesc}
           </p>
 
-          <div className="flex items-center gap-3 text-[11px] text-slate-500 pt-1">
-            <span className="flex items-center gap-1 font-semibold text-blue-700">
+          <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-500 pt-1">
+            <span className="flex items-center gap-1 font-semibold text-blue-700 bg-blue-100/60 px-2 py-0.5 rounded-md">
               <Zap className="w-3.5 h-3.5" />
               <span>{isEn ? 'Speed & Accuracy Matrix' : 'গতি ও সঠিকতা সমন্বয়'}</span>
             </span>
-            <span>·</span>
-            <span className="flex items-center gap-1 font-semibold text-emerald-700">
+            <span className="flex items-center gap-1 font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-md">
               <Target className="w-3.5 h-3.5" />
               <span>{isEn ? 'Cognitive Agility Index' : 'বুদ্ধিবৃত্তিক মূল্যায়ন'}</span>
             </span>
+          </div>
+
+          {/* Download IQ Card Action Bar inside Highlight Box */}
+          <div className="pt-3 border-t border-blue-200/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white/70 -mx-5 sm:-mx-7 -mb-5 sm:-mb-7 p-4 sm:px-6 rounded-b-2xl">
+            <div className="flex items-center gap-2 text-xs text-slate-600 font-bold">
+              <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+              <span>{isEn ? 'High-Res Downloadable IQ Card' : 'উচ্চ রেজোলিউশন আইকিউ কার্ড ও রিপোর্ট'}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsCardModalOpen(true)}
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-extrabold transition-all shadow-2xs cursor-pointer"
+                title={isEn ? 'Preview Card' : 'কার্ডটি দেখুন'}
+              >
+                <Eye className="w-4 h-4 text-slate-500" />
+                <span>{t.previewCardBtn}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleDirectDownload}
+                disabled={downloadingCard}
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black transition-all shadow-sm hover:shadow cursor-pointer disabled:opacity-60"
+              >
+                {downloadingCard ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>{t.downloadingCard}</span>
+                  </>
+                ) : cardDownloaded ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-300" />
+                    <span>{isEn ? 'Downloaded!' : 'ডাউনলোড সফল!'}</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4" />
+                    <span>{t.downloadIQCardBtn}</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3">
           <button
+            onClick={handleDirectDownload}
+            disabled={downloadingCard}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs sm:text-sm font-extrabold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md cursor-pointer disabled:opacity-60"
+          >
+            {downloadingCard ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>{t.downloadingCard}</span>
+              </>
+            ) : cardDownloaded ? (
+              <>
+                <Check className="w-4 h-4 text-emerald-300" />
+                <span>{t.downloadSuccess}</span>
+              </>
+            ) : (
+              <>
+                <Download className="w-4 h-4" />
+                <span>{t.downloadIQCardBtn}</span>
+              </>
+            )}
+          </button>
+
+          <button
             onClick={onPlayAgain}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-xs sm:text-sm font-extrabold hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-extrabold hover:bg-slate-800 transition-colors shadow-xs cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
             <span>{t.playAgainBtn}</span>
@@ -370,6 +462,14 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
 
       {/* Secondary Bottom Ad */}
       <AdBanner refreshKey="result-bottom-ad" />
+
+      {/* High-Resolution IQ Card Preview & Download Modal */}
+      <IQCardModal
+        isOpen={isCardModalOpen}
+        onClose={() => setIsCardModalOpen(false)}
+        result={result}
+        lang={lang}
+      />
     </div>
   );
 };
