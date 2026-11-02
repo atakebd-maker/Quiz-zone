@@ -1,95 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Homepages -->
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=categories</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Categories Catalog -->
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=categories&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=daily</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=categories&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Daily Challenge -->
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=daily&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=easy-riddles</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=daily&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 10 Categories in Bengali & English -->
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=easy-riddles&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=hard-riddles</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=easy-riddles&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=hard-riddles&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=brain-teasers</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=hard-riddles&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=brain-teasers&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=funny-questions</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=brain-teasers&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=funny-questions&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=general-knowledge</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=funny-questions&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=general-knowledge&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=kids-quiz</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=general-knowledge&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=kids-quiz&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=math-puzzles</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=kids-quiz&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=math-puzzles&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=logical-questions</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=math-puzzles&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=logical-questions&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=science</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=logical-questions&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=science&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=bangladesh</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=science&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=bangladesh&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=history</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=bangladesh&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Progress and Sitemap -->
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=history&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://quiz-zone-bd.vercel.app/?page=sitemap</loc>
+    <loc>https://quiz-zone-bd.vercel.app/?page=history&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=sitemap&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=sitemap&amp;lang=en</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <url>
     <loc>https://quiz-zone-bd.vercel.app/quiz-zone.html</loc>
     <lastmod>2026-11-01</lastmod>

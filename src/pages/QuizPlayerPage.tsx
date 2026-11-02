@@ -7,15 +7,16 @@ import {
   Sparkles,
   Lightbulb,
   AlertCircle,
-  HelpCircle,
   Clock,
   RotateCcw,
   Hourglass,
   Brain
 } from 'lucide-react';
-import { QuizCategory, QuizQuestion, QuizResult } from '../types/quiz';
+import { QuizCategory, QuizQuestion, QuizResult, Language } from '../types/quiz';
 import { AdBanner } from '../components/AdBanner';
 import { calculateIQ } from '../utils/iqCalculator';
+import { translations } from '../utils/translations';
+import { getLocalizedQuestion } from '../data/quizData';
 
 interface QuizPlayerPageProps {
   category: QuizCategory;
@@ -23,23 +24,10 @@ interface QuizPlayerPageProps {
   isDaily?: boolean;
   onFinishQuiz: (result: QuizResult) => void;
   onExit: () => void;
+  lang: Language;
 }
 
 const QUESTION_TIME_LIMIT = 60; // 60 seconds (1 minute per question)
-
-const ENCOURAGING_CORRECT_MESSAGES = [
-  'অসাধারণ! আপনার উত্তরটি সঠিক হয়েছে!',
-  'দারুণ হয়েছে! আপনি অসাধারণ মেধার পরিচয় দিচ্ছেন!',
-  'খুব ভালো করছেন! সঠিক উত্তরের জন্য অভিনন্দন!',
-  'অনবদ্য বুদ্ধিমত্তা! চমৎকার পারদর্শিতা!',
-  'অসাধারণ মেধা! আপনার সাধারণ জ্ঞান সত্যিই প্রশংসনীয়!'
-];
-
-const GENTLE_INCORRECT_MESSAGES = [
-  'ভালো চেষ্টা! প্রতিটি ভুলই নতুন কিছু শেখার চমৎকার সুযোগ।',
-  'খুব কাছাকাছি ছিলেন! জানার আগ্রহই মানুষকে প্রকৃত জ্ঞানী করে তোলে।',
-  'সুন্দর প্রচেষ্টা! মন খারাপ করবেন না, প্রতিটি ধাঁধা আপনাকে আরও বুদ্ধিমান করছে।'
-];
 
 interface QuestionState {
   selectedIndex: number | null;
@@ -54,9 +42,12 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   questions,
   isDaily,
   onFinishQuiz,
-  onExit
+  onExit,
+  lang
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const t = translations[lang];
+  const isEn = lang === 'en';
 
   // Per-question tracking state so users can navigate back & forth
   const [questionStates, setQuestionStates] = useState<QuestionState[]>(() =>
@@ -72,7 +63,10 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   const [showRestartConfirm, setShowRestartConfirm] = useState(false);
 
   const totalQuestions = questions.length;
-  const currentQ = questions[currentIndex];
+  // Localize current question on the fly
+  const rawQ = questions[currentIndex];
+  const currentQ = getLocalizedQuestion(rawQ, lang);
+
   const currentState = questionStates[currentIndex] || {
     selectedIndex: null,
     isSubmitted: false,
@@ -84,8 +78,8 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   const isLastQuestion = currentIndex === totalQuestions - 1;
   const isFirstQuestion = currentIndex === 0;
 
-  // Bengali option labels: ক, খ, গ, ঘ
-  const optionLetters = ['ক', 'খ', 'গ', 'ঘ'];
+  // Option letters: ক, খ, গ, ঘ in Bengali, A, B, C, D in English
+  const optionLetters = isEn ? ['A', 'B', 'C', 'D'] : ['ক', 'খ', 'গ', 'ঘ'];
 
   // Current score calculations so far
   const submittedQuestions = questionStates.filter((s) => s.isSubmitted);
@@ -98,142 +92,161 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
   const incorrectCountSoFar = submittedQuestions.length - correctCountSoFar;
 
   // Active question 1-minute countdown timer
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
+    // If current question is already submitted or timed out, do not run timer
     if (currentState.isSubmitted || currentState.isTimeUp) {
       return;
     }
 
-    const timer = setInterval(() => {
-      setQuestionStates((prevStates) => {
-        const next = [...prevStates];
+    timerRef.current = setInterval(() => {
+      setQuestionStates((prev) => {
+        const next = [...prev];
         const cur = next[currentIndex];
-        if (!cur || cur.isSubmitted || cur.isTimeUp) return prevStates;
+        if (!cur || cur.isSubmitted || cur.isTimeUp) return prev;
 
-        if (cur.timeLeft <= 1) {
+        const updatedTimeLeft = cur.timeLeft - 1;
+        const updatedTimeSpent = cur.timeSpent + 1;
+
+        if (updatedTimeLeft <= 0) {
+          // Time is up!
           next[currentIndex] = {
             ...cur,
             timeLeft: 0,
+            timeSpent: updatedTimeSpent,
             isTimeUp: true,
-            isSubmitted: true,
-            timeSpent: cur.timeSpent + 1
+            isSubmitted: true
           };
           return next;
         }
 
         next[currentIndex] = {
           ...cur,
-          timeLeft: cur.timeLeft - 1,
-          timeSpent: cur.timeSpent + 1
+          timeLeft: updatedTimeLeft,
+          timeSpent: updatedTimeSpent
         };
         return next;
       });
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [currentIndex, currentState.isSubmitted, currentState.isTimeUp]);
 
-  // Handle option selection
-  const handleSelectOption = (optionIndex: number) => {
-    if (currentState.isSubmitted) return;
-    setQuestionStates((prev) => {
-      const next = [...prev];
-      next[currentIndex] = {
-        ...next[currentIndex],
-        selectedIndex: optionIndex
-      };
-      return next;
-    });
-  };
+  // Handle option select
+  const handleSelectOption = (index: number) => {
+    if (currentState.isSubmitted || currentState.isTimeUp) return;
 
-  // Submit/Check answer for active question
-  const handleCheckAnswer = () => {
-    if (currentState.selectedIndex === null) return;
     setQuestionStates((prev) => {
       const next = [...prev];
+      const cur = next[currentIndex];
       next[currentIndex] = {
-        ...next[currentIndex],
+        ...cur,
+        selectedIndex: index,
         isSubmitted: true
       };
       return next;
     });
   };
 
-  // Navigate to previous question
-  const handlePreviousQuestion = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
+  // Move to next question or complete quiz
+  const handleNext = () => {
+    if (!isLastQuestion) {
+      setCurrentIndex((i) => i + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      handleCompleteQuiz();
     }
   };
 
-  // Finish quiz and calculate IQ
+  // Move to previous question
+  const handlePrevious = () => {
+    if (!isFirstQuestion) {
+      setCurrentIndex((i) => i - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  // Finish quiz and evaluate result
   const handleCompleteQuiz = () => {
-    const finalAnswers = questions.map((q, idx) => {
-      const state = questionStates[idx];
-      const selected = state.selectedIndex !== null ? state.selectedIndex : -1;
-      const isCorrect = selected === q.correctIndex;
+    // Calculate final scores
+    let correct = 0;
+    let totalTime = 0;
+
+    const recordedAnswers = questions.map((q, idx) => {
+      const state = questionStates[idx] || {
+        selectedIndex: null,
+        isSubmitted: false,
+        timeLeft: 0,
+        isTimeUp: true,
+        timeSpent: QUESTION_TIME_LIMIT
+      };
+
+      const isCorrect = state.selectedIndex === q.correctIndex;
+      if (isCorrect) correct += 1;
+      totalTime += state.timeSpent || (QUESTION_TIME_LIMIT - state.timeLeft);
+
+      const locQ = getLocalizedQuestion(q, lang);
+
       return {
         questionId: q.id,
-        questionText: q.question,
-        options: q.options,
-        selectedIndex: selected,
+        questionText: locQ.question,
+        questionTextEn: q.questionEn || q.question,
+        options: locQ.options,
+        optionsEn: q.optionsEn || q.options,
+        selectedIndex: state.selectedIndex ?? -1,
         correctIndex: q.correctIndex,
         isCorrect,
-        explanation: q.explanation,
-        interestingFact: q.interestingFact,
-        timeTakenSeconds: state.timeSpent
+        explanation: locQ.explanation,
+        explanationEn: q.explanationEn || q.explanation,
+        interestingFact: locQ.interestingFact,
+        interestingFactEn: q.interestingFactEn || q.interestingFact,
+        timeTakenSeconds: state.timeSpent || 0
       };
     });
 
-    const correctCount = finalAnswers.filter((a) => a.isCorrect).length;
-    const incorrectCount = totalQuestions - correctCount;
-    const percentage = Math.round((correctCount / totalQuestions) * 100);
-    const totalTime = questionStates.reduce((acc, s) => acc + s.timeSpent, 0);
+    const incorrect = totalQuestions - correct;
+    const percentage = Math.round((correct / totalQuestions) * 100);
 
-    let performanceMessage = '';
-    if (percentage === 100) {
-      performanceMessage = 'অসাধারণ! আপনি প্রতিটি ধাঁধা ও প্রশ্নের সঠিক উত্তর দিয়েছেন!';
-    } else if (percentage >= 80) {
-      performanceMessage = 'চমৎকার কাজ! আপনার তীক্ষ্ণ বুদ্ধি ও সাধারণ জ্ঞান প্রশংসনীয়!';
-    } else if (percentage >= 50) {
-      performanceMessage = 'ভালো প্রচেষ্টা! নিয়মিত কুইজ ও ধাঁধা খেললে মেধা আরও বাড়বে!';
-    } else {
-      performanceMessage = 'হাল ছাড়বেন না! প্রতিটি চেষ্টাই আপনাকে আরও বুদ্ধিমান ও অভিজ্ঞ করছে।';
-    }
+    // Calculate IQ & cognitive speed analysis
+    const iqAnalysis = calculateIQ(correct, totalQuestions, totalTime, lang);
 
-    // IQ calculation factoring accuracy and average time per question
-    const iqAnalysis = calculateIQ(correctCount, totalQuestions, totalTime);
+    const performanceMessage =
+      percentage >= 80
+        ? isEn ? 'Brilliant performance! Exceptional intellect!' : 'অনবদ্য মেধা! অসাধারণ পারদর্শিতা দেখিয়েছেন!'
+        : percentage >= 60
+        ? isEn ? 'Well done! Great general knowledge.' : 'দারুণ প্রচেষ্টা! আপনার সাধারণ জ্ঞান প্রশংসনীয়।'
+        : isEn ? 'Good effort! Regular practice leads to mastery.' : 'ভালো চেষ্টা! নিয়মিত অনুশীলনে জ্ঞান আরও সমৃদ্ধ হবে।';
+
+    const categoryTitle = isEn ? category.titleEn || category.title : category.title;
 
     const result: QuizResult = {
       categoryId: category.id,
-      categoryTitle: isDaily ? 'দৈনিক কুইজ ও ধাঁধা' : category.title,
-      isDaily: !!isDaily,
+      categoryTitle,
+      categoryTitleEn: category.titleEn || category.title,
+      isDaily,
       totalQuestions,
-      correctAnswers: correctCount,
-      incorrectAnswers: incorrectCount,
-      scoreRatio: `${correctCount}/${totalQuestions}`,
+      correctAnswers: correct,
+      incorrectAnswers: incorrect,
+      scoreRatio: `${correct}/${totalQuestions}`,
       percentage,
       performanceMessage,
       completedAt: new Date().toISOString(),
       estimatedIQ: iqAnalysis.iqScore,
       iqClassification: iqAnalysis.classification,
+      iqClassificationEn: iqAnalysis.classificationEn,
       iqDescription: iqAnalysis.description,
+      iqDescriptionEn: iqAnalysis.descriptionEn,
       totalTimeSeconds: totalTime,
-      answers: finalAnswers
+      answers: recordedAnswers
     };
 
     onFinishQuiz(result);
   };
 
-  // Navigate to next question or complete quiz
-  const handleNextQuestion = () => {
-    if (isLastQuestion) {
-      handleCompleteQuiz();
-    } else {
-      setCurrentIndex((prev) => prev + 1);
-    }
-  };
-
-  // Restart Quiz action
+  // Restart quiz completely
   const handleRestartQuiz = () => {
     setQuestionStates(
       questions.map(() => ({
@@ -248,371 +261,287 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
     setShowRestartConfirm(false);
   };
 
-  // Formatting timer
-  const formattedMinutes = String(Math.floor(currentState.timeLeft / 60)).padStart(2, '0');
-  const formattedSeconds = String(currentState.timeLeft % 60).padStart(2, '0');
-  const timerPercent = (currentState.timeLeft / QUESTION_TIME_LIMIT) * 100;
-
-  let timerColorClass = 'text-blue-600 bg-blue-50 border-blue-200';
-  let timerBarColor = 'bg-blue-600';
-  if (currentState.timeLeft <= 10) {
-    timerColorClass = 'text-rose-600 bg-rose-50 border-rose-200 animate-pulse';
-    timerBarColor = 'bg-rose-500';
-  } else if (currentState.timeLeft <= 20) {
-    timerColorClass = 'text-amber-600 bg-amber-50 border-amber-200';
-    timerBarColor = 'bg-amber-500';
+  // Timer color and styling based on seconds left
+  const timeLeft = currentState.timeLeft;
+  const timerPercentage = (timeLeft / QUESTION_TIME_LIMIT) * 100;
+  let timerColor = 'text-blue-600 bg-blue-50 border-blue-200';
+  let barColor = 'bg-blue-600';
+  if (timeLeft <= 10) {
+    timerColor = 'text-rose-600 bg-rose-50 border-rose-300 animate-pulse';
+    barColor = 'bg-rose-500';
+  } else if (timeLeft <= 25) {
+    timerColor = 'text-amber-600 bg-amber-50 border-amber-200';
+    barColor = 'bg-amber-500';
   }
 
-  const isCurrentCorrect =
-    currentState.isSubmitted && currentState.selectedIndex === currentQ.correctIndex;
-  const isCurrentIncorrect =
-    currentState.isSubmitted &&
-    currentState.selectedIndex !== null &&
-    currentState.selectedIndex !== currentQ.correctIndex;
-  const isCurrentTimedOut =
-    currentState.isSubmitted && currentState.isTimeUp && currentState.selectedIndex === null;
-
-  const cheerMessage =
-    ENCOURAGING_CORRECT_MESSAGES[currentIndex % ENCOURAGING_CORRECT_MESSAGES.length];
-  const gentleMessage =
-    GENTLE_INCORRECT_MESSAGES[currentIndex % GENTLE_INCORRECT_MESSAGES.length];
+  // Answer feedback message
+  const isSelected = currentState.selectedIndex !== null;
+  const isCorrect = isSelected && currentState.selectedIndex === currentQ.correctIndex;
+  const encouragingMessage = isCorrect
+    ? t.encouragingCorrect[currentIndex % t.encouragingCorrect.length]
+    : t.gentleIncorrect[currentIndex % t.gentleIncorrect.length];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
-      {/* Quiz Top bar: Header, Live Score & 1-Minute Timer */}
-      <div className="bg-white rounded-2xl border border-blue-100 p-4 sm:p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onExit}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>বের হন</span>
-            </button>
-
-            <button
-              onClick={() => setShowRestartConfirm(true)}
-              className="inline-flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-blue-600 transition-colors cursor-pointer ml-1"
-              title="কুইজ পুনরায় শুরু করুন"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">পুনরায় শুরু</span>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Live Score Counter */}
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-200 rounded-full text-xs font-semibold text-slate-600">
-              <span className="text-emerald-700">সঠিক: {correctCountSoFar}</span>
-              <span className="text-slate-300">·</span>
-              <span className="text-rose-600">ভুল: {incorrectCountSoFar}</span>
-            </div>
-
-            {/* 1-Minute Live Countdown Timer */}
-            <div
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold border transition-colors shadow-2xs ${timerColorClass}`}
-              title="প্রতি প্রশ্নে ১ মিনিট (৬০ সেকেন্ড) সময়"
-            >
-              <Clock className="w-3.5 h-3.5" />
-              <span className="font-mono text-sm tracking-wider">
-                {formattedMinutes}:{formattedSeconds}
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      {/* Top Header: Category, Progress & Controls */}
+      <div className="bg-white rounded-2xl border border-blue-100 p-4 sm:p-5 shadow-xs space-y-4">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+                {isEn ? category.titleEn || category.title : category.title}
               </span>
-              {currentState.timeLeft <= 10 && !currentState.isSubmitted && (
-                <span className="hidden sm:inline text-[11px] font-bold">সময় শেষ প্রায়!</span>
+              {isDaily && (
+                <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                  {t.navDaily}
+                </span>
               )}
             </div>
+            <h1 className="text-sm sm:text-base font-extrabold text-slate-800 mt-1">
+              {t.questionProgress} {currentIndex + 1} / {totalQuestions}
+            </h1>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowRestartConfirm(true)}
+              className="p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+              title={t.restartQuizBtn}
+              aria-label={t.restartQuizBtn}
+            >
+              <RotateCcw className="w-4 h-4" />
+            </button>
+            <button
+              onClick={onExit}
+              className="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+            >
+              {t.exitQuizBtn}
+            </button>
           </div>
         </div>
 
-        {/* Progress Bar & Question Counter */}
-        <div>
-          <div className="flex items-center justify-between text-xs font-semibold text-slate-600 mb-1.5">
-            <span className="flex items-center gap-2">
-              <span className="text-blue-700 font-bold">{isDaily ? 'দৈনিক কুইজ' : category.title}</span>
-              <span className="text-slate-300">·</span>
-              <span>
-                প্রশ্ন <strong className="text-blue-600 font-bold">{currentIndex + 1}</strong> / {totalQuestions}
-              </span>
+        {/* 1-Minute Question Timer & Progress Bar */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-slate-500 font-medium flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-slate-400" />
+              <span>{t.questionTimerLabel}:</span>
             </span>
-            <span className="flex items-center gap-1 text-slate-500 font-medium">
-              <Hourglass className="w-3 h-3 text-slate-400" />
-              <span>বাকি সময়: {currentState.timeLeft} সেকেন্ড</span>
+            <div className={`px-2.5 py-0.5 rounded-full border text-xs font-extrabold flex items-center gap-1 ${timerColor}`}>
+              <Hourglass className="w-3.5 h-3.5" />
+              <span>
+                {timeLeft} {t.secondsSuffix}
+              </span>
+            </div>
+          </div>
+          {/* Visual Timer Progress Bar */}
+          <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div
+              className={`h-full transition-all duration-1000 ease-linear rounded-full ${barColor}`}
+              style={{ width: `${timerPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Live Score Counter Badge */}
+        <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs text-slate-600">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1 font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <span>{correctCountSoFar} {t.correctCountLabel}</span>
+            </span>
+            <span className="flex items-center gap-1 font-semibold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
+              <XCircle className="w-3.5 h-3.5 text-rose-600" />
+              <span>{incorrectCountSoFar} {t.incorrectCountLabel}</span>
             </span>
           </div>
-
-          {/* Dual bar: Quiz completion + Active Question Timer */}
-          <div className="space-y-1.5">
-            <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-blue-600 rounded-full transition-all duration-300 ease-out"
-                style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
-              />
-            </div>
-            {/* 1-Minute Countdown visual bar */}
-            <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-              <div
-                className={`h-full transition-all duration-1000 ease-linear ${timerBarColor}`}
-                style={{ width: `${timerPercent}%` }}
-              />
-            </div>
+          <div className="flex items-center gap-1 font-medium text-blue-700 bg-blue-50/70 px-2 py-0.5 rounded">
+            <Brain className="w-3.5 h-3.5 text-blue-600" />
+            <span>{t.heroBadge.split('·')[1]?.trim() || 'আইকিউ মেধা'}</span>
           </div>
         </div>
       </div>
 
-      {/* Main Question & Riddle Card */}
-      <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 shadow-xs space-y-6">
-        {/* Question Header */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
-              <HelpCircle className="w-4 h-4" />
-              <span>ধাঁধা / প্রশ্ন নম্বর {currentIndex + 1}</span>
-            </div>
+      {/* Primary Ad Slot Directly above question */}
+      <AdBanner refreshKey={`quiz-q-top-${currentIndex}`} />
 
-            <div className="text-[11px] font-semibold text-slate-400">
-              সময়সীমা: ১ মিনিট (৬০ সেকেন্ড)
-            </div>
+      {/* Main Question Card */}
+      <div className="bg-white rounded-3xl border border-blue-100 p-6 sm:p-8 shadow-xs space-y-6">
+        {/* Question Text */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+            <Sparkles className="w-4 h-4" />
+            <span>{isEn ? `Question ${currentIndex + 1} of ${totalQuestions}` : `প্রশ্ন নং ${currentIndex + 1}`}</span>
           </div>
-
-          <h2 className="text-lg sm:text-2xl font-bold text-slate-900 leading-snug">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">
             {currentQ.question}
           </h2>
         </div>
 
-        {/* Ad Banner Above Options (বিজ্ঞাপন ১) */}
-        <AdBanner refreshKey={`q-top-${currentIndex}`} className="my-2" />
+        {/* Time's up banner if expired */}
+        {currentState.isTimeUp && currentState.selectedIndex === null && (
+          <div className="flex items-center gap-2 p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-xs font-medium">
+            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+            <span>{t.timesUpAlert}</span>
+          </div>
+        )}
 
-        {/* 4 Answer Options (ক, খ, গ, ঘ) */}
-        <div className="space-y-3" role="radiogroup" aria-label="উত্তরের বিকল্পসমূহ">
-          {currentQ.options.map((optionText, index) => {
-            const letter = optionLetters[index];
-            const isSelected = currentState.selectedIndex === index;
+        {/* 4 Interactive Answer Options */}
+        <div className="grid grid-cols-1 gap-3" role="radiogroup" aria-label="Question options">
+          {currentQ.options.map((option, idx) => {
+            const isChosen = currentState.selectedIndex === idx;
+            const isThisCorrect = idx === currentQ.correctIndex;
+            const isLocked = currentState.isSubmitted || currentState.isTimeUp;
 
-            let optionStyles = 'border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50/40 text-slate-800';
-            let badgeStyles = 'bg-slate-100 text-slate-700 border-slate-200';
+            let buttonStyle =
+              'border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50/40 text-slate-800';
 
-            if (!currentState.isSubmitted) {
-              if (isSelected) {
-                optionStyles = 'border-blue-600 bg-blue-50/80 text-blue-900 ring-2 ring-blue-600/30';
-                badgeStyles = 'bg-blue-600 text-white border-blue-600';
-              }
-            } else {
-              if (index === currentQ.correctIndex) {
-                optionStyles = 'border-emerald-500 bg-emerald-50/90 text-emerald-950 ring-2 ring-emerald-500/30';
-                badgeStyles = 'bg-emerald-600 text-white border-emerald-600';
-              } else if (isSelected && index !== currentQ.correctIndex) {
-                optionStyles = 'border-rose-300 bg-rose-50/70 text-rose-950';
-                badgeStyles = 'bg-rose-500 text-white border-rose-500';
+            if (isLocked) {
+              if (isThisCorrect) {
+                buttonStyle =
+                  'border-emerald-500 bg-emerald-50/90 text-emerald-950 font-bold shadow-xs';
+              } else if (isChosen && !isThisCorrect) {
+                buttonStyle = 'border-rose-400 bg-rose-50/90 text-rose-950';
               } else {
-                optionStyles = 'border-slate-200 bg-slate-50/60 opacity-60 text-slate-600';
-                badgeStyles = 'bg-slate-200 text-slate-500 border-slate-300';
+                buttonStyle = 'border-slate-100 bg-slate-50/60 text-slate-400 opacity-60';
               }
+            } else if (isChosen) {
+              buttonStyle = 'border-blue-600 bg-blue-50 text-blue-900 font-bold shadow-xs';
             }
 
             return (
               <button
-                key={index}
+                key={idx}
                 type="button"
-                role="radio"
-                aria-checked={isSelected}
-                disabled={currentState.isSubmitted}
-                onClick={() => handleSelectOption(index)}
-                className={`w-full text-left p-4 rounded-xl border flex items-center justify-between gap-4 transition-all duration-150 cursor-pointer ${optionStyles} ${
-                  currentState.isSubmitted ? 'cursor-default' : ''
-                }`}
+                onClick={() => handleSelectOption(idx)}
+                disabled={isLocked}
+                className={`w-full p-4 rounded-xl border text-left transition-all flex items-center justify-between gap-3 text-sm sm:text-base cursor-pointer disabled:cursor-default ${buttonStyle}`}
               >
-                <div className="flex items-center gap-3.5 flex-1">
+                <div className="flex items-center gap-3">
                   <span
-                    className={`w-8 h-8 rounded-lg border flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${badgeStyles}`}
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 transition-colors ${
+                      isLocked && isThisCorrect
+                        ? 'bg-emerald-600 text-white'
+                        : isLocked && isChosen && !isThisCorrect
+                        ? 'bg-rose-600 text-white'
+                        : isChosen
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-slate-100 text-slate-600'
+                    }`}
                   >
-                    {letter}
+                    {optionLetters[idx]}
                   </span>
-                  <span className="text-sm sm:text-base font-medium leading-relaxed">
-                    {optionText}
-                  </span>
+                  <span className="font-medium">{option}</span>
                 </div>
 
-                {currentState.isSubmitted && index === currentQ.correctIndex && (
+                {isLocked && isThisCorrect && (
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                 )}
-                {currentState.isSubmitted && isSelected && index !== currentQ.correctIndex && (
-                  <XCircle className="w-5 h-5 text-rose-500 shrink-0" />
+                {isLocked && isChosen && !isThisCorrect && (
+                  <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
                 )}
               </button>
             );
           })}
         </div>
 
-        {/* Ad Banner Below Options (বিজ্ঞাপন ২) */}
-        <AdBanner refreshKey={`q-bot-${currentIndex}`} className="my-2" />
+        {/* Immediate Explanation & Feedback Box */}
+        {(currentState.isSubmitted || currentState.isTimeUp) && (
+          <div className="space-y-4 pt-4 border-t border-slate-100 animate-fadeIn">
+            {/* Encouraging / Gentle Notification */}
+            <div
+              className={`p-3.5 rounded-xl text-xs font-bold flex items-center gap-2.5 ${
+                isCorrect
+                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                  : 'bg-amber-50 text-amber-900 border border-amber-200'
+              }`}
+            >
+              {isCorrect ? (
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              ) : (
+                <Lightbulb className="w-4 h-4 text-amber-600 shrink-0" />
+              )}
+              <span>{encouragingMessage}</span>
+            </div>
 
-        {/* Reminder if user hasn't selected */}
-        {currentState.selectedIndex === null && !currentState.isSubmitted && (
-          <p className="text-xs text-slate-600 flex items-center gap-1.5 italic">
-            <AlertCircle className="w-3.5 h-3.5 text-blue-500" />
-            ১ মিনিটের মধ্যে একটি সঠিক উত্তর বেছে নিয়ে &ldquo;উত্তর যাচাই করুন&rdquo; চাপুন।
-          </p>
-        )}
-
-        {/* Feedback Banner & Explanation if submitted */}
-        {currentState.isSubmitted && (
-          <div className="space-y-4 pt-2">
-            {isCurrentCorrect && (
-              <div className="p-4 sm:p-5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-1">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                  <span className="font-extrabold text-base text-emerald-800">
-                    চমৎকার! আপনার উত্তরটি সঠিক হয়েছে!
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-emerald-700 pl-7 font-medium">
-                  {cheerMessage} সঠিক উত্তর: <strong>{currentQ.options[currentQ.correctIndex]}</strong>
-                </p>
-              </div>
-            )}
-
-            {isCurrentIncorrect && (
-              <div className="p-4 sm:p-5 rounded-xl bg-blue-50/70 border border-blue-200 text-slate-900 space-y-2">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-blue-600 shrink-0" />
-                  <span className="font-extrabold text-base text-slate-900">
-                    {gentleMessage}
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-700 pl-7">
-                  সঠিক উত্তরটি হলো বিকল্প {optionLetters[currentQ.correctIndex]}:{' '}
-                  <strong className="text-blue-700">{currentQ.options[currentQ.correctIndex]}</strong>
-                </p>
-              </div>
-            )}
-
-            {isCurrentTimedOut && (
-              <div className="p-4 sm:p-5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 space-y-2">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-amber-600 shrink-0" />
-                  <span className="font-extrabold text-base text-amber-900">
-                    সময় শেষ হয়ে গেছে! (১ মিনিট উত্তীর্ণ)
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-amber-800 pl-7">
-                  এই ধাঁধার সঠিক উত্তরটি ছিল বিকল্প {optionLetters[currentQ.correctIndex]}:{' '}
-                  <strong className="text-amber-950 font-bold">{currentQ.options[currentQ.correctIndex]}</strong>
-                </p>
-              </div>
-            )}
-
-            {/* Explanation & Did You Know fact */}
-            <div className="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-3">
-              <div className="space-y-1">
-                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-600">
-                  <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
-                  <span>ব্যাখ্যা</span>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            {/* In-depth Explanation */}
+            {currentQ.explanation && (
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs sm:text-sm text-slate-700 space-y-1">
+                <span className="font-bold text-slate-900 flex items-center gap-1.5">
+                  <Lightbulb className="w-4 h-4 text-amber-500" />
+                  <span>{t.explanationTitle}:</span>
+                </span>
+                <p className="leading-relaxed text-slate-600 pt-0.5">
                   {currentQ.explanation}
                 </p>
               </div>
+            )}
 
-              <div className="pt-2 border-t border-slate-200/60 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-700">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                  <span>আপনি কি জানেন?</span>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-600 italic leading-relaxed">
+            {/* Intriguing Fun Fact */}
+            {currentQ.interestingFact && (
+              <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-4 text-xs sm:text-sm text-blue-900 space-y-1">
+                <span className="font-bold text-blue-950 flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-blue-600" />
+                  <span>{t.funFactTitle}:</span>
+                </span>
+                <p className="leading-relaxed text-blue-800 pt-0.5">
                   {currentQ.interestingFact}
                 </p>
               </div>
-            </div>
-
-            {/* Ad Banner After Explanation (বিজ্ঞাপন ৩) */}
-            <AdBanner refreshKey={`q-exp-${currentIndex}`} className="my-2" />
-          </div>
-        )}
-
-        {/* Action Controls: Previous Question, Check Answer & Next Question Buttons */}
-        <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center gap-3">
-          {/* Previous Question Button */}
-          <button
-            type="button"
-            onClick={handlePreviousQuestion}
-            disabled={isFirstQuestion}
-            className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-bold text-sm border transition-colors ${
-              !isFirstQuestion
-                ? 'border-slate-300 bg-white hover:bg-slate-50 text-slate-700 cursor-pointer shadow-2xs'
-                : 'border-slate-200 bg-slate-50 text-slate-300 cursor-not-allowed opacity-50'
-            }`}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>পূর্ববর্তী প্রশ্ন</span>
-          </button>
-
-          <div className="flex-1 w-full flex items-center justify-end gap-3">
-            {!currentState.isSubmitted ? (
-              /* Check Answer Button */
-              <button
-                type="button"
-                disabled={currentState.selectedIndex === null}
-                onClick={handleCheckAnswer}
-                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all shadow-xs ${
-                  currentState.selectedIndex !== null
-                    ? 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white cursor-pointer'
-                    : 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                }`}
-              >
-                <span>উত্তর যাচাই করুন</span>
-                <CheckCircle2 className="w-4 h-4" />
-              </button>
-            ) : (
-              /* Next Question / Finish Quiz Button */
-              <button
-                type="button"
-                onClick={handleNextQuestion}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-md transition-all cursor-pointer"
-              >
-                <span>
-                  {isLastQuestion ? 'কুইজ সম্পন্ন করুন ও আইকিউ (IQ) দেখুন' : 'পরবর্তী প্রশ্ন'}
-                </span>
-                {isLastQuestion ? (
-                  <Brain className="w-4 h-4" />
-                ) : (
-                  <ArrowRight className="w-4 h-4" />
-                )}
-              </button>
             )}
           </div>
-        </div>
-      </section>
+        )}
+      </div>
 
-      {/* Restart Quiz Confirmation Modal */}
+      {/* Ad Placement directly beneath answer explanation */}
+      <AdBanner refreshKey={`quiz-q-bottom-${currentIndex}`} />
+
+      {/* Navigation Controls: Previous / Next / Finish */}
+      <div className="flex items-center justify-between gap-3 pt-2">
+        <button
+          onClick={handlePrevious}
+          disabled={isFirstQuestion}
+          className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs sm:text-sm font-bold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>{t.prevQuestionBtn}</span>
+        </button>
+
+        <button
+          onClick={handleNext}
+          className={`inline-flex items-center gap-2 px-6 sm:px-8 py-3 rounded-xl text-xs sm:text-sm font-extrabold shadow-sm transition-all cursor-pointer ${
+            isLastQuestion
+              ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+              : 'bg-blue-600 text-white hover:bg-blue-700'
+          }`}
+        >
+          <span>{isLastQuestion ? t.finishQuizBtn : t.nextQuestionBtn}</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Restart confirmation modal */}
       {showRestartConfirm && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-slate-100 space-y-4">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto">
-              <RotateCcw className="w-5 h-5" />
-            </div>
-
-            <div className="text-center space-y-1">
-              <h3 className="text-base font-bold text-slate-900">
-                কুইজ কি পুনরায় শুরু করতে চান?
-              </h3>
-              <p className="text-xs text-slate-500">
-                পুনরায় শুরু করলে বর্তমান কুইজের অগ্রগতি এবং উত্তর রিসেট হয়ে যাবে।
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 pt-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-fadeIn">
+          <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl space-y-4">
+            <h3 className="text-base font-extrabold text-slate-900">
+              {t.confirmRestartTitle}
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              {t.confirmRestartDesc}
+            </p>
+            <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowRestartConfirm(false)}
-                className="flex-1 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg cursor-pointer"
               >
-                বাতিল করুন
+                {t.confirmRestartNo}
               </button>
               <button
                 onClick={handleRestartQuiz}
-                className="flex-1 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 cursor-pointer shadow-xs"
+                className="px-4 py-2 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-xs cursor-pointer"
               >
-                হ্যাঁ, শুরু করুন
+                {t.confirmRestartYes}
               </button>
             </div>
           </div>

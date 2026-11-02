@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="bLN_T8HDzlDs9LNH6wEMuVvLOZf0JINKEPAEq7_QjpM" />
-  <title>Quiz Zone BD (কুইজ জোন বিডি) - অনলাইন কুইজ</title>
-  <meta name="description" content="Quiz Zone BD - ১৬টি ক্যাটাগরিতে ১০০+ প্রশ্ন ও উত্তর নিয়ে সম্পূর্ণ বাংলায় অনলাইন কুইজ প্ল্যাটফর্ম।">
+  <title>Quiz Zone BD (কুইজ জোন বিডি) - বাংলা ও ইংরেজি কুইজ প্ল্যাটফর্ম</title>
+  <meta name="description" content="Quiz Zone BD - ১০টি ক্যাটাগরিতে বাংলা ধাঁধা, বুদ্ধির খেলা, বিজ্ঞান ও সাধারণ জ্ঞান কুইজ। দ্বিভাষিক (বাংলা ও ইংরেজি), ১ মিনিট টাইমার ও আইকিউ (IQ) বিশ্লেষণ।">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,15 +17,23 @@
 <body class="text-slate-900 min-h-screen flex flex-col justify-between">
   <!-- Header -->
   <header class="bg-white border-b border-blue-100 sticky top-0 z-30 shadow-xs">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+      <a href="/?lang=bn" class="flex items-center gap-2">
         <div class="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-lg">?</div>
         <div>
-          <span class="text-xl font-extrabold text-slate-900">Quiz <span class="text-blue-600">Zone</span> <span class="text-emerald-600 font-black">BD</span></span>
+          <span class="text-xl font-extrabold text-slate-900">Quiz <span className="text-blue-600">Zone</span> <span class="text-emerald-600 font-black">BD</span></span>
           <span class="text-xs bg-blue-50 text-blue-700 font-bold px-1.5 py-0.5 rounded ml-1 border border-blue-200">কুইজ জোন বিডি</span>
         </div>
       </a>
-      <a href="/" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700">মূল অ্যাপে ফিরে যান</a>
+
+      <!-- Language Switch Buttons -->
+      <div class="flex items-center gap-2">
+        <div class="inline-flex items-center p-1 bg-slate-100 rounded-lg border border-slate-200">
+          <a href="/?lang=bn" class="px-2.5 py-1 text-xs font-bold rounded-md bg-blue-600 text-white shadow-xs">বাংলা</a>
+          <a href="/?lang=en" class="px-2.5 py-1 text-xs font-bold rounded-md text-slate-700 hover:text-slate-900">English</a>
+        </div>
+        <a href="/?lang=bn" class="hidden sm:inline-block text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700">মূল অ্যাপে প্রবেশ করুন</a>
+      </div>
     </div>
   </header>
 
@@ -33,20 +41,23 @@
   <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full" id="app">
     <div class="bg-white rounded-2xl border border-blue-100 p-6 sm:p-10 text-center shadow-xs space-y-6">
       <div class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 font-bold text-xs px-3 py-1 rounded-full border border-blue-200">
-        ✨ ১০টি ক্যাটাগরি · বাংলা ধাঁধা ও কুইজ ভান্ডার
+        ✨ ১০টি ক্যাটাগরি · বাংলা ও ইংরেজি ধাঁধা এবং কুইজ
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
         মেধা ও জ্ঞান যাচাই করুন <span class="text-blue-600">Quiz Zone</span> <span class="text-emerald-600">BD</span>-এ
       </h1>
       <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-        সহজ ও কঠিন বাংলা ধাঁধা, বুদ্ধির খেলা, যুক্তির প্রশ্ন ও সাধারণ জ্ঞান কুইজ। প্রতি প্রশ্নে ১ মিনিট টাইমার ও আইকিউ (IQ) মূল্যায়ন।
+        সহজ ও কঠিন বাংলা ধাঁধা, বুদ্ধির খেলা, যুক্তির প্রশ্ন, গণিত ও সাধারণ জ্ঞান কুইজ। প্রতি প্রশ্নে ১ মিনিট টাইমার ও আইকিউ (IQ) মূল্যায়ন। বাংলা ও ইংরেজি উভয় ভাষায় উপলব্ধ।
       </p>
 
       <div class="pt-4 flex flex-wrap justify-center gap-3">
-        <a href="/" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md transition-all">
-          বাংলা ধাঁধা ও কুইজ খেলুন
+        <a href="/?lang=bn" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md transition-all">
+          বাংলা ভাষায় খেলুন
         </a>
-        <a href="/?page=daily" class="px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold rounded-xl text-sm transition-all">
+        <a href="/?lang=en" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-sm shadow-md transition-all">
+          Play in English
+        </a>
+        <a href="/?page=daily&lang=bn" class="px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold rounded-xl text-sm transition-all">
           আজকের দৈনিক কুইজ
         </a>
       </div>

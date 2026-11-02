@@ -13,25 +13,32 @@ import {
   Brain,
   Clock,
   Zap,
-  Target
+  Target,
+  Check
 } from 'lucide-react';
-import { QuizResult } from '../types/quiz';
+import { QuizResult, Language } from '../types/quiz';
 import { Confetti } from '../components/Confetti';
 import { AdBanner } from '../components/AdBanner';
+import { translations } from '../utils/translations';
 
 interface QuizResultPageProps {
   result: QuizResult;
   onPlayAgain: () => void;
   onBackToCategories: () => void;
+  lang: Language;
 }
 
 export const QuizResultPage: React.FC<QuizResultPageProps> = ({
   result,
   onPlayAgain,
-  onBackToCategories
+  onBackToCategories,
+  lang
 }) => {
   const [copiedShare, setCopiedShare] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const t = translations[lang];
+  const isEn = lang === 'en';
 
   const isCelebratory = result.percentage >= 80;
   const avgTimePerQuestion =
@@ -40,7 +47,17 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
       : 25;
 
   const handleShare = () => {
-    const text = `আমি Quiz Zone BD-তে ${result.categoryTitle} কুইজে ${result.scoreRatio} (${result.percentage}%) পেয়েছি এবং আমার আনুমানিক আইকিউ (IQ) হলো ${result.estimatedIQ || 115} (${result.iqClassification || 'উন্নত মেধা'})! আপনি কত স্কোর করতে পারবেন?`;
+    const origin = window.location.origin || '';
+    const shareUrl = `${origin}/?page=category&id=${result.categoryId}&lang=${lang}`;
+    const catName = isEn ? result.categoryTitleEn || result.categoryTitle : result.categoryTitle;
+    const classification = isEn
+      ? result.iqClassificationEn || result.iqClassification
+      : result.iqClassification;
+
+    const text = isEn
+      ? `I scored ${result.scoreRatio} (${result.percentage}%) on Quiz Zone BD in "${catName}" with an estimated IQ of ${result.estimatedIQ || 115} (${classification})! Challenge yourself here: ${shareUrl}`
+      : `আমি Quiz Zone BD-তে "${catName}" কুইজে ${result.scoreRatio} (${result.percentage}%) পেয়েছি এবং আমার আনুমানিক আইকিউ (IQ) হলো ${result.estimatedIQ || 115} (${classification})! আপনি কত স্কোর করতে পারবেন? লিঙ্ক: ${shareUrl}`;
+
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
       setCopiedShare(true);
@@ -70,6 +87,16 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
     iqBadgeColor = 'bg-amber-50 text-amber-700 border-amber-200';
   }
 
+  const categoryTitle = isEn
+    ? result.categoryTitleEn || result.categoryTitle
+    : result.categoryTitle;
+  const iqClassification = isEn
+    ? result.iqClassificationEn || result.iqClassification
+    : result.iqClassification;
+  const iqDesc = isEn
+    ? result.iqDescriptionEn || result.iqDescription
+    : result.iqDescription;
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
       {isCelebratory && <Confetti durationMs={4000} />}
@@ -79,268 +106,258 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
         {/* Decorative Top Accent */}
         <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mb-6" />
 
-        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 mx-auto mb-4 shadow-xs">
-          <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
+        <div className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full mb-4">
+          <Trophy className="w-3.5 h-3.5 text-blue-600" />
+          <span>{categoryTitle}</span>
         </div>
 
-        <div className="space-y-1 mb-6">
-          <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
-            {result.categoryTitle} ফলাফল
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          {t.resultCelebrationTitle}
+        </h1>
+
+        <p className="text-sm text-slate-600 max-w-lg mx-auto mb-8">
+          {result.performanceMessage}
+        </p>
+
+        {/* Big Score & Metric Ring Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto mb-8">
+          <div className="bg-blue-50/60 border border-blue-100 p-4 rounded-2xl">
+            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
+              {t.resultScoreSummary}
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-blue-700">
+              {result.scoreRatio}
+            </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            কুইজ সম্পন্ন হয়েছে!
-          </h1>
-          <p className="text-base sm:text-lg font-semibold text-blue-700 max-w-lg mx-auto pt-1">
-            &ldquo;{result.performanceMessage}&rdquo;
+
+          <div className="bg-emerald-50/60 border border-emerald-100 p-4 rounded-2xl">
+            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
+              {t.resultAccuracy}
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700">
+              {result.percentage}%
+            </span>
+          </div>
+
+          <div className="bg-purple-50/60 border border-purple-100 p-4 rounded-2xl">
+            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
+              {t.resultTotalTime}
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-purple-700">
+              {result.totalTimeSeconds || 45}s
+            </span>
+          </div>
+
+          <div className="bg-amber-50/60 border border-amber-100 p-4 rounded-2xl">
+            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
+              {t.resultAvgTime}
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-amber-700">
+              {avgTimePerQuestion}s
+            </span>
+          </div>
+        </div>
+
+        {/* Dedicated IQ Evaluation Highlight Box */}
+        <div className="bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-2xl border border-blue-100 p-6 max-w-2xl mx-auto mb-8 text-left space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-blue-100">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
+                <Brain className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-slate-500 block">
+                  {t.estimatedIQTitle}
+                </span>
+                <span className="text-xl sm:text-2xl font-black text-slate-900">
+                  IQ {iq}
+                </span>
+              </div>
+            </div>
+
+            <div className={`px-3 py-1 rounded-full text-xs font-extrabold border ${iqBadgeColor}`}>
+              {iqClassification}
+            </div>
+          </div>
+
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            {iqDesc}
           </p>
-        </div>
 
-        {/* Detailed Score Statistics Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto text-left mb-8">
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-            <span className="block text-xs font-medium text-slate-500">মোট প্রশ্ন</span>
-            <span className="text-xl sm:text-2xl font-bold text-slate-900">{result.totalQuestions}টি</span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100">
-            <span className="block text-xs font-medium text-emerald-800">সঠিক উত্তর</span>
-            <span className="text-xl sm:text-2xl font-bold text-emerald-700">
-              {result.correctAnswers}টি
+          <div className="flex items-center gap-3 text-[11px] text-slate-500 pt-1">
+            <span className="flex items-center gap-1 font-semibold text-blue-700">
+              <Zap className="w-3.5 h-3.5" />
+              <span>{isEn ? 'Speed & Accuracy Matrix' : 'গতি ও সঠিকতা সমন্বয়'}</span>
             </span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-rose-50/70 border border-rose-100">
-            <span className="block text-xs font-medium text-rose-800">ভুল উত্তর</span>
-            <span className="text-xl sm:text-2xl font-bold text-rose-600">
-              {result.incorrectAnswers}টি
-            </span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-100">
-            <span className="block text-xs font-medium text-blue-800">চূড়ান্ত স্কোর ও সঠিকতা</span>
-            <span className="text-xl sm:text-2xl font-bold text-blue-700">
-              {result.scoreRatio} ({result.percentage}%)
+            <span>·</span>
+            <span className="flex items-center gap-1 font-semibold text-emerald-700">
+              <Target className="w-3.5 h-3.5" />
+              <span>{isEn ? 'Cognitive Agility Index' : 'বুদ্ধিবৃত্তিক মূল্যায়ন'}</span>
             </span>
           </div>
         </div>
 
-        {/* Feature: Dedicated Estimated IQ Analysis Card */}
-        <div className="my-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white text-left relative overflow-hidden shadow-md">
-          {/* Subtle Glow */}
-          <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
-
-          <div className="relative z-10 space-y-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
-              <div className="flex items-center gap-2">
-                <Brain className="w-5 h-5 text-blue-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-300">
-                  আইকিউ (IQ) ও মেধা মূল্যায়ন
-                </span>
-              </div>
-              <span className={`text-xs font-extrabold px-3 py-1 rounded-full border ${iqBadgeColor}`}>
-                {result.iqClassification || 'উন্নত মেধা'}
-              </span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-              <div className="space-y-1">
-                <span className="text-xs text-slate-400 block font-medium">
-                  আপনার পারফরম্যান্স ও গতির ভিত্তিতে আনুমানিক আইকিউ
-                </span>
-                <div className="flex items-baseline gap-3">
-                  <span className={`text-5xl sm:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${iqColor}`}>
-                    {result.estimatedIQ || 115}
-                  </span>
-                  <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                    IQ Score
-                  </span>
-                </div>
-              </div>
-
-              {/* Quick Metrics */}
-              <div className="grid grid-cols-2 gap-3 w-full sm:w-auto">
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-0.5">
-                    <Target className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>সঠিকতার হার</span>
-                  </div>
-                  <div className="text-base font-bold text-white">{result.percentage}%</div>
-                </div>
-
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-0.5">
-                    <Clock className="w-3.5 h-3.5 text-blue-400" />
-                    <span>গড় সময়/প্রশ্ন</span>
-                  </div>
-                  <div className="text-base font-bold text-white">~{avgTimePerQuestion} সে.</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Cognitive explanation */}
-            <div className="pt-2 border-t border-slate-800/80">
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed flex items-start gap-2">
-                <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>{result.iqDescription || 'আপনার কুইজের গতি ও সঠিকতার অনুপাত অনুসারে নিয়মিত অনুশীলনে মেধা আরও বৃদ্ধি পাবে।'}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Action Buttons: Play Again & Back to Categories */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 border-t border-slate-100">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={onPlayAgain}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-xs sm:text-sm font-extrabold hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-xs cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>আবার খেলুন</span>
-          </button>
-
-          <button
-            onClick={onBackToCategories}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
-          >
-            <Grid className="w-4 h-4 text-slate-500" />
-            <span>সকল ক্যাটাগরি</span>
+            <span>{t.playAgainBtn}</span>
           </button>
 
           <button
             onClick={handleShare}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs text-blue-600 hover:bg-blue-50 border border-blue-200 transition-colors cursor-pointer"
-            title="স্কোর ও আইকিউ কপি করুন"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-100 text-slate-800 text-xs sm:text-sm font-bold hover:bg-slate-200 transition-colors cursor-pointer"
           >
-            <Share2 className="w-4 h-4" />
-            <span>{copiedShare ? 'আইকিউ ও স্কোর কপিকৃত!' : 'আইকিউ স্কোর শেয়ার করুন'}</span>
+            {copiedShare ? (
+              <>
+                <Check className="w-4 h-4 text-emerald-600" />
+                <span className="text-emerald-700">{t.linkCopiedAlert}</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="w-4 h-4 text-slate-500" />
+                <span>{t.shareResultBtn}</span>
+              </>
+            )}
+          </button>
+
+          <button
+            onClick={onBackToCategories}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-bold hover:bg-slate-50 transition-colors cursor-pointer"
+          >
+            <Grid className="w-4 h-4 text-slate-400" />
+            <span>{t.allCategoriesNavBtn}</span>
           </button>
         </div>
       </section>
 
-      {/* Ad Banner on Results Page */}
-      <div className="flex justify-center my-4">
-        <AdBanner refreshKey="result-top" />
-      </div>
+      {/* Primary Ad Slot between Result & Review */}
+      <AdBanner refreshKey="result-top-ad" />
 
-      {/* Review Breakdown Section */}
-      <section className="bg-white rounded-2xl border border-blue-100 p-6 sm:p-8 space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-blue-600" />
-            <h2 className="text-base sm:text-lg font-bold text-slate-900">
-              প্রশ্নভিত্তিক বিস্তারিত পর্যালোচনা
-            </h2>
-          </div>
-          <span className="text-xs text-slate-500">
-            {result.answers.length}টি প্রশ্ন যাচাই করা হয়েছে
+      {/* Detailed Answers Review Accordion */}
+      <section className="bg-white rounded-3xl border border-blue-100 p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-blue-600" />
+            <span>{t.reviewAnswersTitle}</span>
+          </h2>
+          <span className="text-xs text-slate-500 font-medium">
+            {result.answers.length} {t.questionProgress}
           </span>
         </div>
 
-        <p className="text-xs text-slate-500">
-          প্রতিটি প্রশ্নের সঠিক সমাধান, আপনার উত্তর, সময় ব্যয় এবং শিক্ষণীয় ব্যাখ্যা জানতে নিচে ক্লিক করুন।
-        </p>
-
-        <div className="space-y-3 pt-2">
-          {result.answers.map((item, idx) => {
+        <div className="space-y-3">
+          {result.answers.map((ans, idx) => {
             const isExpanded = expandedIndex === idx;
-            const letters = ['ক', 'খ', 'গ', 'ঘ'];
+            const qText = isEn ? ans.questionTextEn || ans.questionText : ans.questionText;
+            const options = isEn ? ans.optionsEn || ans.options : ans.options;
+            const explanation = isEn ? ans.explanationEn || ans.explanation : ans.explanation;
+            const interestingFact = isEn ? ans.interestingFactEn || ans.interestingFact : ans.interestingFact;
 
             return (
               <div
-                key={item.questionId || idx}
-                className={`rounded-xl border transition-colors ${
-                  item.isCorrect
-                    ? 'border-emerald-200/80 bg-white'
-                    : 'border-blue-200 bg-white'
-                }`}
+                key={idx}
+                className="border border-slate-200/90 rounded-2xl overflow-hidden transition-colors"
               >
+                {/* Accordion Header */}
                 <button
                   type="button"
                   onClick={() => toggleExpand(idx)}
-                  className="w-full p-4 flex items-start justify-between gap-3 text-left cursor-pointer"
+                  className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-slate-50/70 transition-colors cursor-pointer"
                 >
                   <div className="flex items-start gap-3">
-                    <span className="mt-0.5">
-                      {item.isCorrect ? (
-                        <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                    <div className="mt-0.5 shrink-0">
+                      {ans.isCorrect ? (
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-rose-500 shrink-0" />
+                        <XCircle className="w-5 h-5 text-rose-600" />
                       )}
-                    </span>
+                    </div>
                     <div>
-                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-0.5">
-                        <span>প্রশ্ন নম্বর {idx + 1}</span>
-                        {item.timeTakenSeconds !== undefined && (
-                          <>
-                            <span>·</span>
-                            <span className="inline-flex items-center gap-1 text-[11px] text-slate-500">
-                              <Clock className="w-3 h-3" /> {item.timeTakenSeconds} সেকেন্ড
-                            </span>
-                          </>
-                        )}
-                      </div>
-                      <p className="text-sm font-semibold text-slate-900 line-clamp-2">
-                        {item.questionText}
+                      <span className="text-xs font-bold text-slate-400 block mb-0.5">
+                        {t.questionProgress} {idx + 1}
+                      </span>
+                      <p className="text-sm sm:text-base font-bold text-slate-900 line-clamp-2">
+                        {qText}
                       </p>
                     </div>
                   </div>
 
                   <div className="shrink-0 text-slate-400">
                     {isExpanded ? (
-                      <ChevronUp className="w-4 h-4" />
+                      <ChevronUp className="w-5 h-5" />
                     ) : (
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-5 h-5" />
                     )}
                   </div>
                 </button>
 
+                {/* Accordion Body */}
                 {isExpanded && (
-                  <div className="px-4 pb-4 pt-1 border-t border-slate-100 text-xs sm:text-sm space-y-3">
-                    {/* Selected and Correct answer summary */}
-                    <div className="space-y-1.5 pt-2">
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold text-slate-600">আপনার উত্তর:</span>
+                  <div className="p-4 sm:p-5 bg-slate-50/50 border-t border-slate-100 space-y-4 text-xs sm:text-sm">
+                    {/* User selection vs Correct Answer */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="bg-white p-3 rounded-xl border border-slate-200">
+                        <span className="text-slate-500 font-semibold block mb-1">
+                          {t.reviewYourAnswer}:
+                        </span>
                         <span
                           className={`font-bold ${
-                            item.isCorrect ? 'text-emerald-700' : 'text-rose-600'
+                            ans.isCorrect ? 'text-emerald-700' : 'text-rose-700'
                           }`}
                         >
-                          {item.selectedIndex >= 0
-                            ? `বিকল্প ${letters[item.selectedIndex]}: ${item.options[item.selectedIndex]}`
-                            : 'সময় শেষ হয়েছিল (উত্তর দেওয়া হয়নি)'}
+                          {ans.selectedIndex >= 0
+                            ? options[ans.selectedIndex]
+                            : isEn ? 'No answer given (Time expired)' : 'কোনো উত্তর দেওয়া হয়নি (সময় শেষ)'}
                         </span>
                       </div>
 
-                      {!item.isCorrect && (
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-slate-600">সঠিক উত্তর:</span>
-                          <span className="font-bold text-emerald-700">
-                            বিকল্প {letters[item.correctIndex]}: {item.options[item.correctIndex]}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Educational explanation */}
-                    <div className="p-3 bg-slate-50 rounded-lg space-y-1">
-                      <div className="flex items-center gap-1.5 font-bold text-slate-700 text-xs uppercase tracking-wider">
-                        <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
-                        <span>ব্যাখ্যা</span>
+                      <div className="bg-white p-3 rounded-xl border border-slate-200">
+                        <span className="text-slate-500 font-semibold block mb-1">
+                          {t.reviewCorrectAnswer}:
+                        </span>
+                        <span className="font-bold text-emerald-700">
+                          {options[ans.correctIndex]}
+                        </span>
                       </div>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        {item.explanation}
-                      </p>
                     </div>
 
-                    {/* Interesting fact */}
-                    {item.interestingFact && (
-                      <div className="p-3 bg-blue-50/70 rounded-lg space-y-1">
-                        <div className="flex items-center gap-1.5 font-bold text-blue-700 text-xs uppercase tracking-wider">
-                          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                          <span>আপনি কি জানেন?</span>
-                        </div>
-                        <p className="text-xs text-slate-600 italic leading-relaxed">
-                          {item.interestingFact}
+                    {/* Explanation */}
+                    {explanation && (
+                      <div className="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+                        <span className="font-bold text-slate-900 flex items-center gap-1.5">
+                          <Lightbulb className="w-4 h-4 text-amber-500" />
+                          <span>{t.explanationTitle}:</span>
+                        </span>
+                        <p className="text-slate-600 leading-relaxed">
+                          {explanation}
                         </p>
+                      </div>
+                    )}
+
+                    {/* Fun Fact */}
+                    {interestingFact && (
+                      <div className="bg-blue-50/80 p-3.5 rounded-xl border border-blue-200 space-y-1">
+                        <span className="font-bold text-blue-950 flex items-center gap-1.5">
+                          <Sparkles className="w-4 h-4 text-blue-600" />
+                          <span>{t.funFactTitle}:</span>
+                        </span>
+                        <p className="text-blue-900 leading-relaxed">
+                          {interestingFact}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Time taken */}
+                    {ans.timeTakenSeconds !== undefined && (
+                      <div className="flex items-center gap-1.5 text-xs text-slate-500 pt-1">
+                        <Clock className="w-3.5 h-3.5 text-slate-400" />
+                        <span>
+                          {t.reviewTimeTaken}: {ans.timeTakenSeconds} {t.secondsSuffix}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -350,6 +367,9 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
           })}
         </div>
       </section>
+
+      {/* Secondary Bottom Ad */}
+      <AdBanner refreshKey="result-bottom-ad" />
     </div>
   );
 };
