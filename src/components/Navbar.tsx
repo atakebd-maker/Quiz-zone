@@ -57,20 +57,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Brand Logo - Quiz Zone BD */}
           <button
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-2 sm:gap-2.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-1 shrink-0"
+            className="flex items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-0.5 shrink-0 transition-transform active:scale-95"
             aria-label={`${t.brandName} ${t.navHome}`}
           >
-            <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-xs">
-              <HelpCircle className="w-5 h-5 stroke-[2.5]" />
-            </div>
-            <div>
-              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900">
-                Quiz <span className="text-blue-600">Zone</span> <span className="text-emerald-600 font-black">BD</span>
-              </span>
-              <span className="hidden lg:inline-block text-[11px] text-blue-700 font-bold ml-1.5 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
-                {t.brandTagline}
-              </span>
-            </div>
+            <img
+              src="/assets/aistudio/1000049976-removebg-preview_84ab076e.png"
+              alt="Quiz Zone BD"
+              className="h-10 sm:h-12 w-auto max-w-[200px] sm:max-w-[240px] object-contain drop-shadow-xs"
+            />
           </button>
 
           {/* Desktop Navigation */}

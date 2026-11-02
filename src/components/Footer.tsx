@@ -19,14 +19,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand & mission */}
           <div className="md:col-span-1 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center">
-                <HelpCircle className="w-4 h-4 stroke-[2.5]" />
-              </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Quiz <span className="text-blue-400">Zone</span> <span className="text-emerald-400 font-extrabold">BD</span>
-              </span>
-            </div>
+            <button
+              onClick={() => onNavigate('home')}
+              className="text-left focus:outline-none transition-transform active:scale-95 block"
+              aria-label="Quiz Zone BD Home"
+            >
+              <img
+                src="/assets/aistudio/1000049976-removebg-preview_84ab076e.png"
+                alt="Quiz Zone BD"
+                className="h-11 sm:h-12 w-auto object-contain brightness-110"
+              />
+            </button>
             <p className="text-xs text-slate-400 leading-relaxed">
               {t.footerAboutText}
             </p>
