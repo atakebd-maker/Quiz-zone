@@ -1,9 +1,12 @@
 import { QuizCategory, QuizQuestion, Language } from '../types/quiz';
+import { BANGLA_MOJAR_DHADHA_CATEGORY, BANGLA_MOJAR_DHADHA_QUESTIONS } from './banglaMojarDhadhaData';
 import { BANGLA_RIDDLES_CATEGORY } from './banglaRiddlesData';
 
+export { BANGLA_MOJAR_DHADHA_CATEGORY, BANGLA_MOJAR_DHADHA_QUESTIONS } from './banglaMojarDhadhaData';
 export { BANGLA_RIDDLES_CATEGORY, BANGLA_RIDDLES_DATA } from './banglaRiddlesData';
 
 export const QUIZ_CATEGORIES: QuizCategory[] = [
+  BANGLA_MOJAR_DHADHA_CATEGORY,
   BANGLA_RIDDLES_CATEGORY,
   {
     id: 'easy-riddles',

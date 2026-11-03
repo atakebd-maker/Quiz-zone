@@ -144,37 +144,37 @@ export const QuizResultPage: React.FC<QuizResultPageProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto mb-8">
           <div className="bg-blue-50/60 border border-blue-100 p-4 rounded-2xl">
             <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
-              {t.resultScoreSummary}
+              {isEn ? 'Total Questions' : 'মোট প্রশ্ন'}
             </span>
             <span className="text-2xl sm:text-3xl font-extrabold text-blue-700">
-              {result.scoreRatio}
+              {result.totalQuestions}
             </span>
           </div>
 
           <div className="bg-emerald-50/60 border border-emerald-100 p-4 rounded-2xl">
             <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
-              {t.resultAccuracy}
+              {isEn ? 'Correct Answers' : 'সঠিক উত্তর'}
             </span>
             <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700">
+              {result.correctAnswers}
+            </span>
+          </div>
+
+          <div className="bg-rose-50/60 border border-rose-100 p-4 rounded-2xl">
+            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
+              {isEn ? 'Incorrect Answers' : 'ভুল উত্তর'}
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-rose-700">
+              {result.incorrectAnswers}
+            </span>
+          </div>
+
+          <div className="bg-indigo-50/60 border border-indigo-100 p-4 rounded-2xl">
+            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
+              {isEn ? 'Final Score' : 'স্কোর শতাংশ'}
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-indigo-700">
               {result.percentage}%
-            </span>
-          </div>
-
-          <div className="bg-purple-50/60 border border-purple-100 p-4 rounded-2xl">
-            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
-              {t.resultTotalTime}
-            </span>
-            <span className="text-2xl sm:text-3xl font-extrabold text-purple-700">
-              {result.totalTimeSeconds || 45}s
-            </span>
-          </div>
-
-          <div className="bg-amber-50/60 border border-amber-100 p-4 rounded-2xl">
-            <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider mb-1">
-              {t.resultAvgTime}
-            </span>
-            <span className="text-2xl sm:text-3xl font-extrabold text-amber-700">
-              {avgTimePerQuestion}s
             </span>
           </div>
         </div>

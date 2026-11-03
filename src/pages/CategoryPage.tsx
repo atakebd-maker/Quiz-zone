@@ -32,7 +32,9 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   lang
 }) => {
   const [questionCount, setQuestionCount] = useState<number>(
-    Math.min(5, category.questions.length)
+    category.id === 'bangla-mojar-dhadha'
+      ? 15
+      : Math.min(5, category.questions.length)
   );
   const [shuffleQuestions, setShuffleQuestions] = useState<boolean>(true);
   const [copiedLink, setCopiedLink] = useState(false);

@@ -2634,8 +2634,8 @@ export const BANGLA_RIDDLES_DATA: QuizQuestion[] = [
 export const BANGLA_RIDDLES_CATEGORY: QuizCategory = {
   id: 'bangla-riddles',
   slug: 'bangla-riddles',
-  title: 'বাংলা মজার ধাঁধা (Bangla Riddles)',
-  titleEn: 'Bangla Riddles & Brain Teasers',
+  title: '২০০+ বাংলা ধাঁধা কালেকশন (200+ Bangla Riddles)',
+  titleEn: '200+ Bengali Riddles Grand Collection',
   description: '২০০টি সেরা, আকর্ষণীয়, বুদ্ধির ও মজার বাংলা ধাঁধা। উত্তরসহ গ্রামীণ চিরায়ত ধাঁধা, গণিতের ধাঁধা, প্যাঁচালো প্রশ্ন ও মেধার খেলা!',
   descriptionEn: 'A grand collection of 200 authentic Bengali riddles, brain teasers, folk puzzles, and tricky questions with complete explanations.',
   iconName: 'Sparkles',

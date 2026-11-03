@@ -56,7 +56,20 @@
     <priority>0.95</priority>
   </url>
 
-  <!-- 10 Categories in Bengali & English -->
+  <!-- বাংলা মজার ধাঁধা (Bangla Riddles - 15 Questions) -->
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=bangla-mojar-dhadha&amp;lang=bn</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=bangla-mojar-dhadha&amp;lang=en</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <url>
     <loc>https://quiz-zone-bd.vercel.app/?page=category&amp;id=easy-riddles&amp;lang=bn</loc>
     <lastmod>2026-11-01</lastmod>
