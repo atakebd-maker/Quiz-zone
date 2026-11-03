@@ -123,14 +123,34 @@ export const AllCategoriesPage: React.FC<AllCategoriesPageProps> = ({
 
       {/* Categories Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {filteredCategories.map((category) => (
-          <QuizCard
-            key={category.id}
-            category={category}
-            onSelect={onSelectCategory}
-            highScore={getCategoryHighScore(category.id)}
-            lang={lang}
-          />
+        {filteredCategories.map((category, idx) => (
+          <React.Fragment key={category.id}>
+            <QuizCard
+              category={category}
+              onSelect={onSelectCategory}
+              highScore={getCategoryHighScore(category.id)}
+              lang={lang}
+            />
+
+            {/* Mobile: Ad after every category */}
+            <div className="block sm:hidden col-span-1 w-full my-1 py-1">
+              <AdBanner refreshKey={`all-cats-m-${category.id}`} />
+            </div>
+
+            {/* Tablet: Ad after every 2 categories */}
+            {(idx + 1) % 2 === 0 && (
+              <div className="hidden sm:flex lg:hidden sm:col-span-2 w-full justify-center py-2 my-1 border-y border-slate-100">
+                <AdBanner refreshKey={`all-cats-t-${idx}`} />
+              </div>
+            )}
+
+            {/* Desktop: Ad after every 3 categories */}
+            {(idx + 1) % 3 === 0 && (
+              <div className="hidden lg:flex lg:col-span-3 xl:col-span-4 w-full justify-center py-2 my-1 border-y border-slate-100">
+                <AdBanner refreshKey={`all-cats-d-${idx}`} />
+              </div>
+            )}
+          </React.Fragment>
         ))}
       </div>
 

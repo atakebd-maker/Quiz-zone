@@ -207,6 +207,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
         </div>
       </section>
 
+      {/* Ad Slot: After Bangla Riddles Category Banner */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <AdBanner refreshKey="home-riddles-ad" />
+      </div>
+
       {/* Daily Challenge Card Callout */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden">
@@ -251,6 +256,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
           </div>
         </div>
       </section>
+
+      {/* Ad Slot: After Daily Challenge Section */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <AdBanner refreshKey="home-daily-ad" />
+      </div>
 
       {/* Featured Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -327,6 +337,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
         </div>
       </section>
 
+      {/* Ad Slot: After Popular Categories Section */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <AdBanner refreshKey="home-popular-ad" />
+      </div>
+
       {/* All Categories Grid or Search Results */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between mb-6">
@@ -354,17 +369,42 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredCategories.map((cat) => (
-              <QuizCard
-                key={cat.id}
-                category={cat}
-                highScore={getCategoryHighScore(cat.id)}
-                onSelect={() => onNavigate('category', { id: cat.id })}
-                lang={lang}
-              />
+            {filteredCategories.map((cat, idx) => (
+              <React.Fragment key={cat.id}>
+                <QuizCard
+                  category={cat}
+                  highScore={getCategoryHighScore(cat.id)}
+                  onSelect={() => onNavigate('category', { id: cat.id })}
+                  lang={lang}
+                />
+
+                {/* Mobile: Ad after every single category */}
+                <div className="block sm:hidden col-span-1 w-full my-1 py-1">
+                  <AdBanner refreshKey={`home-cat-mobile-${cat.id}`} />
+                </div>
+
+                {/* Tablet: Ad after every 2 categories (each row) */}
+                {(idx + 1) % 2 === 0 && (
+                  <div className="hidden sm:flex lg:hidden sm:col-span-2 w-full justify-center py-2 my-1 border-y border-slate-100">
+                    <AdBanner refreshKey={`home-cat-tablet-${idx}`} />
+                  </div>
+                )}
+
+                {/* Desktop: Ad after every 3 categories (each row) */}
+                {(idx + 1) % 3 === 0 && (
+                  <div className="hidden lg:flex lg:col-span-3 w-full justify-center py-2 my-1 border-y border-slate-100">
+                    <AdBanner refreshKey={`home-cat-desktop-${idx}`} />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         )}
+
+        {/* Ad Slot: After All Categories Section */}
+        <div className="mt-8 pt-4 border-t border-slate-100">
+          <AdBanner refreshKey="home-all-categories-end-ad" />
+        </div>
       </section>
     </div>
   );

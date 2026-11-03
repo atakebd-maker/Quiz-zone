@@ -57,7 +57,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({
   }, [refreshKey]);
 
   return (
-    <div className={`my-3 flex flex-col items-center justify-center ${className}`}>
+    <div className={`my-2 flex flex-col items-center justify-center w-full ${className}`}>
       {label && (
         <span className="text-[10px] text-slate-400 font-medium tracking-wide uppercase mb-0.5">
           {label}
@@ -65,7 +65,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({
       )}
       <div
         ref={containerRef}
-        className="w-[320px] h-[50px] bg-slate-50 border border-slate-200/80 rounded-md overflow-hidden flex items-center justify-center shadow-2xs"
+        className="w-[320px] max-w-full h-[50px] bg-slate-50 border border-slate-200/80 rounded-md overflow-hidden flex items-center justify-center shadow-2xs"
       />
     </div>
   );
