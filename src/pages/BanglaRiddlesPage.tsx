@@ -245,65 +245,93 @@ export const BanglaRiddlesPage: React.FC<BanglaRiddlesPageProps> = ({ onNavigate
 
   return (
     <div className="min-h-screen bg-slate-50/70 pb-20">
-      {/* Hero Header */}
-      <section className="bg-gradient-to-b from-blue-600 via-blue-700 to-indigo-800 text-white pt-12 pb-14 px-4 sm:px-6 relative overflow-hidden">
-        {/* Decorative background shapes */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute -top-12 -right-12 w-96 h-96 rounded-full bg-white blur-3xl" />
-          <div className="absolute -bottom-12 -left-12 w-96 h-96 rounded-full bg-blue-300 blur-3xl" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-yellow-300 mb-4 shadow-xs">
-            <Sparkles className="w-4 h-4 text-yellow-300" />
-            <span>{t.riddlesHeroBadge}</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 drop-shadow-xs">
-            {t.riddlesHeroTitle}
-          </h1>
-
-          <p className="text-sm sm:text-base md:text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed mb-8">
-            {t.riddlesHeroSubtitle}
-          </p>
-
-          {/* Mode Switcher Tabs */}
-          <div className="inline-flex p-1.5 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 shadow-inner">
-            <button
-              onClick={() => {
-                setActiveTab('play');
-                if (!isPlaying && !gameFinished) handleStartGame(10);
-              }}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                activeTab === 'play'
-                  ? 'bg-white text-blue-800 shadow-md scale-102'
-                  : 'text-white/90 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <Gamepad2 className="w-4 h-4" />
-              <span>{t.riddlesTabPlay}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('browse')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                activeTab === 'browse'
-                  ? 'bg-white text-blue-800 shadow-md scale-102'
-                  : 'text-white/90 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>{t.riddlesTabBrowse}</span>
-              <span className="text-[10px] bg-amber-400 text-slate-900 px-1.5 py-0.5 rounded-full font-extrabold">
-                ২০০
-              </span>
-            </button>
+      {/* If currently playing game, show a clean, comfortable, compact top bar with breathing room */}
+      {isPlaying && !gameFinished ? (
+        <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white pt-6 pb-6 px-4 sm:px-6 shadow-sm">
+          <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  setIsPlaying(false);
+                  setCurrentIndex(0);
+                  setSelectedOption(null);
+                  setShowExplanation(false);
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold transition-colors cursor-pointer"
+              >
+                <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+                <span>{isEn ? 'Exit Game' : 'খেলা বন্ধ করুন'}</span>
+              </button>
+              <h1 className="text-base sm:text-lg font-bold truncate">
+                {t.riddlesHeroTitle}
+              </h1>
+            </div>
+            <div className="text-xs bg-white/15 px-3 py-1 rounded-full font-semibold shrink-0">
+              {isEn ? `${gameQuestions.length} Riddles Session` : `${gameQuestions.length}টি ধাঁধার পর্ব`}
+            </div>
           </div>
         </div>
-      </section>
+      ) : (
+        /* Full Hero Header when in menu/browse mode */
+        <section className="bg-gradient-to-b from-blue-600 via-blue-700 to-indigo-800 text-white pt-10 sm:pt-14 pb-12 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
+          {/* Decorative background shapes */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute -top-12 -right-12 w-96 h-96 rounded-full bg-white blur-3xl" />
+            <div className="absolute -bottom-12 -left-12 w-96 h-96 rounded-full bg-blue-300 blur-3xl" />
+          </div>
 
-      {/* Main Content Area */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-6">
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-yellow-300 mb-4 shadow-xs">
+              <Sparkles className="w-4 h-4 text-yellow-300" />
+              <span>{t.riddlesHeroBadge}</span>
+            </div>
+
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 drop-shadow-xs">
+              {t.riddlesHeroTitle}
+            </h1>
+
+            <p className="text-sm sm:text-base md:text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
+              {t.riddlesHeroSubtitle}
+            </p>
+
+            {/* Mode Switcher Tabs */}
+            <div className="inline-flex p-1.5 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 shadow-inner">
+              <button
+                onClick={() => {
+                  setActiveTab('play');
+                  if (!isPlaying && !gameFinished) handleStartGame(10);
+                }}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeTab === 'play'
+                    ? 'bg-white text-blue-800 shadow-md scale-102'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <Gamepad2 className="w-4 h-4" />
+                <span>{t.riddlesTabPlay}</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('browse')}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeTab === 'browse'
+                    ? 'bg-white text-blue-800 shadow-md scale-102'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>{t.riddlesTabBrowse}</span>
+                <span className="text-[10px] bg-amber-400 text-slate-900 px-1.5 py-0.5 rounded-full font-extrabold">
+                  ২০০
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Main Content Area: Comfortable positive spacing bringing the content down */}
+      <div className={`max-w-5xl mx-auto px-4 sm:px-6 ${isPlaying && !gameFinished ? 'pt-6 sm:pt-8' : 'pt-6 sm:pt-8'}`}>
         {/* TAB 1: INTERACTIVE RIDDLE GAME */}
         {activeTab === 'play' && (
           <div className="space-y-6">

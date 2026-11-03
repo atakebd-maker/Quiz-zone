@@ -1,12 +1,15 @@
 import { QuizCategory, QuizQuestion, Language } from '../types/quiz';
 import { BANGLA_MOJAR_DHADHA_CATEGORY, BANGLA_MOJAR_DHADHA_QUESTIONS } from './banglaMojarDhadhaData';
 import { BANGLA_RIDDLES_CATEGORY } from './banglaRiddlesData';
+import { MATH_RIDDLES_CATEGORY, MATH_RIDDLES_QUESTIONS } from './mathRiddlesData';
 
 export { BANGLA_MOJAR_DHADHA_CATEGORY, BANGLA_MOJAR_DHADHA_QUESTIONS } from './banglaMojarDhadhaData';
 export { BANGLA_RIDDLES_CATEGORY, BANGLA_RIDDLES_DATA } from './banglaRiddlesData';
+export { MATH_RIDDLES_CATEGORY, MATH_RIDDLES_QUESTIONS } from './mathRiddlesData';
 
 export const QUIZ_CATEGORIES: QuizCategory[] = [
   BANGLA_MOJAR_DHADHA_CATEGORY,
+  MATH_RIDDLES_CATEGORY,
   BANGLA_RIDDLES_CATEGORY,
   {
     id: 'easy-riddles',

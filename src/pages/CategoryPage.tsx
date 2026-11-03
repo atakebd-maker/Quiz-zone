@@ -34,6 +34,8 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   const [questionCount, setQuestionCount] = useState<number>(
     category.id === 'bangla-mojar-dhadha'
       ? 15
+      : category.id === 'math-riddles'
+      ? 30
       : Math.min(5, category.questions.length)
   );
   const [shuffleQuestions, setShuffleQuestions] = useState<boolean>(true);

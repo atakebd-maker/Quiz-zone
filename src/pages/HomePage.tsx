@@ -134,7 +134,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
             <div className="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-2xs">
               <Sparkles className="w-4 h-4 text-emerald-600" />
               <span>
-                <strong>২৭০+</strong> {t.statTotalQuestions}
+                <strong>৩০০+</strong> {t.statTotalQuestions}
               </span>
             </div>
             <div className="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-2xs">
@@ -157,7 +157,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onStartQuiz, lan
       </div>
 
       {/* Dedicated Bangla Riddles Banner */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-2 sm:pt-4">
         <div className="bg-gradient-to-r from-indigo-900 via-blue-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden border border-indigo-500/30">
           <div className="absolute right-0 top-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -left-10 -bottom-10 w-60 h-60 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />

@@ -282,7 +282,7 @@ export const QuizPlayerPage: React.FC<QuizPlayerPageProps> = ({
     : t.gentleIncorrect[currentIndex % t.gentleIncorrect.length];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-6">
       {/* Top Header: Category, Progress & Controls */}
       <div className="bg-white rounded-2xl border border-blue-100 p-4 sm:p-5 shadow-xs space-y-4">
         <div className="flex items-center justify-between gap-4">
